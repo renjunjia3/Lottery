@@ -151,4 +151,6 @@ dependencies {
     compile 'com.youth.banner:banner:1.4.9'
     //垂直跑马灯
     compile 'com.github.sun-sky:Marquee:1.0.0'
+    //adapter
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34'
 }

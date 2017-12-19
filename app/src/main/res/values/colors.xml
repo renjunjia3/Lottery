@@ -17,4 +17,5 @@
     <color name="text_color_des">#999999</color>
 
     <color name="line_color">#E2E2E2</color>
+    <color name="toolbar_color">#EE332B</color>
 </resources>

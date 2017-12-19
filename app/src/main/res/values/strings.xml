@@ -29,4 +29,17 @@
     <string name="bbwp">百变王牌</string>
     <string name="more_infomation_follow_public_number">更多资讯请关注公众号:</string>
     <string name="click_to_copy">（点击可复制）</string>
+
+    <string name="discover_title_1">追号套餐</string>
+    <string name="discover_title_2">欧洲五大联赛</string>
+    <string name="discover_title_3">比分直播</string>
+    <string name="discover_title_4">活动中心</string>
+    <string name="discover_title_5">中奖福地</string>
+    <string name="discover_title_6">彩票资讯</string>
+    <string name="discover_content_1">追号最易中大奖，不中最高返全款</string>
+    <string name="discover_content_2">群雄逐鹿，盈利良机</string>
+    <string name="discover_content_3">赛事动态实时查看</string>
+    <string name="discover_content_4">疯狂加奖中，活动不停歇</string>
+    <string name="discover_content_5">95后喜中七星彩一等奖，豪夺400万</string>
+    <string name="discover_content_6">赛事资讯早掌握</string>
 </resources>
