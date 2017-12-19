@@ -8,4 +8,5 @@ import com.quduo.lottery.mvp.BaseView;
  */
 
 public interface IIndexView extends BaseView {
+    void bindNoticeInfo();
 }

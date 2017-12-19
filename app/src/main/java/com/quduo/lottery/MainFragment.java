@@ -96,9 +96,9 @@ public class MainFragment extends SupportFragment {
 
     private void initView() {
         bottomBar
-                .addItem(new BottomBarTab(_mActivity, R.drawable.ic_bottombar_indiana_d, R.drawable.ic_bottombar_indiana_s, getString(R.string.tab_index)))
-                .addItem(new BottomBarTab(_mActivity, R.drawable.ic_bottombar_car_d, R.drawable.ic_bottombar_car_s, getString(R.string.tab_wincode)))
-                .addItem(new BottomBarTab(_mActivity, R.drawable.ic_bottombar_newest_d, R.drawable.ic_bottombar_newest_s, getString(R.string.tab_discover)))
+                .addItem(new BottomBarTab(_mActivity, R.drawable.ic_bottombar_index_d, R.drawable.ic_bottombar_index_s, getString(R.string.tab_index)))
+                .addItem(new BottomBarTab(_mActivity, R.drawable.ic_bottombar_wincode_d, R.drawable.ic_bottombar_wincode_s, getString(R.string.tab_wincode)))
+                .addItem(new BottomBarTab(_mActivity, R.drawable.ic_bottombar_discover_d, R.drawable.ic_bottombar_discover_s, getString(R.string.tab_discover)))
                 .addItem(new BottomBarTab(_mActivity, R.drawable.ic_bottombar_mine_d, R.drawable.ic_bottombar_mine_s, getString(R.string.tab_mine)));
 
 

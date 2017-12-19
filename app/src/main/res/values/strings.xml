@@ -10,4 +10,17 @@
     <string name="tab_wincode">开奖号码</string>
     <string name="tab_discover">发现</string>
     <string name="tab_mine">我的彩票</string>
+    <string name="congratulate">恭喜</string>
+    <string name="cathectic">投注</string>
+    <string name="winning">中奖</string>
+    <string name="yuan">元</string>
+    <string name="cqssc">重庆时时彩</string>
+    <string name="newest_lottery">最新开奖</string>
+    <string name="immediate_betting">立即投注</string>
+    <string name="ssq">双色球</string>
+    <string name="last_lottery">上期开奖</string>
+    <string name="jzss">竞足赛事</string>
+    <string name="more_match">更多比赛</string>
+    <string name="win">胜</string>
+    <string name="betting">投注</string>
 </resources>

@@ -1,10 +1,611 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/background_color">
 
-    <Button
+    <wiki.scene.loadmore.StatusViewLayout
+        android:id="@+id/statusView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="首页" />
-</android.support.constraint.ConstraintLayout>
+        android:layout_height="match_parent">
+
+        <wiki.scene.loadmore.PtrClassicFrameLayout
+            android:id="@+id/ptr_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <!--#########banner##########-->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <com.quduo.lottery.widgets.RatioImageView
+                            android:id="@+id/image1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:base="horizontal"
+                            app:horizontal_weight="1080"
+                            app:vertical_weight="432" />
+
+                        <com.youth.banner.Banner
+                            android:id="@+id/banner"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignBottom="@+id/image1"
+                            android:layout_alignTop="@+id/image1"
+                            android:background="@drawable/ic_banner" />
+                    </RelativeLayout>
+                    <!--########中奖公告######-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/bg_white_round_corner_10dp"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:src="@drawable/ic_win_notice" />
+
+                        <View
+                            android:layout_width="0.5dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:background="@color/line_color" />
+
+                        <com.sunsky.marqueeview.MarqueeView
+                            android:id="@+id/win_notice"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            app:animDuration="1000"
+                            app:interval="3000" />
+                    </LinearLayout>
+                    <!--#######注册############-->
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="10dp"
+                        android:adjustViewBounds="true"
+                        android:maxHeight="400dp"
+                        android:src="@drawable/ic_register_activity" />
+                    <!--############时时彩##########-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/bg_white_round_corner_10dp"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:drawablePadding="3dp"
+                                android:drawableStart="@drawable/ic_cqssc"
+                                android:text="@string/cqssc"
+                                android:textColor="@color/text_color_title"
+                                android:textSize="@dimen/text_size_14sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:gravity="center"
+                                android:text="00:00:00"
+                                android:textColor="@color/theme_color"
+                                android:textSize="@dimen/text_size_14sp" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/ic_jiajiang_big" />
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@color/line_color" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/newest_lottery"
+                                android:textColor="@color/text_color_title"
+                                android:textSize="@dimen/text_size_12sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:background="@drawable/bg_winning_code_red"
+                                android:gravity="center"
+                                android:text="1"
+                                android:textColor="@color/red_text_color"
+                                android:textSize="@dimen/text_size_14sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:background="@drawable/bg_winning_code_red"
+                                android:gravity="center"
+                                android:text="2"
+                                android:textColor="@color/red_text_color"
+                                android:textSize="@dimen/text_size_14sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:background="@drawable/bg_winning_code_red"
+                                android:gravity="center"
+                                android:text="3"
+                                android:textColor="@color/red_text_color"
+                                android:textSize="@dimen/text_size_14sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:background="@drawable/bg_winning_code_red"
+                                android:gravity="center"
+                                android:text="4"
+                                android:textColor="@color/red_text_color"
+                                android:textSize="@dimen/text_size_14sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:background="@drawable/bg_winning_code_red"
+                                android:gravity="center"
+                                android:text="5"
+                                android:textColor="@color/red_text_color"
+                                android:textSize="@dimen/text_size_14sp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/btn_red_round_color_3dp"
+                            android:gravity="center"
+                            android:paddingBottom="5dp"
+                            android:paddingTop="5dp"
+                            android:text="@string/immediate_betting"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_size_14sp" />
+
+                    </LinearLayout>
+                    <!--#######双色球###########-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/bg_white_round_corner_10dp"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:drawablePadding="3dp"
+                                android:drawableStart="@drawable/ic_ssq"
+                                android:text="@string/ssq"
+                                android:textColor="@color/text_color_title"
+                                android:textSize="@dimen/text_size_14sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="10dp"
+                                android:text="每周二、四、日21:15开奖"
+                                android:textColor="@color/text_color_des"
+                                android:textSize="@dimen/text_size_10sp" />
+
+                        </RelativeLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@color/line_color" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/last_lottery"
+                                android:textColor="@color/text_color_title"
+                                android:textSize="@dimen/text_size_12sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:background="@drawable/bg_winning_code_red"
+                                android:gravity="center"
+                                android:text="1"
+                                android:textColor="@color/red_text_color"
+                                android:textSize="@dimen/text_size_14sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:background="@drawable/bg_winning_code_red"
+                                android:gravity="center"
+                                android:text="2"
+                                android:textColor="@color/red_text_color"
+                                android:textSize="@dimen/text_size_14sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:background="@drawable/bg_winning_code_red"
+                                android:gravity="center"
+                                android:text="3"
+                                android:textColor="@color/red_text_color"
+                                android:textSize="@dimen/text_size_14sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:background="@drawable/bg_winning_code_red"
+                                android:gravity="center"
+                                android:text="4"
+                                android:textColor="@color/red_text_color"
+                                android:textSize="@dimen/text_size_14sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:background="@drawable/bg_winning_code_red"
+                                android:gravity="center"
+                                android:text="5"
+                                android:textColor="@color/red_text_color"
+                                android:textSize="@dimen/text_size_14sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:background="@drawable/bg_winning_code_red"
+                                android:gravity="center"
+                                android:text="6"
+                                android:textColor="@color/red_text_color"
+                                android:textSize="@dimen/text_size_14sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:background="@drawable/bg_winning_code_blue"
+                                android:gravity="center"
+                                android:text="1"
+                                android:textColor="#008CFF"
+                                android:textSize="@dimen/text_size_14sp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/btn_red_round_color_3dp"
+                            android:gravity="center"
+                            android:paddingBottom="5dp"
+                            android:paddingTop="5dp"
+                            android:text="4元可赢1500万立即投注"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_size_14sp" />
+                    </LinearLayout>
+                    <!--##########足彩############-->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/bg_white_round_corner_10dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_zucai_single" />
+
+                        <LinearLayout
+                            android:id="@+id/layout_zucai_qiudui"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="10dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="horizontal">
+
+                                <View
+                                    android:layout_width="0dp"
+                                    android:layout_height="1dp"
+                                    android:layout_weight="1" />
+
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:src="@drawable/ic_qiudui_1" />
+
+                                <View
+                                    android:layout_width="0dp"
+                                    android:layout_height="1dp"
+                                    android:layout_weight="1" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:gravity="center_horizontal"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@string/jzss"
+                                        android:textColor="@color/text_color_content"
+                                        android:textSize="@dimen/text_size_14sp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="今日22:55截止"
+                                        android:textColor="@color/text_color_content"
+                                        android:textSize="@dimen/text_size_10sp" />
+                                </LinearLayout>
+
+                                <View
+                                    android:layout_width="0dp"
+                                    android:layout_height="1dp"
+                                    android:layout_weight="1" />
+
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:src="@drawable/ic_qiudui_2" />
+
+                                <View
+                                    android:layout_width="0dp"
+                                    android:layout_height="1dp"
+                                    android:layout_weight="1" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginRight="10dp"
+                                android:drawablePadding="3dp"
+                                android:drawableRight="@drawable/ic_more_match"
+                                android:text="@string/more_match"
+                                android:textColor="#7FA5D1"
+                                android:textSize="@dimen/text_size_10sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/layout_zucai_qiudui"
+                            android:orientation="horizontal"
+                            android:paddingBottom="10dp"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:weightSum="10">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2.7"
+                                android:background="@drawable/bg_green_round_color"
+                                android:gravity="center_horizontal"
+                                android:orientation="vertical"
+                                android:paddingBottom="5dp"
+                                android:paddingTop="5dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_horizontal"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:maxLength="3"
+                                        android:text="球队1"
+                                        android:textColor="#1371BF"
+                                        android:textSize="@dimen/text_size_12sp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:text="@string/win"
+                                        android:textColor="#1371BF"
+                                        android:textSize="@dimen/text_size_12sp" />
+                                </LinearLayout>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="1.57"
+                                    android:textColor="#1371BF"
+                                    android:textSize="@dimen/text_size_10sp" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="5dp"
+                                android:layout_height="1dp" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2.3"
+                                android:background="@drawable/bg_green_round_color"
+                                android:gravity="center_horizontal"
+                                android:orientation="vertical"
+                                android:paddingBottom="5dp"
+                                android:paddingTop="5dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="平"
+                                    android:textColor="#1371BF"
+                                    android:textSize="@dimen/text_size_12sp" />
+
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="1.57"
+                                    android:textColor="#1371BF"
+                                    android:textSize="@dimen/text_size_10sp" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="5dp"
+                                android:layout_height="1dp" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2.7"
+                                android:background="@drawable/bg_green_round_color"
+                                android:gravity="center_horizontal"
+                                android:orientation="vertical"
+                                android:paddingBottom="5dp"
+                                android:paddingTop="5dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_horizontal"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:maxLength="3"
+                                        android:text="球队2"
+                                        android:textColor="#1371BF"
+                                        android:textSize="@dimen/text_size_12sp" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="5dp"
+                                        android:text="@string/win"
+                                        android:textColor="#1371BF"
+                                        android:textSize="@dimen/text_size_12sp" />
+                                </LinearLayout>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="1.98"
+                                    android:textColor="#1371BF"
+                                    android:textSize="@dimen/text_size_10sp" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="5dp"
+                                android:layout_height="1dp" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2.3"
+                                android:background="@drawable/btn_red_round_color_3dp"
+                                android:gravity="center_horizontal"
+                                android:orientation="vertical"
+                                android:paddingBottom="5dp"
+                                android:paddingTop="5dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/betting"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/text_size_12sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="50.00元"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/text_size_10sp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+            </ScrollView>
+        </wiki.scene.loadmore.PtrClassicFrameLayout>
+    </wiki.scene.loadmore.StatusViewLayout>
+</RelativeLayout>

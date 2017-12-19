@@ -16,7 +16,7 @@ import java.util.HashMap;
 
 public class ApiUtil {
     private static final String SIGN_KEY = "045448f765b0c0592563123a2652fb63";
-    public static final String API_PRE = "http://api.banjiasc.com";
+    public static final String API_PRE = "http://192.168.0.88:8082/";
 
     /**
      * Case By:创建参数基础信息
@@ -29,7 +29,6 @@ public class ApiUtil {
         params.put("timestamp", timestamp + "");
         params.put("signature", getSign(timestamp + ""));
         params.put("app_type", "1");
-        //params.put("uuid", ShopApplication.UUID);
         params.put("version", AppUtils.getAppVersionCode() + "");
         return params;
     }

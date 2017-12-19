@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#EE332B</color>
+    <color name="colorPrimaryDark">#EE332B</color>
+    <color name="colorAccent">#EE332B</color>
 
     <color name="main_tab_bar_bg">#FFFFFF</color>
     <color name="main_tab_select_color">#FF0000</color>
     <color name="main_tab_unselect_color">#333333</color>
+    <color name="background_color">#F6F6F6</color>
+    <color name="white">#FFFFFF</color>
+    <color name="theme_color">#E5422B</color>
+    <color name="red_text_color">#EE3229</color>
+
+    <color name="text_color_title">#333333</color>
+    <color name="text_color_content">#666666</color>
+    <color name="text_color_des">#999999</color>
+
+    <color name="line_color">#E2E2E2</color>
 </resources>

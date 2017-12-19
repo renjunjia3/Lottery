@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_theme_color_round_color_2dp"
+            android:padding="2dp"
+            android:text="@string/congratulate"
+            android:textColor="@color/theme_color"
+            android:textSize="@dimen/text_size_10sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="@string/congratulate"
+            android:textColor="@color/text_color_content"
+            android:textSize="@dimen/text_size_10sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:text="【"
+            android:textColor="@color/text_color_content"
+            android:textSize="@dimen/text_size_10sp" />
+
+        <TextView
+            android:id="@+id/nickname_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="任**"
+            android:textColor="@color/text_color_content"
+            android:textSize="@dimen/text_size_10sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="】"
+            android:textColor="@color/text_color_content"
+            android:textSize="@dimen/text_size_10sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:text="@string/cathectic"
+            android:textColor="@color/text_color_content"
+            android:textSize="@dimen/text_size_10sp" />
+
+        <TextView
+            android:id="@+id/bet_way_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="快3"
+            android:textColor="@color/text_color_content"
+            android:textSize="@dimen/text_size_10sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/winning"
+            android:textColor="@color/text_color_content"
+            android:textSize="@dimen/text_size_10sp" />
+
+        <TextView
+            android:id="@+id/win_money_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="50"
+            android:textColor="@color/theme_color"
+            android:textSize="@dimen/text_size_10sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/yuan"
+            android:textColor="@color/text_color_content"
+            android:textSize="@dimen/text_size_10sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_theme_color_round_color_2dp"
+            android:padding="2dp"
+            android:text="@string/congratulate"
+            android:textColor="@color/theme_color"
+            android:textSize="@dimen/text_size_10sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="@string/congratulate"
+            android:textColor="@color/text_color_content"
+            android:textSize="@dimen/text_size_10sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:text="【"
+            android:textColor="@color/text_color_content"
+            android:textSize="@dimen/text_size_10sp" />
+
+        <TextView
+            android:id="@+id/nickname_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="任**"
+            android:textColor="@color/text_color_content"
+            android:textSize="@dimen/text_size_10sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="】"
+            android:textColor="@color/text_color_content"
+            android:textSize="@dimen/text_size_10sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:text="@string/cathectic"
+            android:textColor="@color/text_color_content"
+            android:textSize="@dimen/text_size_10sp" />
+
+        <TextView
+            android:id="@+id/bet_way_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="快3"
+            android:textColor="@color/text_color_content"
+            android:textSize="@dimen/text_size_10sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/winning"
+            android:textColor="@color/text_color_content"
+            android:textSize="@dimen/text_size_10sp" />
+
+        <TextView
+            android:id="@+id/win_money_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="50"
+            android:textColor="@color/theme_color"
+            android:textSize="@dimen/text_size_10sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/yuan"
+            android:textColor="@color/text_color_content"
+            android:textSize="@dimen/text_size_10sp" />
+    </LinearLayout>
+</LinearLayout>

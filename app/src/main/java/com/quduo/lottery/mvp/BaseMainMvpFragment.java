@@ -20,6 +20,10 @@ public abstract class BaseMainMvpFragment<V, T extends BasePresenter<V>> extends
         presenter = initPresenter();
     }
 
+    public void initView() {
+
+    }
+
     @Override
     public void onResume() {
         super.onResume();

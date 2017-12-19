@@ -147,4 +147,8 @@ dependencies {
     compile 'com.lzy.net:okgo:3.0.4'
     //json解析
     compile 'com.google.code.gson:gson:2.8.1'
+    //banner
+    compile 'com.youth.banner:banner:1.4.9'
+    //垂直跑马灯
+    compile 'com.github.sun-sky:Marquee:1.0.0'
 }
