@@ -70,13 +70,13 @@ public class MainFragment extends SupportFragment {
         super.onActivityCreated(savedInstanceState);
         SupportFragment firstFragment = findChildFragment(IndexFragment.class);
         tabNames.add(getString(R.string.tab_index));
-        tabNames.add(getString(R.string.tab_wincode));
         tabNames.add(getString(R.string.tab_discover));
+        tabNames.add(getString(R.string.tab_wincode));
         tabNames.add(getString(R.string.tab_mine));
         if (firstFragment == null) {
             mFragments[FIRST] = IndexFragment.newInstance();
-            mFragments[SECOND] = WinCodeFragment.newInstance();
-            mFragments[THIRD] = DiscoverFragment.newInstance();
+            mFragments[SECOND] = DiscoverFragment.newInstance();
+            mFragments[THIRD] = WinCodeFragment.newInstance();
             mFragments[FOUR] = MineFragment.newInstance();
 
             loadMultipleRootFragment(R.id.fl_tab_container, FIRST,
@@ -87,8 +87,8 @@ public class MainFragment extends SupportFragment {
         } else {
             // 这里我们需要拿到mFragments的引用,也可以通过getChildFragmentManager.findFragmentByTag自行进行判断查找(效率更高些),用下面的方法查找更方便些
             mFragments[FIRST] = firstFragment;
-            mFragments[SECOND] = findChildFragment(WinCodeFragment.class);
-            mFragments[THIRD] = findChildFragment(DiscoverFragment.class);
+            mFragments[SECOND] = findChildFragment(DiscoverFragment.class);
+            mFragments[THIRD] = findChildFragment(WinCodeFragment.class);
             mFragments[FOUR] = findChildFragment(MineFragment.class);
         }
         initView();
@@ -97,8 +97,8 @@ public class MainFragment extends SupportFragment {
     private void initView() {
         bottomBar
                 .addItem(new BottomBarTab(_mActivity, R.drawable.ic_bottombar_index_d, R.drawable.ic_bottombar_index_s, getString(R.string.tab_index)))
-                .addItem(new BottomBarTab(_mActivity, R.drawable.ic_bottombar_wincode_d, R.drawable.ic_bottombar_wincode_s, getString(R.string.tab_wincode)))
                 .addItem(new BottomBarTab(_mActivity, R.drawable.ic_bottombar_discover_d, R.drawable.ic_bottombar_discover_s, getString(R.string.tab_discover)))
+                .addItem(new BottomBarTab(_mActivity, R.drawable.ic_bottombar_wincode_d, R.drawable.ic_bottombar_wincode_s, getString(R.string.tab_wincode)))
                 .addItem(new BottomBarTab(_mActivity, R.drawable.ic_bottombar_mine_d, R.drawable.ic_bottombar_mine_s, getString(R.string.tab_mine)));
 
 

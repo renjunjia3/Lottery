@@ -5,8 +5,8 @@
     <color name="colorAccent">#EE332B</color>
 
     <color name="main_tab_bar_bg">#FFFFFF</color>
-    <color name="main_tab_select_color">#FF0000</color>
-    <color name="main_tab_unselect_color">#333333</color>
+    <color name="main_tab_select_color">#EE332B</color>
+    <color name="main_tab_unselect_color">#666666</color>
     <color name="background_color">#F6F6F6</color>
     <color name="white">#FFFFFF</color>
     <color name="theme_color">#E5422B</color>
