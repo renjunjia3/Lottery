@@ -23,4 +23,10 @@
     <string name="more_match">更多比赛</string>
     <string name="win">胜</string>
     <string name="betting">投注</string>
+    <string name="xscp">线上彩票</string>
+    <string name="ssc">时时彩</string>
+    <string name="jczq">竞彩足球</string>
+    <string name="bbwp">百变王牌</string>
+    <string name="more_infomation_follow_public_number">更多资讯请关注公众号:</string>
+    <string name="click_to_copy">（点击可复制）</string>
 </resources>
