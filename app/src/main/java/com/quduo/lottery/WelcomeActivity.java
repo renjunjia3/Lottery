@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 
 import java.util.ArrayList;
@@ -21,10 +22,14 @@ import me.yokeyword.fragmentation.SupportActivity;
  */
 
 public class WelcomeActivity extends SupportActivity {
+    private long beginTime = 0;
+    private static final long MIN_SHOW_TIME = 3 * 1000;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+        beginTime = System.currentTimeMillis();
         MyApplication.getInstance().setResourceId(getResouyceId());
         applyExternalStorage();
     }
@@ -48,8 +53,7 @@ public class WelcomeActivity extends SupportActivity {
                     @Override
                     public void onFinish() {
                         if (HiPermission.checkPermission(WelcomeActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
-                            Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
-                            startActivity(intent);
+                            toMainActivity();
                         } else {
                             MyApplication.getInstance().exit();
                         }
@@ -88,5 +92,26 @@ public class WelcomeActivity extends SupportActivity {
             e.printStackTrace();
         }
         return resultData;
+    }
+
+    private void toMainActivity() {
+        long stayTime = System.currentTimeMillis() - beginTime;
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+            }
+        }, MIN_SHOW_TIME - stayTime > 0 ? MIN_SHOW_TIME - stayTime : 0);
+    }
+
+    @Override
+    public void onBackPressedSupport() {
     }
 }
