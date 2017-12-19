@@ -42,4 +42,9 @@
     <string name="discover_content_4">疯狂加奖中，活动不停歇</string>
     <string name="discover_content_5">95后喜中七星彩一等奖，豪夺400万</string>
     <string name="discover_content_6">赛事资讯早掌握</string>
+    <string name="betting_record">投注记录</string>
+    <string name="my_coupon">我的优惠券</string>
+    <string name="account_detail">账户明细</string>
+    <string name="recharge">充值</string>
+    <string name="cash">提现</string>
 </resources>
