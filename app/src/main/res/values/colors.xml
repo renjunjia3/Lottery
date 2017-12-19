@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#EE332B</color>
-    <color name="colorPrimaryDark">#EE332B</color>
-    <color name="colorAccent">#EE332B</color>
+    <color name="colorPrimary">#D21D14</color>
+    <color name="colorPrimaryDark">#D21D14</color>
+    <color name="colorAccent">#D21D14</color>
 
     <color name="main_tab_bar_bg">#FFFFFF</color>
     <color name="main_tab_select_color">#EE332B</color>
@@ -17,5 +17,5 @@
     <color name="text_color_des">#999999</color>
 
     <color name="line_color">#E2E2E2</color>
-    <color name="toolbar_color">#EE332B</color>
+    <color name="toolbar_color">#D21D14</color>
 </resources>

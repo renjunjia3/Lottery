@@ -47,4 +47,6 @@
     <string name="account_detail">账户明细</string>
     <string name="recharge">充值</string>
     <string name="cash">提现</string>
+    <string name="lottery_time">开奖时间：</string>
+    <string name="jclq">竞彩篮球</string>
 </resources>

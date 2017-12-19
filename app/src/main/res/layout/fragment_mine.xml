@@ -17,7 +17,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#D31F14"
+                android:background="@color/toolbar_color"
                 android:orientation="vertical">
 
                 <TextView
@@ -85,7 +85,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="#D31F14"
+                android:background="@color/toolbar_color"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:src="#99130F" />
@@ -94,7 +94,7 @@
                 android:id="@+id/no_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#D31F14"
+                android:background="@color/toolbar_color"
                 android:orientation="vertical"
                 android:paddingBottom="10dp"
                 android:paddingTop="10dp"
@@ -123,7 +123,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#D31F14"
+                    android:background="@color/toolbar_color"
                     android:orientation="horizontal"
                     android:padding="10dp">
 
@@ -146,7 +146,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="1.00"
+                            android:text="--"
                             android:textColor="@color/white"
                             android:textSize="@dimen/text_size_18sp" />
                     </LinearLayout>
@@ -177,7 +177,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="1.00"
+                            android:text="--"
                             android:textColor="@color/white"
                             android:textSize="@dimen/text_size_18sp" />
                     </LinearLayout>
