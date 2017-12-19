@@ -153,4 +153,6 @@ dependencies {
     compile 'com.github.sun-sky:Marquee:1.0.0'
     //adapter
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34'
+    //图片加载
+    compile 'com.sunfusheng:glideimageview:1.2.0'
 }

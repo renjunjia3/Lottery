@@ -8,6 +8,7 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.quduo.lottery.R;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class DiscoverViewHolder extends BaseViewHolder {
     @BindView(R.id.image)
@@ -19,9 +20,6 @@ public class DiscoverViewHolder extends BaseViewHolder {
 
     DiscoverViewHolder(View view) {
         super(view);
-        image = view.findViewById(R.id.image);
-        title = view.findViewById(R.id.title);
-        content = view.findViewById(R.id.content);
-//            ButterKnife.bind(this, view);
+        ButterKnife.bind(this, view);
     }
 }
