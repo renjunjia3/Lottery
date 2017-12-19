@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">彩票代购</string>
+    <string name="title_indiana">夺宝</string>
+    <string name="title_cart">购物车</string>
+    <string name="title_mine">我的</string>
+
+    <string name="press_again_exit">再按一次退出</string>
+
+    <string name="tab_index">购彩大厅</string>
+    <string name="tab_wincode">开奖号码</string>
+    <string name="tab_discover">发现</string>
+    <string name="tab_mine">我的彩票</string>
+</resources>

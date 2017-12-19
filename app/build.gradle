@@ -1,0 +1,143 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.quduo.lottery"
+        minSdkVersion 18
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+        flavorDimensions "versionCode"
+    }
+    productFlavors {
+        NNY_1004 {
+            manifestPlaceholders = [CHANNEL_ID: "1004"]
+        }
+        NNY_1001 {
+            manifestPlaceholders = [CHANNEL_ID: "1001"]
+        }
+        NNY_1002 {
+            manifestPlaceholders = [CHANNEL_ID: "1002"]
+        }
+        NNY_1003 {
+            manifestPlaceholders = [CHANNEL_ID: "1003"]
+        }
+        NNY_1005 {
+            manifestPlaceholders = [CHANNEL_ID: "1005"]
+        }
+        NNY_1006 {
+            manifestPlaceholders = [CHANNEL_ID: "1006"]
+        }
+        NNY_1007 {
+            manifestPlaceholders = [CHANNEL_ID: "1007"]
+        }
+        NNY_1008 {
+            manifestPlaceholders = [CHANNEL_ID: "1008"]
+        }
+        NNY_1009 {
+            manifestPlaceholders = [CHANNEL_ID: "1009"]
+        }
+        NNY_1010 {
+            manifestPlaceholders = [CHANNEL_ID: "1010"]
+        }
+        NNY_1011 {
+            manifestPlaceholders = [CHANNEL_ID: "1011"]
+        }
+        NNY_1012 {
+            manifestPlaceholders = [CHANNEL_ID: "1012"]
+        }
+        NNY_1013 {
+            manifestPlaceholders = [CHANNEL_ID: "1013"]
+        }
+        NNY_1014 {
+            manifestPlaceholders = [CHANNEL_ID: "1014"]
+        }
+        NNY_1015 {
+            manifestPlaceholders = [CHANNEL_ID: "1015"]
+        }
+        NNY_1016 {
+            manifestPlaceholders = [CHANNEL_ID: "1016"]
+        }
+        NNY_1017 {
+            manifestPlaceholders = [CHANNEL_ID: "1017"]
+        }
+        NNY_1018 {
+            manifestPlaceholders = [CHANNEL_ID: "1018"]
+        }
+        NNY_1019 {
+            manifestPlaceholders = [CHANNEL_ID: "1019"]
+        }
+        NNY_1020 {
+            manifestPlaceholders = [CHANNEL_ID: "1020"]
+        }
+        NNY_1021 {
+            manifestPlaceholders = [CHANNEL_ID: "1021"]
+        }
+        NNY_1022 {
+            manifestPlaceholders = [CHANNEL_ID: "1022"]
+        }
+        NNY_1023 {
+            manifestPlaceholders = [CHANNEL_ID: "1023"]
+        }
+        NNY_1024 {
+            manifestPlaceholders = [CHANNEL_ID: "1024"]
+        }
+        NNY_1025 {
+            manifestPlaceholders = [CHANNEL_ID: "1025"]
+        }
+        NNY_1026 {
+            manifestPlaceholders = [CHANNEL_ID: "1026"]
+        }
+        NNY_1027 {
+            manifestPlaceholders = [CHANNEL_ID: "1027"]
+        }
+    }
+    signingConfigs {
+        release {
+            storeFile file('lottery.jks')
+            storePassword '123456'
+            keyAlias '1'
+            keyPassword '123456'
+        }
+    }
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.release
+        }
+    }
+    android.applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            def flavorFlag = "${variant.productFlavors.get(0).name}"
+            def file_pre = flavorFlag.replace("NNY", "lottery")
+            outputFileName = "../../${file_pre}_${defaultConfig.versionCode}.apk"
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:27.0.2'
+    implementation 'com.android.support:design:27.0.2'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.android.support:support-vector-drawable:27.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    compile 'me.yokeyword:fragmentation:1.1.10'
+    compile 'me.yokeyword:fragmentation-swipeback:1.1.10'
+    compile 'me.yokeyword:eventbus-activity-scope:1.1.0'
+    compile 'org.greenrobot:eventbus:3.0.0'
+
+    compile 'me.weyye.hipermission:library:1.0.7'
+
+    compile 'com.blankj:utilcode:1.9.12'
+
+    compile project(':loadmore')
+
+    compile 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+}
