@@ -1,6 +1,7 @@
 package com.quduo.lottery.mvp;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 
 import com.quduo.lottery.base.BaseBackFragment;
 
@@ -19,6 +20,16 @@ public abstract class BaseBackMvpFragment<V, T extends BasePresenter<V>> extends
         super.onCreate(savedInstanceState);
         presenter = initPresenter();
     }
+
+    @Override
+    public void onEnterAnimationEnd(Bundle savedInstanceState) {
+        super.onEnterAnimationEnd(savedInstanceState);
+        //initView();
+    }
+
+    public void initView() {
+    }
+
 
     @Override
     public void onResume() {

@@ -49,4 +49,21 @@
     <string name="cash">提现</string>
     <string name="lottery_time">开奖时间：</string>
     <string name="jclq">竞彩篮球</string>
+    <string name="lessest_6">至少选择6个</string>
+    <string name="once">，1个</string>
+    <string name="red_ball">红球</string>
+    <string name="blue_ball">蓝球</string>
+    <string name="machine">机选</string>
+    <string name="confirm">确定</string>
+
+    <!--重启-->
+    <string name="recovery_dialog_tips">提示</string>
+    <string name="recovery_dialog_sure">确定</string>
+    <string name="recovery_dialog_cancel">取消</string>
+    <string name="recovery_dialog_tips_msg">此操作将清空应用的所有数据并重新启动应用!</string>
+    <string name="recovery_exception_type">ExceptionType: %s</string>
+    <string name="recovery_class_name">ClassName: %s</string>
+    <string name="recovery_method_name">MethodName: %s</string>
+    <string name="recovery_line_number">LineNumber: %d</string>
+    <string name="recovery_crash_tips_msg">程序发生异常\n建议直接重启应用\n恢复界面仅用于应急处理</string>
 </resources>

@@ -11,7 +11,7 @@ import com.quduo.lottery.Exception.tools.RecoveryUtil;
 import java.util.ArrayList;
 
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
-import static com.quduo.lottery.Exception.core.RecoveryActivity.RECOVERY_MODE_ACTIVE;
+import static com.quduo.lottery.Exception.core.Recovery1Activity.RECOVERY_MODE_ACTIVE;
 
 /**
  * Created by zhengxiaoyong on 16/8/29.

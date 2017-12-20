@@ -9,17 +9,21 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.quduo.lottery.R;
+import com.quduo.lottery.event.StartBrotherEvent;
 import com.quduo.lottery.mvp.BaseMainMvpFragment;
 import com.quduo.lottery.ui.index.presenter.IndexPresenter;
 import com.quduo.lottery.ui.index.view.IIndexView;
 import com.sunsky.marqueeview.MarqueeView;
 import com.youth.banner.Banner;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 import wiki.scene.loadmore.PtrClassicFrameLayout;
 import wiki.scene.loadmore.PtrDefaultHandler;
@@ -189,5 +193,10 @@ public class IndexFragment extends BaseMainMvpFragment<IIndexView, IndexPresente
 
         }
     };
+
+    @OnClick(R.id.layout_item_ssq)
+    public void onClickLayoutItemSSQ() {
+        EventBus.getDefault().post(new StartBrotherEvent(SSQFragment.newInstance()));
+    }
 
 }

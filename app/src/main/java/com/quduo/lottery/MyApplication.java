@@ -42,8 +42,8 @@ public class MyApplication extends Application {
         instance = this;
         //初始化异常管理工具
         Recovery.getInstance()
-                .debug(false)//关闭后 在错误统一管理页面不显示异常数据
-                .recoverInBackground(true)
+                .debug(true)//关闭后 在错误统一管理页面不显示异常数据
+                .recoverInBackground(false)
                 .recoverStack(false)
                 .mainPage(WelcomeActivity.class)//恢复页面
                 .init(this);

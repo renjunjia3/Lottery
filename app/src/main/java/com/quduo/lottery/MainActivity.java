@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import com.blankj.utilcode.util.LogUtils;
 
 import me.yokeyword.fragmentation.SupportActivity;
+import me.yokeyword.fragmentation.anim.DefaultHorizontalAnimator;
+import me.yokeyword.fragmentation.anim.FragmentAnimator;
 
 public class MainActivity extends SupportActivity {
     @Override
@@ -17,5 +19,13 @@ public class MainActivity extends SupportActivity {
             loadRootFragment(R.id.fl_container, MainFragment.newInstance());
         }
     }
+    @Override
+    public void onBackPressedSupport() {
+        super.onBackPressedSupport();
+    }
 
+    @Override
+    public FragmentAnimator onCreateFragmentAnimator() {
+        return new DefaultHorizontalAnimator();
+    }
 }

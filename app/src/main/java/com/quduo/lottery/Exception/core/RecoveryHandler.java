@@ -123,7 +123,7 @@ final class RecoveryHandler implements Thread.UncaughtExceptionHandler {
 
     private void startRecoverActivity() {
         Intent intent = new Intent();
-        intent.setClass(Recovery.getInstance().getContext(), RecoveryActivity.class);
+        intent.setClass(Recovery.getInstance().getContext(), Recovery1Activity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
         if (RecoveryStore.getInstance().getIntent() != null)
             intent.putExtra(RecoveryStore.RECOVERY_INTENT, RecoveryStore.getInstance().getIntent());

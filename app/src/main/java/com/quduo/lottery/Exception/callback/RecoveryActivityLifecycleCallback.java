@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.Window;
 
 import com.quduo.lottery.Exception.core.Recovery;
-import com.quduo.lottery.Exception.core.RecoveryActivity;
+import com.quduo.lottery.Exception.core.Recovery1Activity;
 import com.quduo.lottery.Exception.core.RecoveryStore;
 import com.quduo.lottery.Exception.tools.Reflect;
 
@@ -23,7 +23,7 @@ public class RecoveryActivityLifecycleCallback implements Application.ActivityLi
         boolean isLegal = RecoveryStore.getInstance().verifyActivity(activity);
         if (!isLegal)
             return;
-        if (activity.getIntent().getBooleanExtra(RecoveryActivity.RECOVERY_MODE_ACTIVE, false)) {
+        if (activity.getIntent().getBooleanExtra(Recovery1Activity.RECOVERY_MODE_ACTIVE, false)) {
             Reflect.on(Recovery.class).method("registerRecoveryProxy").invoke(Recovery.getInstance());
         }
         Window window = activity.getWindow();

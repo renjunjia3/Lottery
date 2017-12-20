@@ -24,11 +24,11 @@ public final class RecoveryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        LogUtils.e(getExceptionData().toString());
         boolean restart = RecoverySharedPrefsUtil.shouldRestartApp();
         if (restart)
             RecoverySharedPrefsUtil.clear();
         Toast.makeText(this, "发生未知错误，程序即将重启", Toast.LENGTH_SHORT).show();
-        LogUtils.e(getExceptionData().toString());
         restart();
     }
 

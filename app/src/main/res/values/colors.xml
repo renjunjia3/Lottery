@@ -11,6 +11,7 @@
     <color name="white">#FFFFFF</color>
     <color name="theme_color">#EE322B</color>
     <color name="red_text_color">#EE322B</color>
+    <color name="blue_text_color">#208EEC</color>
 
     <color name="text_color_title">#333333</color>
     <color name="text_color_content">#666666</color>
@@ -18,4 +19,5 @@
 
     <color name="line_color">#E2E2E2</color>
     <color name="toolbar_color">#D21D14</color>
+    <color name="transparent">#00000000</color>
 </resources>
