@@ -17,6 +17,7 @@ import com.quduo.lottery.ui.index.adapter.SSQBlueAdapter;
 import com.quduo.lottery.ui.index.adapter.SSQRedAdapter;
 import com.quduo.lottery.ui.index.adapter.SSQWinCodeAdapter;
 import com.quduo.lottery.ui.index.entity.SSQBallInfo;
+import com.quduo.lottery.ui.index.popwindow.SSQMenuPopWindow;
 import com.quduo.lottery.ui.index.presenter.SSQPresenter;
 import com.quduo.lottery.ui.index.view.ISSQView;
 import com.quduo.lottery.widgets.CustomListView;
@@ -64,6 +65,8 @@ public class SSQFragment extends BaseBackMvpFragment<ISSQView, SSQPresenter> imp
     TextView totalNum;
     @BindView(R.id.total_price)
     TextView totalPrice;
+    @BindView(R.id.toolbar_menu)
+    ImageView toolbarMenu;
 
     private SSQRedAdapter redAdapter;
     private List<SSQBallInfo> redList = new ArrayList<>();
@@ -278,5 +281,15 @@ public class SSQFragment extends BaseBackMvpFragment<ISSQView, SSQPresenter> imp
     @OnClick(R.id.delete_all)
     public void onClickDeleteAll() {
         presenter.deleteAllCode();
+    }
+
+    private SSQMenuPopWindow menuPopWindow;
+
+    @OnClick(R.id.toolbar_menu)
+    public void onClickToolbarMenu() {
+        if (menuPopWindow == null) {
+            menuPopWindow = new SSQMenuPopWindow(getContext());
+        }
+        menuPopWindow.show(toolbarMenu);
     }
 }

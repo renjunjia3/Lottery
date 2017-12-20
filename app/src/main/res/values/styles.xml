@@ -28,6 +28,11 @@
         <item name="android:windowExitAnimation">@anim/pop_exit</item>
     </style>
 
+    <style name="pop_animation_top_to_bottom">
+        <item name="android:windowEnterAnimation">@anim/pop_anim_top_enter</item>
+        <item name="android:windowExitAnimation">@anim/pop_anim_top_exit</item>
+    </style>
+
     <style name="Dialog" parent="@android:style/Theme.Dialog">
 
         <!-- 去除标题 -->

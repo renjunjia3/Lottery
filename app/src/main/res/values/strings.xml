@@ -66,4 +66,10 @@
     <string name="recovery_method_name">MethodName: %s</string>
     <string name="recovery_line_number">LineNumber: %d</string>
     <string name="recovery_crash_tips_msg">程序发生异常\n建议直接重启应用\n恢复界面仅用于应急处理</string>
+    <string name="dqjx">多期机选</string>
+    <string name="lrzs">冷热走势</string>
+    <string name="xsyl">显示遗漏</string>
+    <string name="ycyl">隐藏遗漏</string>
+    <string name="kjhm">开奖号码</string>
+    <string name="wfgz">玩法规则</string>
 </resources>
