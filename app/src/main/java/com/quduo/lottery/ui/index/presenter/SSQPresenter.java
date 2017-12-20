@@ -7,7 +7,6 @@ import com.quduo.lottery.ui.index.model.SSQModel;
 import com.quduo.lottery.ui.index.view.ISSQView;
 import com.quduo.lottery.util.MathGroupUtil;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -66,8 +65,8 @@ public class SSQPresenter extends BasePresenter<ISSQView> {
             for (int i = 0; i < blueListSize; i++) {
                 blueList.get(i).setCheck(false);
             }
-            int redRandom[] = creatRandom(6, 33);
-            int blueRandom[] = creatRandom(1, 16);
+            int redRandom[] = MathGroupUtil.creatRandom(6, 33);
+            int blueRandom[] = MathGroupUtil.creatRandom(1, 16);
             for (int i = 0; i < redListSize; i++) {
                 for (int randmon : redRandom) {
                     if (i == randmon) {
@@ -90,25 +89,23 @@ public class SSQPresenter extends BasePresenter<ISSQView> {
 
     }
 
-
-    /**
-     * 生成随机数集合
-     *
-     * @param needNum 需要的数量
-     * @param range   范围
-     * @return 返回集合
-     */
-    private int[] creatRandom(int needNum, int range) {
-        int random[] = new int[needNum];
-        List<Integer> arr = new ArrayList<>();
-        for (int i = 0; i < range; i++)
-            arr.add(i);// 为ArrayList添加元素
-        for (int j = 0; j < needNum; j++) {
-            int index = (int) (Math.random() * range);// 产生一个随机数作为索引
-            random[j] = arr.get(index);
-            arr.remove(index);// 移除已经取过的元素
-            range--;// 将随机数范围缩小1
+    public void deleteAllCode() {
+        try {
+            List<SSQBallInfo> redList = mView.getRedList();
+            List<SSQBallInfo> blueList = mView.getBlueList();
+            int redListSize = redList.size();
+            int blueListSize = blueList.size();
+            for (int i = 0; i < redListSize; i++) {
+                redList.get(i).setCheck(false);
+            }
+            for (int i = 0; i < blueListSize; i++) {
+                blueList.get(i).setCheck(false);
+            }
+            mView.notifyRedAdapter();
+            mView.notifyBuleAdapter();
+            setTotalNumAndPrice();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        return random;
     }
 }

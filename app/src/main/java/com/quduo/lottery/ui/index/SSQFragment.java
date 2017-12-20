@@ -274,4 +274,9 @@ public class SSQFragment extends BaseBackMvpFragment<ISSQView, SSQPresenter> imp
             e.printStackTrace();
         }
     }
+
+    @OnClick(R.id.delete_all)
+    public void onClickDeleteAll() {
+        presenter.deleteAllCode();
+    }
 }
