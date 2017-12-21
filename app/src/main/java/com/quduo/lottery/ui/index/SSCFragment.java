@@ -202,11 +202,11 @@ public class SSCFragment extends BaseBackMvpFragment<ISSCView, SSCPresenter> imp
         SSQBallInfo ssqBallInfo1 = new SSQBallInfo();
         ssqBallInfo1.setNumber("大");
         SSQBallInfo ssqBallInfo2 = new SSQBallInfo();
-        ssqBallInfo2.setNumber("大");
+        ssqBallInfo2.setNumber("小");
         SSQBallInfo ssqBallInfo3 = new SSQBallInfo();
-        ssqBallInfo3.setNumber("大");
+        ssqBallInfo3.setNumber("单");
         SSQBallInfo ssqBallInfo4 = new SSQBallInfo();
-        ssqBallInfo4.setNumber("大");
+        ssqBallInfo4.setNumber("双");
         listBigSmallSingleDouble1.add(ssqBallInfo1);
         listBigSmallSingleDouble1.add(ssqBallInfo2);
         listBigSmallSingleDouble1.add(ssqBallInfo3);
@@ -276,18 +276,30 @@ public class SSCFragment extends BaseBackMvpFragment<ISSCView, SSCPresenter> imp
         gridView4.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                list4.get(i).setCheck(!list4.get(i).isCheck());
-                ballAdapter4.notifyDataSetChanged();
+                if (gridView4.getAdapter() == ballAdapter4) {
+                    list4.get(i).setCheck(!list4.get(i).isCheck());
+                    ballAdapter4.notifyDataSetChanged();
+                } else {
+                    listBigSmallSingleDouble1.get(i).setCheck(!listBigSmallSingleDouble1.get(i).isCheck());
+                    ballAdapterBigSmallSingleDouble1.notifyDataSetChanged();
+                }
+
             }
         });
         gridView5.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                list5.get(i).setCheck(!list5.get(i).isCheck());
-                ballAdapter5.notifyDataSetChanged();
+                if (gridView5.getAdapter() == ballAdapter5) {
+                    list5.get(i).setCheck(!list5.get(i).isCheck());
+                    ballAdapter5.notifyDataSetChanged();
+                } else {
+                    listBigSmallSingleDouble2.get(i).setCheck(!listBigSmallSingleDouble2.get(i).isCheck());
+                    ballAdapterBigSmallSingleDouble2.notifyDataSetChanged();
+                }
             }
         });
 
+        presenter.changeLayoutView(sscPlayWayPosition);
     }
 
     @Override
@@ -549,6 +561,12 @@ public class SSCFragment extends BaseBackMvpFragment<ISSCView, SSCPresenter> imp
             }
             for (int i = 0; i < list5.size(); i++) {
                 list5.get(i).setCheck(false);
+            }
+            for (int i = 0; i < listBigSmallSingleDouble1.size(); i++) {
+                listBigSmallSingleDouble1.get(i).setCheck(false);
+            }
+            for (int i = 0; i < listBigSmallSingleDouble2.size(); i++) {
+                listBigSmallSingleDouble2.get(i).setCheck(false);
             }
             ballAdapter1.notifyDataSetChanged();
             ballAdapter2.notifyDataSetChanged();

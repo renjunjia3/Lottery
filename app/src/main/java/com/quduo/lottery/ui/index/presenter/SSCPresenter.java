@@ -54,6 +54,7 @@ public class SSCPresenter extends BasePresenter<ISSCView> {
                     mView.showStar1Direct();
                     break;
             }
+            mView.clearAllChoosedBall();
         } catch (Exception e) {
             e.printStackTrace();
         }
