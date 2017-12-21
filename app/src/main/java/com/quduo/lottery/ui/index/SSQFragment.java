@@ -91,12 +91,6 @@ public class SSQFragment extends BaseBackMvpFragment<ISSQView, SSQPresenter> imp
     }
 
     @Override
-    public void onEnterAnimationEnd(Bundle savedInstanceState) {
-        super.onEnterAnimationEnd(savedInstanceState);
-        initView();
-    }
-
-    @Override
     public void initView() {
         super.initView();
         toolbarTitle.setText(getString(R.string.ssq));

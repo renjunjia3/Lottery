@@ -199,4 +199,8 @@ public class IndexFragment extends BaseMainMvpFragment<IIndexView, IndexPresente
         EventBus.getDefault().post(new StartBrotherEvent(SSQFragment.newInstance()));
     }
 
+    @OnClick(R.id.layout_item_ssc)
+    public void onClickLayoutItemSSC() {
+        EventBus.getDefault().post(new StartBrotherEvent(SSCFragment.newInstance()));
+    }
 }

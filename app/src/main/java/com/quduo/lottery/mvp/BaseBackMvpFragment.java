@@ -24,7 +24,7 @@ public abstract class BaseBackMvpFragment<V, T extends BasePresenter<V>> extends
     @Override
     public void onEnterAnimationEnd(Bundle savedInstanceState) {
         super.onEnterAnimationEnd(savedInstanceState);
-        //initView();
+        initView();
     }
 
     public void initView() {

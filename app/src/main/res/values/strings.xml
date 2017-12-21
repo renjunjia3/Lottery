@@ -54,7 +54,7 @@
     <string name="red_ball">红球</string>
     <string name="blue_ball">蓝球</string>
     <string name="machine">机选</string>
-    <string name="confirm">确定</string>
+    <string name="confirm">确认</string>
 
     <!--重启-->
     <string name="recovery_dialog_tips">提示</string>
@@ -72,4 +72,16 @@
     <string name="ycyl">隐藏遗漏</string>
     <string name="kjhm">开奖号码</string>
     <string name="wfgz">玩法规则</string>
+    <!--时时彩玩法-->
+    <string-array name="ssc_play_way">
+        <item>五星直选</item>
+        <item>五星通选</item>
+        <item>大小单双</item>
+        <item>三星直选</item>
+        <item>三星组三</item>
+        <item>三星组六</item>
+        <item>二星直选</item>
+        <item>二星组选</item>
+        <item>一星直选</item>
+    </string-array>
 </resources>
