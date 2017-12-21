@@ -13,7 +13,7 @@
         android:gravity="center"
         android:text="01"
         android:textColor="@color/blue_text_color"
-        android:textSize="@dimen/text_size_12sp" />
+        android:textSize="@dimen/text_size_14sp" />
 
     <TextView
         android:id="@+id/miss_time"

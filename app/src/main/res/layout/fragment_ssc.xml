@@ -241,6 +241,7 @@
                     </LinearLayout>
 
                     <RelativeLayout
+                        android:id="@+id/layout_wan"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
@@ -282,17 +283,18 @@
                             android:listSelector="@color/transparent"
                             android:numColumns="5"
                             android:verticalSpacing="10dp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/gridView1"
+                            android:layout_marginTop="@dimen/dp_10"
+                            android:background="@drawable/line_dotted" />
                     </RelativeLayout>
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/dp_10"
-                        android:layout_marginRight="@dimen/dp_10"
-                        android:layout_marginTop="@dimen/dp_10"
-                        android:background="@drawable/line_dotted" />
 
                     <RelativeLayout
+                        android:id="@+id/layout_qian"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
@@ -333,16 +335,17 @@
                             android:listSelector="@color/transparent"
                             android:numColumns="5"
                             android:verticalSpacing="10dp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/gridView2"
+                            android:layout_marginTop="@dimen/dp_10"
+                            android:background="@drawable/line_dotted" />
                     </RelativeLayout>
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/dp_10"
-                        android:layout_marginRight="@dimen/dp_10"
-                        android:background="@drawable/line_dotted" />
-
                     <RelativeLayout
+                        android:id="@+id/layout_bai"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
@@ -383,16 +386,17 @@
                             android:listSelector="@color/transparent"
                             android:numColumns="5"
                             android:verticalSpacing="10dp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/gridView3"
+                            android:layout_marginTop="@dimen/dp_10"
+                            android:background="@drawable/line_dotted" />
                     </RelativeLayout>
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/dp_10"
-                        android:layout_marginRight="@dimen/dp_10"
-                        android:background="@drawable/line_dotted" />
-
                     <RelativeLayout
+                        android:id="@+id/layout_shi"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
@@ -433,17 +437,16 @@
                                 android:textSize="@dimen/text_size_10sp" />
                         </LinearLayout>
 
-
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/gridView4"
+                            android:layout_marginTop="@dimen/dp_10"
+                            android:background="@drawable/line_dotted" />
                     </RelativeLayout>
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/dp_10"
-                        android:layout_marginRight="@dimen/dp_10"
-                        android:background="@drawable/line_dotted" />
-
                     <RelativeLayout
+                        android:id="@+id/layout_ge"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="20dp"
@@ -457,6 +460,7 @@
                             android:orientation="vertical">
 
                             <TextView
+                                android:id="@+id/geweiText"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:background="@drawable/bg_ssc_lable"

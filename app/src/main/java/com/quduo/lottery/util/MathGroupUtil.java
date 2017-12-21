@@ -64,4 +64,129 @@ public class MathGroupUtil {
         }
         return random;
     }
+
+
+    /**
+     * 计算阶乘
+     *
+     * @param bottomNum 下面的那个数（大）
+     * @param topNum    上面的那个数（小）
+     * @return 结果
+     */
+    private static int mathFactorial(int bottomNum, int topNum) {
+        if (bottomNum < topNum || topNum == 0 || bottomNum == 0) {
+            return 0;
+        }
+        int result = 0;
+        int x = 0;
+        int y = 0;
+        int z = 0;
+        for (int i = 1; i <= bottomNum; i++) {
+            x = x * i;
+        }
+        for (int i = 1; i <= (bottomNum - topNum); i++) {
+            y = y * i;
+        }
+
+        for (int i = 1; i <= topNum; i++) {
+            z = z * i;
+        }
+        result = x / y / z;
+        return result;
+    }
+
+    /**
+     * 时时彩五星直选或五星通选
+     *
+     * @return 结果
+     */
+    private static int sscStar5(int wan, int qian, int bai, int shi, int ge) {
+        int result = 0;
+        result = mathFactorial(wan, 1) * mathFactorial(qian, 1) * mathFactorial(bai, 1)
+                * mathFactorial(shi, 1) * mathFactorial(ge, 1);
+        return result;
+    }
+
+    /**
+     * 时时彩大小单双
+     *
+     * @return 结果
+     */
+    private static int sscBigSmallSingleDouble(int shi, int ge) {
+        return mathFactorial(shi, 1) * mathFactorial(ge, 1);
+    }
+
+    /*
+     *时时彩三星直选
+     */
+    private static int sscStar3Direct(int bai, int shi, int ge) {
+        return mathFactorial(bai, 1) * mathFactorial(shi, 1) * mathFactorial(ge, 1);
+    }
+
+    /*
+     *时时彩三星组三
+     */
+    private static int sscStar3Combination3(int number) {
+        return number * (number - 1);
+    }
+
+    /*
+     *时时彩三星组六
+     */
+    private static int sscStar3Combination6(int number) {
+        return mathFactorial(number, 3);
+    }
+
+    /*
+     *时时彩二星直选
+     */
+    private static int sscStar2Direct(int shi, int ge) {
+        return mathFactorial(shi, 1) * mathFactorial(ge, 1);
+    }
+
+    /*
+    *时时彩二星组选
+    */
+    private static int sscStar2Combination(int number) {
+        return number * (number - 1);
+    }
+
+    /*
+    *时时彩一星直选
+    */
+    private static int sscStar1Direct(int number) {
+        return number;
+    }
+
+    public static int getSSCAllNumber(int playWayPosition, int wan, int qian, int bai, int shi, int ge) {
+        int result = 0;
+        switch (playWayPosition) {
+            case 0:
+            case 1:
+                result = sscStar5(wan, qian, bai, shi, ge);
+                break;
+            case 2:
+                result = sscBigSmallSingleDouble(shi, ge);
+                break;
+            case 3:
+                result = sscStar3Direct(bai, shi, ge);
+                break;
+            case 4:
+                result = sscStar3Combination3(ge);
+                break;
+            case 5:
+                result = sscStar3Combination6(ge);
+                break;
+            case 6:
+                result = sscStar2Direct(shi, ge);
+                break;
+            case 7:
+                result = sscStar2Combination(ge);
+                break;
+            case 8:
+                result = sscStar1Direct(ge);
+                break;
+        }
+        return result;
+    }
 }

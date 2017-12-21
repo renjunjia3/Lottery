@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.blankj.utilcode.util.SPUtils;
@@ -96,18 +97,34 @@ public class SSCFragment extends BaseBackMvpFragment<ISSCView, SSCPresenter> imp
     LinearLayout toolbarPlayWay;
     @BindView(R.id.toolbar_title)
     TextView toolbarTitle;
+    @BindView(R.id.layout_wan)
+    RelativeLayout layoutWan;
+    @BindView(R.id.layout_qian)
+    RelativeLayout layoutQian;
+    @BindView(R.id.layout_bai)
+    RelativeLayout layoutBai;
+    @BindView(R.id.layout_shi)
+    RelativeLayout layoutShi;
+    @BindView(R.id.layout_ge)
+    RelativeLayout layoutGe;
+    @BindView(R.id.geweiText)
+    TextView geweiText;
 
     private List<SSQBallInfo> list1 = new ArrayList<>();
     private List<SSQBallInfo> list2 = new ArrayList<>();
     private List<SSQBallInfo> list3 = new ArrayList<>();
     private List<SSQBallInfo> list4 = new ArrayList<>();
     private List<SSQBallInfo> list5 = new ArrayList<>();
+    private List<SSQBallInfo> listBigSmallSingleDouble1 = new ArrayList<>();
+    private List<SSQBallInfo> listBigSmallSingleDouble2 = new ArrayList<>();
 
     private SSCBallAdapter ballAdapter1;
     private SSCBallAdapter ballAdapter2;
     private SSCBallAdapter ballAdapter3;
     private SSCBallAdapter ballAdapter4;
     private SSCBallAdapter ballAdapter5;
+    private SSCBallAdapter ballAdapterBigSmallSingleDouble1;
+    private SSCBallAdapter ballAdapterBigSmallSingleDouble2;
 
     private List<String> winCodeList = new ArrayList<>();
     private SSCWinCodeAdapter winCodeAdapter;
@@ -115,7 +132,9 @@ public class SSCFragment extends BaseBackMvpFragment<ISSCView, SSCPresenter> imp
     private SSCPlayWayPopWindow playWayPopWindow;
     private SSCMenuPopWindow menuPopWindow;
 
-    private String[] sscPlayWay;
+    private String[] sscPlayWays;
+
+    private int sscPlayWayPosition;
 
     public static SSCFragment newInstance() {
         Bundle args = new Bundle();
@@ -136,8 +155,8 @@ public class SSCFragment extends BaseBackMvpFragment<ISSCView, SSCPresenter> imp
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {
         super.onLazyInitView(savedInstanceState);
         initToolbarNav(toolbar);
-        sscPlayWay = getResources().getStringArray(R.array.ssc_play_way);
-        int sscPlayWayPosition = SPUtils.getInstance().getInt(AppConfig.KEY_SSC_DEFAULT_PLAY_WAY_POSITION, 0);
+        sscPlayWays = getResources().getStringArray(R.array.ssc_play_way);
+        sscPlayWayPosition = SPUtils.getInstance().getInt(AppConfig.KEY_SSC_DEFAULT_PLAY_WAY_POSITION, 0);
         setToolbarTitle(sscPlayWayPosition);
     }
 
@@ -180,26 +199,58 @@ public class SSCFragment extends BaseBackMvpFragment<ISSCView, SSCPresenter> imp
             list4.add(info4);
             list5.add(info5);
         }
+        SSQBallInfo ssqBallInfo1 = new SSQBallInfo();
+        ssqBallInfo1.setNumber("大");
+        SSQBallInfo ssqBallInfo2 = new SSQBallInfo();
+        ssqBallInfo2.setNumber("大");
+        SSQBallInfo ssqBallInfo3 = new SSQBallInfo();
+        ssqBallInfo3.setNumber("大");
+        SSQBallInfo ssqBallInfo4 = new SSQBallInfo();
+        ssqBallInfo4.setNumber("大");
+        listBigSmallSingleDouble1.add(ssqBallInfo1);
+        listBigSmallSingleDouble1.add(ssqBallInfo2);
+        listBigSmallSingleDouble1.add(ssqBallInfo3);
+        listBigSmallSingleDouble1.add(ssqBallInfo4);
+
+        SSQBallInfo ssqBallInfo5 = new SSQBallInfo();
+        ssqBallInfo5.setNumber("大");
+        SSQBallInfo ssqBallInfo6 = new SSQBallInfo();
+        ssqBallInfo6.setNumber("小");
+        SSQBallInfo ssqBallInfo7 = new SSQBallInfo();
+        ssqBallInfo7.setNumber("单");
+        SSQBallInfo ssqBallInfo8 = new SSQBallInfo();
+        ssqBallInfo8.setNumber("双");
+        listBigSmallSingleDouble2.add(ssqBallInfo5);
+        listBigSmallSingleDouble2.add(ssqBallInfo6);
+        listBigSmallSingleDouble2.add(ssqBallInfo7);
+        listBigSmallSingleDouble2.add(ssqBallInfo8);
+
 
         ballAdapter1 = new SSCBallAdapter(getContext(), list1);
         ballAdapter2 = new SSCBallAdapter(getContext(), list2);
         ballAdapter3 = new SSCBallAdapter(getContext(), list3);
         ballAdapter4 = new SSCBallAdapter(getContext(), list4);
         ballAdapter5 = new SSCBallAdapter(getContext(), list5);
+        ballAdapterBigSmallSingleDouble1 = new SSCBallAdapter(getContext(), listBigSmallSingleDouble1);
+        ballAdapterBigSmallSingleDouble2 = new SSCBallAdapter(getContext(), listBigSmallSingleDouble2);
 
         gridView1.setAdapter(ballAdapter1);
         gridView2.setAdapter(ballAdapter2);
         gridView3.setAdapter(ballAdapter3);
-        gridView4.setAdapter(ballAdapter4);
-        gridView5.setAdapter(ballAdapter5);
-
+        //大小单双的时候绑定不同的adapter
+        if (sscPlayWayPosition == 2) {
+            gridView4.setAdapter(ballAdapterBigSmallSingleDouble1);
+            gridView5.setAdapter(ballAdapterBigSmallSingleDouble2);
+        } else {
+            gridView4.setAdapter(ballAdapter4);
+            gridView5.setAdapter(ballAdapter5);
+        }
 
         for (int i = 0; i < 10; i++) {
             winCodeList.add(String.valueOf(i));
         }
         winCodeAdapter = new SSCWinCodeAdapter(getContext(), winCodeList);
         listView.setAdapter(winCodeAdapter);
-
 
         gridView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -316,6 +367,7 @@ public class SSCFragment extends BaseBackMvpFragment<ISSCView, SSCPresenter> imp
                 @Override
                 public void OnSSCPlayWayItemClick(int position) {
                     setToolbarTitle(position);
+                    presenter.changeLayoutView(position);
                 }
             });
         }
@@ -324,9 +376,9 @@ public class SSCFragment extends BaseBackMvpFragment<ISSCView, SSCPresenter> imp
     }
 
     private void setToolbarTitle(int titlePosition) {
-        toolbarTitle.setText(sscPlayWay[titlePosition]);
+        sscPlayWayPosition = titlePosition;
+        toolbarTitle.setText(sscPlayWays[titlePosition]);
     }
-
 
     @OnClick(R.id.toolbar_menu)
     public void onClickToolbarMenu() {
@@ -334,5 +386,179 @@ public class SSCFragment extends BaseBackMvpFragment<ISSCView, SSCPresenter> imp
             menuPopWindow = new SSCMenuPopWindow(getContext());
         }
         menuPopWindow.show(toolbarMenu);
+    }
+
+    @Override
+    public void showStar5Direct() {
+        try {
+            layoutWan.setVisibility(View.VISIBLE);
+            layoutQian.setVisibility(View.VISIBLE);
+            layoutBai.setVisibility(View.VISIBLE);
+            layoutShi.setVisibility(View.VISIBLE);
+            layoutGe.setVisibility(View.VISIBLE);
+            gridView4.setAdapter(ballAdapter4);
+            gridView5.setAdapter(ballAdapter5);
+            geweiText.setText("个位");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void showStar5Combination() {
+        try {
+            layoutWan.setVisibility(View.VISIBLE);
+            layoutQian.setVisibility(View.VISIBLE);
+            layoutBai.setVisibility(View.VISIBLE);
+            layoutShi.setVisibility(View.VISIBLE);
+            layoutGe.setVisibility(View.VISIBLE);
+            gridView4.setAdapter(ballAdapter4);
+            gridView5.setAdapter(ballAdapter5);
+            geweiText.setText("个位");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void showBigSmallSingleDouble() {
+        try {
+            layoutWan.setVisibility(View.GONE);
+            layoutQian.setVisibility(View.GONE);
+            layoutBai.setVisibility(View.GONE);
+            layoutShi.setVisibility(View.VISIBLE);
+            layoutGe.setVisibility(View.VISIBLE);
+            gridView4.setAdapter(ballAdapterBigSmallSingleDouble1);
+            gridView5.setAdapter(ballAdapterBigSmallSingleDouble2);
+            geweiText.setText("选号");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void showStar3Direct() {
+        try {
+            layoutWan.setVisibility(View.GONE);
+            layoutQian.setVisibility(View.GONE);
+            layoutBai.setVisibility(View.VISIBLE);
+            layoutShi.setVisibility(View.VISIBLE);
+            layoutGe.setVisibility(View.VISIBLE);
+            gridView4.setAdapter(ballAdapter4);
+            gridView5.setAdapter(ballAdapter5);
+            geweiText.setText("个位");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void showStar3Combination3() {
+        try {
+            layoutWan.setVisibility(View.GONE);
+            layoutQian.setVisibility(View.GONE);
+            layoutBai.setVisibility(View.GONE);
+            layoutShi.setVisibility(View.GONE);
+            layoutGe.setVisibility(View.VISIBLE);
+            gridView4.setAdapter(ballAdapter4);
+            gridView5.setAdapter(ballAdapter5);
+            geweiText.setText("选号");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void showStar3Combination6() {
+        try {
+            layoutWan.setVisibility(View.GONE);
+            layoutQian.setVisibility(View.GONE);
+            layoutBai.setVisibility(View.GONE);
+            layoutShi.setVisibility(View.GONE);
+            layoutGe.setVisibility(View.VISIBLE);
+            gridView4.setAdapter(ballAdapter4);
+            gridView5.setAdapter(ballAdapter5);
+            geweiText.setText("选号");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void showStar2Direct() {
+        try {
+            layoutWan.setVisibility(View.GONE);
+            layoutQian.setVisibility(View.GONE);
+            layoutBai.setVisibility(View.GONE);
+            layoutShi.setVisibility(View.VISIBLE);
+            layoutGe.setVisibility(View.VISIBLE);
+            gridView4.setAdapter(ballAdapter4);
+            gridView5.setAdapter(ballAdapter5);
+            geweiText.setText("个位");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void showStar2Combination() {
+        try {
+            layoutWan.setVisibility(View.GONE);
+            layoutQian.setVisibility(View.GONE);
+            layoutBai.setVisibility(View.GONE);
+            layoutShi.setVisibility(View.GONE);
+            layoutGe.setVisibility(View.VISIBLE);
+            gridView4.setAdapter(ballAdapter4);
+            gridView5.setAdapter(ballAdapter5);
+            geweiText.setText("选号");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void showStar1Direct() {
+        try {
+            layoutWan.setVisibility(View.GONE);
+            layoutQian.setVisibility(View.GONE);
+            layoutBai.setVisibility(View.GONE);
+            layoutShi.setVisibility(View.GONE);
+            layoutGe.setVisibility(View.VISIBLE);
+            gridView4.setAdapter(ballAdapter4);
+            gridView5.setAdapter(ballAdapter5);
+            geweiText.setText("个位");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void clearAllChoosedBall() {
+        try {
+            for (int i = 0; i < list1.size(); i++) {
+                list1.get(i).setCheck(false);
+            }
+            for (int i = 0; i < list2.size(); i++) {
+                list2.get(i).setCheck(false);
+            }
+            for (int i = 0; i < list3.size(); i++) {
+                list3.get(i).setCheck(false);
+            }
+            for (int i = 0; i < list4.size(); i++) {
+                list4.get(i).setCheck(false);
+            }
+            for (int i = 0; i < list5.size(); i++) {
+                list5.get(i).setCheck(false);
+            }
+            ballAdapter1.notifyDataSetChanged();
+            ballAdapter2.notifyDataSetChanged();
+            ballAdapter3.notifyDataSetChanged();
+            ballAdapter4.notifyDataSetChanged();
+            ballAdapter5.notifyDataSetChanged();
+            ballAdapterBigSmallSingleDouble1.notifyDataSetChanged();
+            ballAdapterBigSmallSingleDouble2.notifyDataSetChanged();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
