@@ -108,4 +108,12 @@ public class SSQPresenter extends BasePresenter<ISSQView> {
             e.printStackTrace();
         }
     }
+
+    public void clickConfirm() {
+        if (mView.getTotalStake() > 0) {
+            mView.toConfirmPage();
+        } else {
+            clickMachine();
+        }
+    }
 }

@@ -286,4 +286,28 @@ public class SSQFragment extends BaseBackMvpFragment<ISSQView, SSQPresenter> imp
         }
         menuPopWindow.show(toolbarMenu);
     }
+
+    @Override
+    public int getTotalStake() {
+        try {
+            return Integer.parseInt(totalNum.getText().toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    @OnClick(R.id.confirm)
+    public void onClickConfirm() {
+        presenter.clickConfirm();
+    }
+
+    @Override
+    public void toConfirmPage() {
+        try {
+            start(SSQConfirmBetFragment.newInstance(1, 1));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

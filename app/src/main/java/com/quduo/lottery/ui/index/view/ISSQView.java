@@ -22,4 +22,8 @@ public interface ISSQView extends BaseView {
     void notifyRedAdapter();
 
     void notifyBuleAdapter();
+
+    int getTotalStake();
+
+    void toConfirmPage();
 }
