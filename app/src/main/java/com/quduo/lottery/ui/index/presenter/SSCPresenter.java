@@ -55,6 +55,7 @@ public class SSCPresenter extends BasePresenter<ISSCView> {
 
             int currentPlayWayPosition = mView.getCurrentPlayWayPosition();
             if (currentPlayWayPosition == 4 || currentPlayWayPosition == 7) {
+                //三星组3和二星组选 最少要选2个
                 int[] nums = MathGroupUtil.creatRandom(2, 10);
                 for (int i = 0; i < listSize5; i++) {
                     for (int num : nums) {
@@ -64,6 +65,7 @@ public class SSCPresenter extends BasePresenter<ISSCView> {
                     }
                 }
             } else if (currentPlayWayPosition == 5) {
+                //三星组6 最少要选3个
                 int[] nums = MathGroupUtil.creatRandom(3, 10);
                 for (int i = 0; i < listSize5; i++) {
                     for (int num : nums) {
