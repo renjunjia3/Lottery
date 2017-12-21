@@ -213,4 +213,16 @@ public class SSCPresenter extends BasePresenter<ISSCView> {
         }
 
     }
+
+    public void clickConfirm() {
+        try {
+            if (mView.getTotalStake() > 0) {
+                mView.toConfirmBetPage();
+            } else {
+                clickMachine();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -763,13 +763,13 @@
                                 <ImageView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:src="@drawable/ic_bbwp_big" />
+                                    android:src="@drawable/ic_jclq_big" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="5dp"
-                                    android:text="@string/bbwp"
+                                    android:text="@string/jclq"
                                     android:textColor="@color/text_color_title"
                                     android:textSize="@dimen/text_size_12sp" />
 
@@ -777,8 +777,9 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="5dp"
-                                    android:text="玩法多样惊喜不断"
-                                    android:textColor="@color/text_color_des"
+                                    android:background="@drawable/bg_zuqiu_vs"
+                                    android:text="骑士VS热火"
+                                    android:textColor="@color/white"
                                     android:textSize="@dimen/text_size_10sp" />
                             </LinearLayout>
 

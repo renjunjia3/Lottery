@@ -657,4 +657,32 @@ public class SSCFragment extends BaseBackMvpFragment<ISSCView, SSCPresenter> imp
     public int getCurrentPlayWayPosition() {
         return sscPlayWayPosition;
     }
+
+    @Override
+    public int getTotalStake() {
+        try {
+            return Integer.parseInt(totalNum.getText().toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    @OnClick(R.id.confirm)
+    public void onClickConfirm() {
+        try {
+            presenter.clickConfirm();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void toConfirmBetPage() {
+        try {
+            start(SSCConfirmBetFragment.newInstance(1, 1));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -50,4 +50,8 @@ public interface ISSCView extends BaseView {
     void notifyAllAdapter();
 
     int getCurrentPlayWayPosition();
+
+    int getTotalStake();
+
+    void toConfirmBetPage();
 }
