@@ -257,6 +257,7 @@ public class SSCFragment extends BaseBackMvpFragment<ISSCView, SSCPresenter> imp
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 list1.get(i).setCheck(!list1.get(i).isCheck());
                 ballAdapter1.notifyDataSetChanged();
+                presenter.mathAllStake(sscPlayWayPosition);
             }
         });
         gridView2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -264,6 +265,7 @@ public class SSCFragment extends BaseBackMvpFragment<ISSCView, SSCPresenter> imp
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 list2.get(i).setCheck(!list2.get(i).isCheck());
                 ballAdapter2.notifyDataSetChanged();
+                presenter.mathAllStake(sscPlayWayPosition);
             }
         });
         gridView3.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -271,6 +273,7 @@ public class SSCFragment extends BaseBackMvpFragment<ISSCView, SSCPresenter> imp
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 list3.get(i).setCheck(!list3.get(i).isCheck());
                 ballAdapter3.notifyDataSetChanged();
+                presenter.mathAllStake(sscPlayWayPosition);
             }
         });
         gridView4.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -283,7 +286,7 @@ public class SSCFragment extends BaseBackMvpFragment<ISSCView, SSCPresenter> imp
                     listBigSmallSingleDouble1.get(i).setCheck(!listBigSmallSingleDouble1.get(i).isCheck());
                     ballAdapterBigSmallSingleDouble1.notifyDataSetChanged();
                 }
-
+                presenter.mathAllStake(sscPlayWayPosition);
             }
         });
         gridView5.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -296,6 +299,7 @@ public class SSCFragment extends BaseBackMvpFragment<ISSCView, SSCPresenter> imp
                     listBigSmallSingleDouble2.get(i).setCheck(!listBigSmallSingleDouble2.get(i).isCheck());
                     ballAdapterBigSmallSingleDouble2.notifyDataSetChanged();
                 }
+                presenter.mathAllStake(sscPlayWayPosition);
             }
         });
 
@@ -361,7 +365,7 @@ public class SSCFragment extends BaseBackMvpFragment<ISSCView, SSCPresenter> imp
 
     @OnClick(R.id.machine)
     public void onClickMachine() {
-
+        presenter.clickMachine();
     }
 
     @OnClick(R.id.toolbar_play_way)
@@ -578,5 +582,79 @@ public class SSCFragment extends BaseBackMvpFragment<ISSCView, SSCPresenter> imp
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public List<SSQBallInfo> getList1() {
+        return list1;
+    }
+
+    @Override
+    public List<SSQBallInfo> getList2() {
+        return list2;
+    }
+
+    @Override
+    public List<SSQBallInfo> getList3() {
+        return list3;
+    }
+
+    @Override
+    public List<SSQBallInfo> getList4() {
+        return list4;
+    }
+
+    @Override
+    public List<SSQBallInfo> getList5() {
+        return list5;
+    }
+
+    @Override
+    public List<SSQBallInfo> getListBigSmallSingleDouble1() {
+        return listBigSmallSingleDouble1;
+    }
+
+    @Override
+    public List<SSQBallInfo> getListBigSmallSingleDouble2() {
+        return listBigSmallSingleDouble2;
+    }
+
+    @Override
+    public void showAllStakeAndPrice(int totalNumber) {
+        try {
+            totalNum.setText(String.valueOf(totalNumber));
+            totalPrice.setText(String.valueOf((totalNumber * 2)));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @OnClick(R.id.delete_all)
+    public void onClickDeleteAll() {
+        try {
+            presenter.changeLayoutView(sscPlayWayPosition);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void notifyAllAdapter() {
+        try {
+            ballAdapter1.notifyDataSetChanged();
+            ballAdapter2.notifyDataSetChanged();
+            ballAdapter3.notifyDataSetChanged();
+            ballAdapter4.notifyDataSetChanged();
+            ballAdapter5.notifyDataSetChanged();
+            ballAdapterBigSmallSingleDouble1.notifyDataSetChanged();
+            ballAdapterBigSmallSingleDouble2.notifyDataSetChanged();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public int getCurrentPlayWayPosition() {
+        return sscPlayWayPosition;
     }
 }

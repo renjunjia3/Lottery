@@ -3,6 +3,7 @@ package com.quduo.lottery.util;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * 生成数据的工具类
@@ -65,6 +66,13 @@ public class MathGroupUtil {
         return random;
     }
 
+    /**
+     * @return 生成一个随机数 包含0 不包含maxNumber
+     */
+    public static int createSingleRadom(int maxNumber) {
+        return (int) (Math.random() * maxNumber);
+    }
+
 
     /**
      * 计算阶乘
@@ -77,10 +85,10 @@ public class MathGroupUtil {
         if (bottomNum < topNum || topNum == 0 || bottomNum == 0) {
             return 0;
         }
-        int result = 0;
-        int x = 0;
-        int y = 0;
-        int z = 0;
+        int result;
+        int x = 1;
+        int y = 1;
+        int z = 1;
         for (int i = 1; i <= bottomNum; i++) {
             x = x * i;
         }
@@ -90,6 +98,9 @@ public class MathGroupUtil {
 
         for (int i = 1; i <= topNum; i++) {
             z = z * i;
+        }
+        if (x == 0 || y == 0 || z == 0) {
+            return 0;
         }
         result = x / y / z;
         return result;
@@ -101,10 +112,8 @@ public class MathGroupUtil {
      * @return 结果
      */
     private static int sscStar5(int wan, int qian, int bai, int shi, int ge) {
-        int result = 0;
-        result = mathFactorial(wan, 1) * mathFactorial(qian, 1) * mathFactorial(bai, 1)
+        return mathFactorial(wan, 1) * mathFactorial(qian, 1) * mathFactorial(bai, 1)
                 * mathFactorial(shi, 1) * mathFactorial(ge, 1);
-        return result;
     }
 
     /**
@@ -148,7 +157,7 @@ public class MathGroupUtil {
     *时时彩二星组选
     */
     private static int sscStar2Combination(int number) {
-        return number * (number - 1);
+        return mathFactorial(number, 2);
     }
 
     /*
