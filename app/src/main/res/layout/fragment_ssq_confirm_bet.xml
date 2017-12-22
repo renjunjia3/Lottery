@@ -464,6 +464,7 @@
             android:textSize="@dimen/text_size_10sp" />
 
         <EditText
+            android:id="@+id/stop_chase_number_price"
             android:layout_width="60dp"
             android:layout_height="25dp"
             android:background="@drawable/bg_gray_round_corner_2dp"

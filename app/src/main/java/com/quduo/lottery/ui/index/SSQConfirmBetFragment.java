@@ -7,12 +7,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.quduo.lottery.R;
 import com.quduo.lottery.mvp.BaseBackMvpFragment;
 import com.quduo.lottery.ui.index.presenter.SSQConfirmBetPresenter;
 import com.quduo.lottery.ui.index.view.ISSQConfirmBetView;
+import com.quduo.lottery.widgets.CustomListView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,6 +34,14 @@ public class SSQConfirmBetFragment extends BaseBackMvpFragment<ISSQConfirmBetVie
     @BindView(R.id.toolbar_title)
     TextView toolbarTitle;
     Unbinder unbinder;
+    @BindView(R.id.listView)
+    CustomListView listView;
+    @BindView(R.id.sjzh)
+    ImageView sjzh;
+    @BindView(R.id.stop_chase_number_price)
+    EditText stopChaseNumberPrice;
+    @BindView(R.id.confirm)
+    TextView confirm;
 
     private int lotteryType;
     private int playWayType;
@@ -78,6 +89,12 @@ public class SSQConfirmBetFragment extends BaseBackMvpFragment<ISSQConfirmBetVie
     @Override
     public SSQConfirmBetPresenter initPresenter() {
         return new SSQConfirmBetPresenter(this);
+    }
+
+
+    @Override
+    public void onStop() {
+        super.onStop();
     }
 
     @Override
