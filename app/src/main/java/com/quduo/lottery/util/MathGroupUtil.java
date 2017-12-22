@@ -194,6 +194,31 @@ public class MathGroupUtil {
         return result;
     }
 
+    /**
+     * 获取福彩3D玩法注数
+     *
+     * @param playWayPosition 玩法
+     * @param bai             百位
+     * @param shi             十位
+     * @param ge              个位
+     * @return 总注数
+     */
+    public static int getFC3DAllNumber(int playWayPosition, int bai, int shi, int ge) {
+        int result = 0;
+        switch (playWayPosition) {
+            case 0:
+                result = sscStar3Direct(bai, shi, ge);
+                break;
+            case 1:
+                result = sscStar3Combination3(ge);
+                break;
+            case 2:
+                result = sscStar3Combination6(ge);
+                break;
+        }
+        return result;
+    }
+
     public static int getSSQAllNumber(int redBallNumber, int blueBallNumber) {
         if (redBallNumber < SSQFragment.SSQ_RED_NUMBER || blueBallNumber < 1) {
             return 0;

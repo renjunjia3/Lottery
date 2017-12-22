@@ -86,4 +86,10 @@
         <item>二星组选</item>
         <item>一星直选</item>
     </string-array>
+    <!--时时彩玩法-->
+    <string-array name="fc3d_play_way">
+        <item>直选</item>
+        <item>组三</item>
+        <item>组六</item>
+    </string-array>
 </resources>
