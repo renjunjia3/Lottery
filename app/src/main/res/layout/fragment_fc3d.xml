@@ -126,6 +126,45 @@
                     android:orientation="vertical">
 
                     <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingBottom="5dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingTop="5dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2017349期"
+                            android:textColor="#727272"
+                            android:textSize="@dimen/text_size_10sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="12-22 19:45(周五)"
+                            android:textColor="#727272"
+                            android:textSize="@dimen/text_size_10sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="截止投注，21.15开奖"
+                            android:textColor="#727272"
+                            android:textSize="@dimen/text_size_10sp" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/line_color" />
+
+                    <LinearLayout
                         android:id="@+id/see_all_wincode"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -140,50 +179,72 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="20171220-"
+                            android:text="348期"
                             android:textColor="#727272"
                             android:textSize="@dimen/text_size_10sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="062"
-                            android:textColor="@color/red_text_color"
-                            android:textSize="@dimen/text_size_10sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="期截止剩:"
+                            android:layout_marginLeft="5dp"
+                            android:text="开奖"
                             android:textColor="#727272"
                             android:textSize="@dimen/text_size_10sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="6"
-                            android:textColor="@color/red_text_color"
-                            android:textSize="@dimen/text_size_10sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="分"
+                            android:layout_marginLeft="5dp"
+                            android:text="3"
                             android:textColor="#727272"
                             android:textSize="@dimen/text_size_10sp" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="02"
-                            android:textColor="@color/red_text_color"
+                            android:layout_marginLeft="5dp"
+                            android:text="1"
+                            android:textColor="#727272"
                             android:textSize="@dimen/text_size_10sp" />
 
                         <TextView
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="1"
+                            android:textColor="#727272"
+                            android:textSize="@dimen/text_size_10sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:text="试机号:"
+                            android:textColor="#727272"
+                            android:textSize="@dimen/text_size_10sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="7"
+                            android:textColor="#727272"
+                            android:textSize="@dimen/text_size_10sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="1"
+                            android:textColor="#727272"
+                            android:textSize="@dimen/text_size_10sp" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
                             android:layout_weight="1"
-                            android:text="秒"
+                            android:text="3"
                             android:textColor="#727272"
                             android:textSize="@dimen/text_size_10sp" />
 
@@ -202,6 +263,11 @@
                         android:dividerHeight="0dp"
                         android:listSelector="@color/transparent"
                         android:visibility="gone" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="@color/line_color" />
 
                     <LinearLayout
                         android:layout_width="match_parent"

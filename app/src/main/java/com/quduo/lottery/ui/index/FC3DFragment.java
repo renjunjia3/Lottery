@@ -18,8 +18,8 @@ import com.blankj.utilcode.util.SPUtils;
 import com.quduo.lottery.AppConfig;
 import com.quduo.lottery.R;
 import com.quduo.lottery.mvp.BaseBackMvpFragment;
+import com.quduo.lottery.ui.index.adapter.FC3DWinCodeAdapter;
 import com.quduo.lottery.ui.index.adapter.SSCBallAdapter;
-import com.quduo.lottery.ui.index.adapter.SSCWinCodeAdapter;
 import com.quduo.lottery.ui.index.entity.SSQBallInfo;
 import com.quduo.lottery.ui.index.popwindow.FC3DPlayWayPopWindow;
 import com.quduo.lottery.ui.index.popwindow.SSCMenuPopWindow;
@@ -107,7 +107,7 @@ public class FC3DFragment extends BaseBackMvpFragment<IFC3DView, FC3DPresenter> 
     private SSCBallAdapter ballAdapter3;
 
     private List<String> winCodeList = new ArrayList<>();
-    private SSCWinCodeAdapter winCodeAdapter;
+    private FC3DWinCodeAdapter winCodeAdapter;
 
     private FC3DPlayWayPopWindow playWayPopWindow;
     private SSCMenuPopWindow menuPopWindow;
@@ -185,7 +185,7 @@ public class FC3DFragment extends BaseBackMvpFragment<IFC3DView, FC3DPresenter> 
         for (int i = 0; i < 10; i++) {
             winCodeList.add(String.valueOf(i));
         }
-        winCodeAdapter = new SSCWinCodeAdapter(getContext(), winCodeList);
+        winCodeAdapter = new FC3DWinCodeAdapter(getContext(), winCodeList);
         listView.setAdapter(winCodeAdapter);
 
         gridView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -444,7 +444,7 @@ public class FC3DFragment extends BaseBackMvpFragment<IFC3DView, FC3DPresenter> 
     @Override
     public void toConfirmBetPage() {
         try {
-            start(SSCConfirmBetFragment.newInstance(1, 1));
+            start(FC3DConfirmBetFragment.newInstance(1, 1));
         } catch (Exception e) {
             e.printStackTrace();
         }
