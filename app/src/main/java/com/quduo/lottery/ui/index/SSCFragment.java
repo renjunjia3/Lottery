@@ -109,6 +109,14 @@ public class SSCFragment extends BaseBackMvpFragment<ISSCView, SSCPresenter> imp
     RelativeLayout layoutGe;
     @BindView(R.id.geweiText)
     TextView geweiText;
+    @BindView(R.id.toolbar_layout)
+    RelativeLayout toolbarLayout;
+    @BindView(R.id.confirm)
+    TextView confirm;
+    @BindView(R.id.bottom_layout)
+    LinearLayout bottomLayout;
+    @BindView(R.id.guide_layout)
+    RelativeLayout guideLayout;
 
     private List<SSQBallInfo> list1 = new ArrayList<>();
     private List<SSQBallInfo> list2 = new ArrayList<>();
@@ -154,10 +162,21 @@ public class SSCFragment extends BaseBackMvpFragment<ISSCView, SSCPresenter> imp
     @Override
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {
         super.onLazyInitView(savedInstanceState);
+        showGuide();
         initToolbarNav(toolbar);
         sscPlayWays = getResources().getStringArray(R.array.ssc_play_way);
         sscPlayWayPosition = SPUtils.getInstance().getInt(AppConfig.KEY_SSC_DEFAULT_PLAY_WAY_POSITION, 0);
         setToolbarTitle(sscPlayWayPosition);
+    }
+
+    private void showGuide() {
+        boolean isFirstUse = SPUtils.getInstance().getBoolean(AppConfig.KEY_FIRST_USE_PLAY_SSC, true);
+        if (isFirstUse) {
+            guideLayout.setVisibility(View.VISIBLE);
+            SPUtils.getInstance().put(AppConfig.KEY_FIRST_USE_PLAY_SSC, false);
+        } else {
+            guideLayout.setVisibility(View.GONE);
+        }
     }
 
     @Override

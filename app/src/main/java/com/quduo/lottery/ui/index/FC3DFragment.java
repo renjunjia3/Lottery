@@ -97,6 +97,14 @@ public class FC3DFragment extends BaseBackMvpFragment<IFC3DView, FC3DPresenter> 
     RelativeLayout layoutGe;
     @BindView(R.id.geweiText)
     TextView geweiText;
+    @BindView(R.id.toolbar_layout)
+    RelativeLayout toolbarLayout;
+    @BindView(R.id.confirm)
+    TextView confirm;
+    @BindView(R.id.bottom_layout)
+    LinearLayout bottomLayout;
+    @BindView(R.id.guide_layout)
+    RelativeLayout guideLayout;
 
     private List<SSQBallInfo> list1 = new ArrayList<>();
     private List<SSQBallInfo> list2 = new ArrayList<>();
@@ -138,6 +146,17 @@ public class FC3DFragment extends BaseBackMvpFragment<IFC3DView, FC3DPresenter> 
         fc3dPlayWays = getResources().getStringArray(R.array.fc3d_play_way);
         fc3dPlayWayPosition = SPUtils.getInstance().getInt(AppConfig.KEY_FC3D_DEFAULT_PLAY_WAY_POSITION, 0);
         setToolbarTitle(fc3dPlayWayPosition);
+        showGuide();
+    }
+
+    private void showGuide() {
+        boolean isFirstUse = SPUtils.getInstance().getBoolean(AppConfig.KEY_FIRST_USE_PLAY_FC3D, true);
+        if (isFirstUse) {
+            guideLayout.setVisibility(View.VISIBLE);
+            SPUtils.getInstance().put(AppConfig.KEY_FIRST_USE_PLAY_FC3D, false);
+        } else {
+            guideLayout.setVisibility(View.GONE);
+        }
     }
 
     @Override

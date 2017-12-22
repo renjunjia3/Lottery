@@ -9,8 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.SPUtils;
+import com.quduo.lottery.AppConfig;
 import com.quduo.lottery.R;
 import com.quduo.lottery.mvp.BaseBackMvpFragment;
 import com.quduo.lottery.ui.index.adapter.SSQBlueAdapter;
@@ -67,6 +71,18 @@ public class SSQFragment extends BaseBackMvpFragment<ISSQView, SSQPresenter> imp
     TextView totalPrice;
     @BindView(R.id.toolbar_menu)
     ImageView toolbarMenu;
+    @BindView(R.id.see_all_wincode)
+    LinearLayout seeAllWincode;
+    @BindView(R.id.machine)
+    TextView machine;
+    @BindView(R.id.delete_all)
+    ImageView deleteAll;
+    @BindView(R.id.confirm)
+    TextView confirm;
+    @BindView(R.id.bottom_layout)
+    LinearLayout bottomLayout;
+    @BindView(R.id.guide_layout)
+    RelativeLayout guideLayout;
 
     private SSQRedAdapter redAdapter;
     private List<SSQBallInfo> redList = new ArrayList<>();
@@ -88,6 +104,18 @@ public class SSQFragment extends BaseBackMvpFragment<ISSQView, SSQPresenter> imp
         View view = inflater.inflate(R.layout.fragment_ssq, container, false);
         unbinder = ButterKnife.bind(this, view);
         return attachToSwipeBack(view);
+    }
+
+    @Override
+    public void onLazyInitView(@Nullable Bundle savedInstanceState) {
+        super.onLazyInitView(savedInstanceState);
+        boolean isFirstUse = SPUtils.getInstance().getBoolean(AppConfig.KEY_FIRST_USE_PLAY_SSQ, true);
+        if (isFirstUse) {
+            guideLayout.setVisibility(View.VISIBLE);
+            SPUtils.getInstance().put(AppConfig.KEY_FIRST_USE_PLAY_SSQ, false);
+        } else {
+            guideLayout.setVisibility(View.GONE);
+        }
     }
 
     @Override
