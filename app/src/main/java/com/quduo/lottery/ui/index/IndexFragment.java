@@ -203,4 +203,9 @@ public class IndexFragment extends BaseMainMvpFragment<IIndexView, IndexPresente
     public void onClickLayoutItemSSC() {
         EventBus.getDefault().post(new StartBrotherEvent(SSCFragment.newInstance()));
     }
+
+    @OnClick(R.id.layout_item_dlt)
+    public void onClickLayoutItemDLT() {
+        EventBus.getDefault().post(new StartBrotherEvent(DLTFragment.newInstance()));
+    }
 }

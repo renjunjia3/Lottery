@@ -50,7 +50,9 @@
     <string name="lottery_time">开奖时间：</string>
     <string name="jclq">竞彩篮球</string>
     <string name="lessest_6">至少选择6个</string>
+    <string name="lessest_5">至少选择5个</string>
     <string name="once">，1个</string>
+    <string name="twice">，2个</string>
     <string name="red_ball">红球</string>
     <string name="blue_ball">蓝球</string>
     <string name="machine">机选</string>

@@ -1,9 +1,11 @@
 package com.quduo.lottery.util;
 
+import com.quduo.lottery.ui.index.DLTFragment;
+import com.quduo.lottery.ui.index.SSQFragment;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
 
 /**
  * 生成数据的工具类
@@ -77,33 +79,26 @@ public class MathGroupUtil {
     /**
      * 计算阶乘
      *
-     * @param bottomNum 下面的那个数（大）
-     * @param topNum    上面的那个数（小）
+     * @param bottomNum 下面的那个数（大） 8
+     * @param topNum    上面的那个数（小）5
      * @return 结果
      */
     private static int mathFactorial(int bottomNum, int topNum) {
         if (bottomNum < topNum || topNum == 0 || bottomNum == 0) {
             return 0;
         }
-        int result;
         int x = 1;
         int y = 1;
-        int z = 1;
-        for (int i = 1; i <= bottomNum; i++) {
-            x = x * i;
+        for (int i = 0; i < topNum; i++) {
+            x = x * (bottomNum - i);
         }
-        for (int i = 1; i <= (bottomNum - topNum); i++) {
+        for (int i = 1; i <= topNum; i++) {
             y = y * i;
         }
-
-        for (int i = 1; i <= topNum; i++) {
-            z = z * i;
-        }
-        if (x == 0 || y == 0 || z == 0) {
+        if (y == 0) {
             return 0;
         }
-        result = x / y / z;
-        return result;
+        return x / y;
     }
 
     /**
@@ -197,5 +192,29 @@ public class MathGroupUtil {
                 break;
         }
         return result;
+    }
+
+    public static int getSSQAllNumber(int redBallNumber, int blueBallNumber) {
+        if (redBallNumber < SSQFragment.SSQ_RED_NUMBER || blueBallNumber < 1) {
+            return 0;
+        }
+        try {
+            return mathFactorial(redBallNumber, SSQFragment.SSQ_RED_NUMBER) * mathFactorial(blueBallNumber, 1);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    public static int getDLTAllNumber(int redBallNumber, int blueBallNumber) {
+        if (redBallNumber < DLTFragment.DLT_RED_NUMBER || blueBallNumber < DLTFragment.DLT_BLUE_NUMBER) {
+            return 0;
+        }
+        try {
+            return mathFactorial(redBallNumber, DLTFragment.DLT_RED_NUMBER) * mathFactorial(blueBallNumber, DLTFragment.DLT_BLUE_NUMBER);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
 }

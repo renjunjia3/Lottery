@@ -7,12 +7,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.quduo.lottery.R;
 import com.quduo.lottery.mvp.BaseBackMvpFragment;
-import com.quduo.lottery.ui.index.presenter.SSCConfirmBetPresenter;
-import com.quduo.lottery.ui.index.view.ISSCConfirmBetView;
+import com.quduo.lottery.ui.index.presenter.DLTConfirmBetPresenter;
+import com.quduo.lottery.ui.index.presenter.SSQConfirmBetPresenter;
+import com.quduo.lottery.ui.index.view.IDLTConfirmBetView;
+import com.quduo.lottery.ui.index.view.ISSQConfirmBetView;
+import com.quduo.lottery.widgets.CustomListView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,7 +28,7 @@ import butterknife.Unbinder;
  * Created by scene on 2017/12/21.
  */
 
-public class SSCConfirmBetFragment extends BaseBackMvpFragment<ISSCConfirmBetView, SSCConfirmBetPresenter> implements ISSCConfirmBetView {
+public class DLTConfirmBetFragment extends BaseBackMvpFragment<IDLTConfirmBetView, DLTConfirmBetPresenter> implements IDLTConfirmBetView {
     public static final String ARG_LOTTERY_TYPE = "lottery_type";//彩种
     public static final String ARG_PLAY_WAY_TYPE = "play_way_type";//玩法
     @BindView(R.id.toolbar)
@@ -31,15 +36,23 @@ public class SSCConfirmBetFragment extends BaseBackMvpFragment<ISSCConfirmBetVie
     @BindView(R.id.toolbar_title)
     TextView toolbarTitle;
     Unbinder unbinder;
+    @BindView(R.id.listView)
+    CustomListView listView;
+    @BindView(R.id.sjzh)
+    ImageView sjzh;
+    @BindView(R.id.stop_chase_number_price)
+    EditText stopChaseNumberPrice;
+    @BindView(R.id.confirm)
+    TextView confirm;
 
     private int lotteryType;
     private int playWayType;
 
-    public static SSCConfirmBetFragment newInstance(int lotteryType, int playWayType) {
+    public static DLTConfirmBetFragment newInstance(int lotteryType, int playWayType) {
         Bundle args = new Bundle();
         args.putInt(ARG_LOTTERY_TYPE, lotteryType);
         args.putInt(ARG_PLAY_WAY_TYPE, playWayType);
-        SSCConfirmBetFragment fragment = new SSCConfirmBetFragment();
+        DLTConfirmBetFragment fragment = new DLTConfirmBetFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -58,7 +71,7 @@ public class SSCConfirmBetFragment extends BaseBackMvpFragment<ISSCConfirmBetVie
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_ssc_confirm_bet, container, false);
+        View view = inflater.inflate(R.layout.fragment_dlt_confirm_bet, container, false);
         unbinder = ButterKnife.bind(this, view);
         return attachToSwipeBack(view);
     }
@@ -66,7 +79,7 @@ public class SSCConfirmBetFragment extends BaseBackMvpFragment<ISSCConfirmBetVie
     @Override
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {
         super.onLazyInitView(savedInstanceState);
-        toolbarTitle.setText("确认投注");
+        toolbarTitle.setText("大乐透");
         initToolbarNav(toolbar);
     }
 
@@ -76,8 +89,14 @@ public class SSCConfirmBetFragment extends BaseBackMvpFragment<ISSCConfirmBetVie
     }
 
     @Override
-    public SSCConfirmBetPresenter initPresenter() {
-        return new SSCConfirmBetPresenter(this);
+    public DLTConfirmBetPresenter initPresenter() {
+        return new DLTConfirmBetPresenter(this);
+    }
+
+
+    @Override
+    public void onStop() {
+        super.onStop();
     }
 
     @Override

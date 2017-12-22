@@ -71,7 +71,7 @@ public class SSQConfirmBetFragment extends BaseBackMvpFragment<ISSQConfirmBetVie
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_ssq_confirm_bet, container, false);
         unbinder = ButterKnife.bind(this, view);
-        return view;
+        return attachToSwipeBack(view);
     }
 
     @Override

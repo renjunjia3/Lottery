@@ -1,10 +1,10 @@
 package com.quduo.lottery.ui.index.presenter;
 
 import com.quduo.lottery.mvp.BasePresenter;
-import com.quduo.lottery.ui.index.SSQFragment;
+import com.quduo.lottery.ui.index.DLTFragment;
 import com.quduo.lottery.ui.index.entity.SSQBallInfo;
-import com.quduo.lottery.ui.index.model.SSQModel;
-import com.quduo.lottery.ui.index.view.ISSQView;
+import com.quduo.lottery.ui.index.model.DLTModel;
+import com.quduo.lottery.ui.index.view.IDLTView;
 import com.quduo.lottery.util.MathGroupUtil;
 
 import java.util.List;
@@ -14,12 +14,12 @@ import java.util.List;
  * Created by scene on 2017/12/19.
  */
 
-public class SSQPresenter extends BasePresenter<ISSQView> {
-    private SSQModel model;
+public class DLTPresenter extends BasePresenter<IDLTView> {
+    private DLTModel model;
 
-    public SSQPresenter(ISSQView view) {
+    public DLTPresenter(IDLTView view) {
         this.mView = view;
-        model = new SSQModel();
+        model = new DLTModel();
     }
 
     public void setTotalNumAndPrice() {
@@ -40,8 +40,8 @@ public class SSQPresenter extends BasePresenter<ISSQView> {
                     blueCheckNum++;
                 }
             }
-            if (redCheckNum > 5 && blueCheckNum > 0) {
-                int totalNumSize = MathGroupUtil.getSSQAllNumber(redCheckNum, blueCheckNum);
+            if (redCheckNum >= DLTFragment.DLT_RED_NUMBER && blueCheckNum >= DLTFragment.DLT_BLUE_NUMBER) {
+                int totalNumSize = MathGroupUtil.getDLTAllNumber(redCheckNum, blueCheckNum);
                 mView.setTotalNumber(String.valueOf(totalNumSize));
                 mView.setTotalPrice(String.valueOf(totalNumSize * 2));
             } else {
@@ -65,8 +65,8 @@ public class SSQPresenter extends BasePresenter<ISSQView> {
             for (int i = 0; i < blueListSize; i++) {
                 blueList.get(i).setCheck(false);
             }
-            int redRandom[] = MathGroupUtil.creatRandom(SSQFragment.SSQ_RED_NUMBER, 33);
-            int blueRandom[] = MathGroupUtil.creatRandom(1, 16);
+            int redRandom[] = MathGroupUtil.creatRandom(5, 35);
+            int blueRandom[] = MathGroupUtil.creatRandom(2, 12);
             for (int i = 0; i < redListSize; i++) {
                 for (int randmon : redRandom) {
                     if (i == randmon) {
@@ -75,8 +75,10 @@ public class SSQPresenter extends BasePresenter<ISSQView> {
                 }
             }
             for (int i = 0; i < blueListSize; i++) {
-                if (i == blueRandom[0]) {
-                    blueList.get(i).setCheck(true);
+                for (int randmon : blueRandom) {
+                    if (i == randmon) {
+                        blueList.get(i).setCheck(true);
+                    }
                 }
             }
 
