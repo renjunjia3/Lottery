@@ -1,6 +1,7 @@
 package com.quduo.lottery;
 
 /**
+ * 配置文件
  * Created by scene on 2017/12/21.
  */
 
