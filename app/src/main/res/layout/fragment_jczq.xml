@@ -5,134 +5,219 @@
     android:layout_height="match_parent"
     android:background="@color/background_color">
 
-    <RelativeLayout
-        android:id="@+id/toolbar_layout"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:background="@color/toolbar_color">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+        <RelativeLayout
+            android:id="@+id/toolbar_layout"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay"
-            app:titleTextAppearance="@style/Toolbar_TextAppearance_White">
+            android:background="@color/toolbar_color">
 
-        </android.support.v7.widget.Toolbar>
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay"
+                app:titleTextAppearance="@style/Toolbar_TextAppearance_White">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+            </android.support.v7.widget.Toolbar>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_centerInParent="true"
                 android:gravity="center_vertical"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="玩"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/text_size_10sp" />
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="法"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/text_size_10sp" />
-            </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="玩"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_10sp" />
 
-            <LinearLayout
-                android:id="@+id/toolbar_play_way"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:background="@drawable/bg_white_round_corner_2dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingBottom="5dp"
-                android:paddingLeft="@dimen/dp_10"
-                android:paddingRight="@dimen/dp_10"
-                android:paddingTop="5dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="法"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_10sp" />
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/toolbar_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="混投"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/sp_14" />
-
-                <ImageView
-                    android:id="@+id/toolbar_play_way_arrow"
+                <LinearLayout
+                    android:id="@+id/toolbar_play_way"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:src="@drawable/ic_arrow_bottom_toolbar" />
+                    android:background="@drawable/bg_white_round_corner_2dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="@dimen/dp_10"
+                    android:paddingRight="@dimen/dp_10"
+                    android:paddingTop="5dp">
+
+                    <TextView
+                        android:id="@+id/toolbar_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="混投"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/sp_14" />
+
+                    <ImageView
+                        android:id="@+id/toolbar_play_way_arrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:src="@drawable/ic_arrow_bottom_toolbar" />
+                </LinearLayout>
+
             </LinearLayout>
 
-        </LinearLayout>
+            <ImageView
+                android:id="@+id/toolbar_menu"
+                android:layout_width="35dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:paddingBottom="@dimen/dp_10"
+                android:paddingLeft="5dp"
+                android:paddingRight="10dp"
+                android:paddingTop="@dimen/dp_10"
+                android:src="@drawable/ic_toolbar_menu" />
 
-        <ImageView
-            android:id="@+id/toolbar_menu"
-            android:layout_width="35dp"
-            android:layout_height="40dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:paddingBottom="@dimen/dp_10"
-            android:paddingLeft="5dp"
-            android:paddingRight="10dp"
-            android:paddingTop="@dimen/dp_10"
-            android:src="@drawable/ic_toolbar_menu" />
+            <ImageView
+                android:id="@+id/saixuan"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/toolbar_menu"
+                android:paddingBottom="@dimen/dp_10"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="@dimen/dp_10"
+                android:src="@drawable/ic_toolbar_saixuan" />
 
-        <ImageView
-            android:id="@+id/saixuan"
-            android:layout_width="30dp"
-            android:layout_height="40dp"
-            android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/toolbar_menu"
-            android:paddingBottom="@dimen/dp_10"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:paddingTop="@dimen/dp_10"
-            android:src="@drawable/ic_toolbar_saixuan" />
+            <ImageView
+                android:id="@+id/jiajiang"
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/saixuan"
+                android:paddingBottom="@dimen/dp_10"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="@dimen/dp_10"
+                android:src="@drawable/ic_toolbar_bwjj" />
+        </RelativeLayout>
 
-        <ImageView
-            android:id="@+id/jiajiang"
-            android:layout_width="30dp"
-            android:layout_height="40dp"
-            android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/saixuan"
-            android:paddingBottom="@dimen/dp_10"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:paddingTop="@dimen/dp_10"
-            android:src="@drawable/ic_toolbar_bwjj" />
-    </RelativeLayout>
-
-    <wiki.scene.loadmore.StatusViewLayout
-        android:id="@+id/statusView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/toolbar_layout">
-
-        <wiki.scene.loadmore.PtrClassicFrameLayout
-            android:id="@+id/ptr_layout"
+        <wiki.scene.loadmore.StatusViewLayout
+            android:id="@+id/statusView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_weight="1">
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recyclerView"
+            <wiki.scene.loadmore.PtrClassicFrameLayout
+                android:id="@+id/ptr_layout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </wiki.scene.loadmore.PtrClassicFrameLayout>
+                android:layout_height="match_parent">
 
-    </wiki.scene.loadmore.StatusViewLayout>
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </wiki.scene.loadmore.PtrClassicFrameLayout>
+
+        </wiki.scene.loadmore.StatusViewLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/line_color" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/delete_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_gray_solid_5dp"
+                android:padding="5dp"
+                android:src="@drawable/ic_delete" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="已选"
+                        android:textColor="#272727"
+                        android:textSize="@dimen/text_size_14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="@color/theme_color"
+                        android:textSize="@dimen/text_size_14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="场"
+                        android:textColor="#272727"
+                        android:textSize="@dimen/text_size_14sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="页面赔率仅供参考，请以出票赔率为准"
+                    android:textSize="@dimen/text_size_10sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/confirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_red_round_color_3dp"
+                android:paddingBottom="5dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="5dp"
+                android:text="@string/confirm"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_16sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+
 </RelativeLayout>

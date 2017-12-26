@@ -22,6 +22,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 
 import okhttp3.OkHttpClient;
+import wiki.scene.loadmore.utils.PtrLocalDisplay;
 
 /**
  * application
@@ -49,6 +50,7 @@ public class MyApplication extends Application {
                 .init(this);
         //初始化工具类
         Utils.init(this);
+        PtrLocalDisplay.init(this);
         //初始化OKhttp
         initOKhttp();
     }

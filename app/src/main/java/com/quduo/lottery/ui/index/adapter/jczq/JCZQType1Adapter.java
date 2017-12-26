@@ -4,6 +4,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.quduo.lottery.R;
@@ -63,6 +64,7 @@ public class JCZQType1Adapter extends BaseMultiItemQuickAdapter<MultiItemEntity,
                         contentInfo.setShowHistory(!contentInfo.isShowHistory());
                     }
                 });
+                holder.addOnClickListener(R.id.layout_more_play_way);
                 break;
         }
     }

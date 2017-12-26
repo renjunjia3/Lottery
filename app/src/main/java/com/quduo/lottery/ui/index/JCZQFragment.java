@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.SizeUtils;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.quduo.lottery.AppConfig;
 import com.quduo.lottery.R;
@@ -27,6 +28,7 @@ import com.quduo.lottery.ui.index.entity.JCZQType1ContentInfo;
 import com.quduo.lottery.ui.index.entity.JCZQType1HeaderInfo;
 import com.quduo.lottery.ui.index.popwindow.JCZQMatchPopWindow;
 import com.quduo.lottery.ui.index.popwindow.JCZQMenuPopWindow;
+import com.quduo.lottery.ui.index.popwindow.JCZQMorePlayWayDialog;
 import com.quduo.lottery.ui.index.popwindow.JCZQPlayWayPopWindow;
 import com.quduo.lottery.ui.index.presenter.JCZQPresenter;
 import com.quduo.lottery.ui.index.view.IJCZQView;
@@ -82,6 +84,8 @@ public class JCZQFragment extends BaseBackMvpFragment<IJCZQView, JCZQPresenter> 
     private JCZQMenuPopWindow menuPopWindow;
 
     private JCZQMatchPopWindow matchPopWindow;
+
+    private JCZQMorePlayWayDialog morePlayWayDialog;
 
     public static JCZQFragment newInstance() {
         Bundle args = new Bundle();
@@ -148,6 +152,19 @@ public class JCZQFragment extends BaseBackMvpFragment<IJCZQView, JCZQPresenter> 
         recyclerView.addItemDecoration(new SpacesItemDecoration(SizeUtils.dp2px(10)));
         recyclerView.setAdapter(type1Adapter);
         type1Adapter.expandAll();
+
+        type1Adapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+            @Override
+            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                if (view.getId() == R.id.layout_more_play_way) {
+                    if (morePlayWayDialog == null) {
+                        JCZQMorePlayWayDialog.Builder builder = new JCZQMorePlayWayDialog.Builder(getContext());
+                        morePlayWayDialog = builder.create();
+                    }
+                    morePlayWayDialog.show();
+                }
+            }
+        });
     }
 
     @Override
