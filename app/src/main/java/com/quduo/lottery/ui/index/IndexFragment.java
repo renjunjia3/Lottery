@@ -213,4 +213,14 @@ public class IndexFragment extends BaseMainMvpFragment<IIndexView, IndexPresente
     public void onClickLayoutItemFC3D() {
         EventBus.getDefault().post(new StartBrotherEvent(FC3DFragment.newInstance()));
     }
+
+    @OnClick(R.id.layout_item_jclq)
+    public void onClickLayoutItemJCLQ() {
+        EventBus.getDefault().post(new StartBrotherEvent(JCLQFragment.newInstance()));
+    }
+
+    @OnClick(R.id.layout_item_jczq)
+    public void onClickLayoutItemJCZQ() {
+        EventBus.getDefault().post(new StartBrotherEvent(JCZQFragment.newInstance()));
+    }
 }
