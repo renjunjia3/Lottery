@@ -11,17 +11,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.SizeUtils;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
+import com.quduo.lottery.AppConfig;
 import com.quduo.lottery.R;
 import com.quduo.lottery.itemDecoration.SpacesItemDecoration;
 import com.quduo.lottery.mvp.BaseBackMvpFragment;
 import com.quduo.lottery.ui.index.adapter.jczq.JCZQType1Adapter;
 import com.quduo.lottery.ui.index.entity.JCZQType1ContentInfo;
 import com.quduo.lottery.ui.index.entity.JCZQType1HeaderInfo;
+import com.quduo.lottery.ui.index.popwindow.JCZQMatchPopWindow;
+import com.quduo.lottery.ui.index.popwindow.JCZQMenuPopWindow;
+import com.quduo.lottery.ui.index.popwindow.JCZQPlayWayPopWindow;
 import com.quduo.lottery.ui.index.presenter.JCZQPresenter;
 import com.quduo.lottery.ui.index.view.IJCZQView;
 
@@ -30,6 +36,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 import wiki.scene.loadmore.PtrClassicFrameLayout;
 import wiki.scene.loadmore.PtrDefaultHandler;
@@ -68,6 +75,14 @@ public class JCZQFragment extends BaseBackMvpFragment<IJCZQView, JCZQPresenter> 
 
     private List<MultiItemEntity> list = new ArrayList<>();
 
+    private JCZQPlayWayPopWindow playWayPopWindow;
+    private String[] jczqPlayWays;
+    private int jczqPlayWayPosition;
+
+    private JCZQMenuPopWindow menuPopWindow;
+
+    private JCZQMatchPopWindow matchPopWindow;
+
     public static JCZQFragment newInstance() {
         Bundle args = new Bundle();
         JCZQFragment fragment = new JCZQFragment();
@@ -92,6 +107,9 @@ public class JCZQFragment extends BaseBackMvpFragment<IJCZQView, JCZQPresenter> 
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {
         super.onLazyInitView(savedInstanceState);
         initToolbarNav(toolbar);
+        jczqPlayWays = getResources().getStringArray(R.array.jczq_play_way);
+        jczqPlayWayPosition = SPUtils.getInstance().getInt(AppConfig.KEY_JCZQ_DEFAULT_PLAY_WAY_POSITION, 0);
+        setToolbarTitle(jczqPlayWayPosition);
     }
 
     @Override
@@ -176,4 +194,65 @@ public class JCZQFragment extends BaseBackMvpFragment<IJCZQView, JCZQPresenter> 
 
         }
     };
+
+    private void showJCZQPlayWay() {
+        if (playWayPopWindow == null) {
+            playWayPopWindow = new JCZQPlayWayPopWindow(getContext());
+            playWayPopWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+                @Override
+                public void onDismiss() {
+                    toolbarPlayWayArrow.setImageResource(R.drawable.ic_arrow_bottom_toolbar);
+                }
+            });
+            playWayPopWindow.setOnJCZQPlayWayItemClickListener(new JCZQPlayWayPopWindow.OnJCZQPlayWayItemClickListener() {
+                @Override
+                public void OnJCZQPlayWayItemClick(int position) {
+                    setToolbarTitle(position);
+                    //presenter.changeLayoutView(position);
+                }
+            });
+        }
+        playWayPopWindow.show(toolbar);
+        toolbarPlayWayArrow.setImageResource(R.drawable.ic_arrow_top_toolbar);
+    }
+
+    private void setToolbarTitle(int titlePosition) {
+        jczqPlayWayPosition = titlePosition;
+        toolbarTitle.setText(jczqPlayWays[titlePosition]);
+    }
+
+    @OnClick(R.id.toolbar_play_way)
+    public void onClickToolBarPlayWay() {
+        showJCZQPlayWay();
+    }
+
+    public void showMenuPopUpWindow() {
+        if (menuPopWindow == null) {
+            menuPopWindow = new JCZQMenuPopWindow(getContext());
+        }
+        menuPopWindow.show(toolbarMenu);
+    }
+
+    @OnClick(R.id.toolbar_menu)
+    public void onClickToolbarMenu() {
+        showMenuPopUpWindow();
+    }
+
+    @OnClick(R.id.saixuan)
+    public void onClickSaixuan() {
+        showMatchPopUpWindow();
+    }
+
+    private void showMatchPopUpWindow() {
+        if (matchPopWindow == null) {
+            matchPopWindow = new JCZQMatchPopWindow(getContext());
+            matchPopWindow.setOnJCZQButtonClickListener(new JCZQMatchPopWindow.OnJCZQButtonClickListener() {
+                @Override
+                public void OnConfirmClick(List<Integer> position) {
+
+                }
+            });
+        }
+        matchPopWindow.show(toolbar);
+    }
 }

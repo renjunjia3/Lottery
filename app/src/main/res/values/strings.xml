@@ -92,4 +92,27 @@
         <item>组三</item>
         <item>组六</item>
     </string-array>
+    <!--足彩玩法-->
+    <string-array name="jczq_play_way">
+        <item>混投</item>
+        <item>胜平负</item>
+        <item>让球胜平负</item>
+        <item>比分</item>
+        <item>总进球</item>
+        <item>半全场</item>
+        <item>胜平负/让球</item>
+        <item>2选1</item>
+        <item>猜一场</item>
+    </string-array>
+
+    <!--足彩赛事-->
+    <string-array name="jczq_match">
+        <item>澳超</item>
+        <item>英超</item>
+        <item>苏超</item>
+        <item>英冠</item>
+        <item>英甲</item>
+        <item>比甲</item>
+        <item>意大利杯</item>
+    </string-array>
 </resources>

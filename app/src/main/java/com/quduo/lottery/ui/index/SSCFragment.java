@@ -378,7 +378,6 @@ public class SSCFragment extends BaseBackMvpFragment<ISSCView, SSCPresenter> imp
         } else {
             listView.setVisibility(View.VISIBLE);
             seeAllWincodeArrow.setImageResource(R.drawable.ic_arrow_top);
-
         }
     }
 
