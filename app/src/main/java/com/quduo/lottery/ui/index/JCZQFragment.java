@@ -29,6 +29,9 @@ import com.quduo.lottery.ui.index.adapter.jczq.JCZQType3Adapter;
 import com.quduo.lottery.ui.index.adapter.jczq.JCZQType4Adapter;
 import com.quduo.lottery.ui.index.adapter.jczq.JCZQType5Adapter;
 import com.quduo.lottery.ui.index.adapter.jczq.JCZQType6Adapter;
+import com.quduo.lottery.ui.index.adapter.jczq.JCZQType7Adapter;
+import com.quduo.lottery.ui.index.adapter.jczq.JCZQType8Adapter;
+import com.quduo.lottery.ui.index.adapter.jczq.JCZQType9Adapter;
 import com.quduo.lottery.ui.index.entity.JCZQType1ContentInfo;
 import com.quduo.lottery.ui.index.entity.JCZQType1HeaderInfo;
 import com.quduo.lottery.ui.index.popwindow.JCZQHalfFullResultDialog;
@@ -88,6 +91,9 @@ public class JCZQFragment extends BaseBackMvpFragment<IJCZQView, JCZQPresenter> 
     private List<MultiItemEntity> list4 = new ArrayList<>();
     private List<MultiItemEntity> list5 = new ArrayList<>();
     private List<MultiItemEntity> list6 = new ArrayList<>();
+    private List<MultiItemEntity> list7 = new ArrayList<>();
+    private List<MultiItemEntity> list8 = new ArrayList<>();
+    private List<MultiItemEntity> list9 = new ArrayList<>();
 
     private JCZQPlayWayPopWindow playWayPopWindow;
     private String[] jczqPlayWays;
@@ -107,6 +113,9 @@ public class JCZQFragment extends BaseBackMvpFragment<IJCZQView, JCZQPresenter> 
     private JCZQType4Adapter type4Adapter;
     private JCZQType5Adapter type5Adapter;
     private JCZQType6Adapter type6Adapter;
+    private JCZQType7Adapter type7Adapter;
+    private JCZQType8Adapter type8Adapter;
+    private JCZQType9Adapter type9Adapter;
 
     public static JCZQFragment newInstance() {
         Bundle args = new Bundle();
@@ -435,17 +444,65 @@ public class JCZQFragment extends BaseBackMvpFragment<IJCZQView, JCZQPresenter> 
 
     @Override
     public void showPlayWay7() {
-
+        try {
+            if (type7Adapter == null) {
+                for (int i = 0; i < 3; i++) {
+                    JCZQType1HeaderInfo headerInfo = new JCZQType1HeaderInfo();
+                    for (int j = 0; j < 8; j++) {
+                        JCZQType1ContentInfo contentInfo = new JCZQType1ContentInfo("");
+                        headerInfo.addSubItem(contentInfo);
+                    }
+                    list7.add(headerInfo);
+                }
+                type7Adapter = new JCZQType7Adapter(list7);
+            }
+            recyclerView.setAdapter(type7Adapter);
+            type7Adapter.expandAll();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void showPlayWay8() {
-
+        try {
+            if (type8Adapter == null) {
+                for (int i = 0; i < 3; i++) {
+                    JCZQType1HeaderInfo headerInfo = new JCZQType1HeaderInfo();
+                    for (int j = 0; j < 8; j++) {
+                        JCZQType1ContentInfo contentInfo = new JCZQType1ContentInfo("");
+                        headerInfo.addSubItem(contentInfo);
+                    }
+                    list8.add(headerInfo);
+                }
+                type8Adapter = new JCZQType8Adapter(list8);
+            }
+            recyclerView.setAdapter(type8Adapter);
+            type8Adapter.expandAll();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void showPlayWay9() {
-
+        try {
+            if (type9Adapter == null) {
+                for (int i = 0; i < 3; i++) {
+                    JCZQType1HeaderInfo headerInfo = new JCZQType1HeaderInfo();
+                    for (int j = 0; j < 8; j++) {
+                        JCZQType1ContentInfo contentInfo = new JCZQType1ContentInfo("");
+                        headerInfo.addSubItem(contentInfo);
+                    }
+                    list9.add(headerInfo);
+                }
+                type9Adapter = new JCZQType9Adapter(list9);
+            }
+            recyclerView.setAdapter(type9Adapter);
+            type9Adapter.expandAll();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void showScoreDialog() {
