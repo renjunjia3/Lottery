@@ -24,6 +24,7 @@ import com.quduo.lottery.R;
 import com.quduo.lottery.itemDecoration.SpacesItemDecoration;
 import com.quduo.lottery.mvp.BaseBackMvpFragment;
 import com.quduo.lottery.ui.index.adapter.jczq.JCZQType1Adapter;
+import com.quduo.lottery.ui.index.adapter.jczq.JCZQType2Adapter;
 import com.quduo.lottery.ui.index.entity.JCZQType1ContentInfo;
 import com.quduo.lottery.ui.index.entity.JCZQType1HeaderInfo;
 import com.quduo.lottery.ui.index.popwindow.JCZQMatchPopWindow;
@@ -75,7 +76,8 @@ public class JCZQFragment extends BaseBackMvpFragment<IJCZQView, JCZQPresenter> 
     @BindView(R.id.statusView)
     StatusViewLayout statusView;
 
-    private List<MultiItemEntity> list = new ArrayList<>();
+    private List<MultiItemEntity> list1 = new ArrayList<>();
+    private List<MultiItemEntity> list2 = new ArrayList<>();
 
     private JCZQPlayWayPopWindow playWayPopWindow;
     private String[] jczqPlayWays;
@@ -86,6 +88,9 @@ public class JCZQFragment extends BaseBackMvpFragment<IJCZQView, JCZQPresenter> 
     private JCZQMatchPopWindow matchPopWindow;
 
     private JCZQMorePlayWayDialog morePlayWayDialog;
+
+    private JCZQType1Adapter type1Adapter;
+    private JCZQType2Adapter type2Adapter;
 
     public static JCZQFragment newInstance() {
         Bundle args = new Bundle();
@@ -138,33 +143,12 @@ public class JCZQFragment extends BaseBackMvpFragment<IJCZQView, JCZQPresenter> 
             }
         });
         showContentPage();
-        for (int i = 0; i < 3; i++) {
-            JCZQType1HeaderInfo headerInfo = new JCZQType1HeaderInfo();
-            for (int j = 0; j < 8; j++) {
-                JCZQType1ContentInfo contentInfo = new JCZQType1ContentInfo("");
-                headerInfo.addSubItem(contentInfo);
-            }
-            list.add(headerInfo);
-        }
-        JCZQType1Adapter type1Adapter = new JCZQType1Adapter(list);
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.addItemDecoration(new SpacesItemDecoration(SizeUtils.dp2px(10)));
-        recyclerView.setAdapter(type1Adapter);
-        type1Adapter.expandAll();
 
-        type1Adapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
-            @Override
-            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                if (view.getId() == R.id.layout_more_play_way) {
-                    if (morePlayWayDialog == null) {
-                        JCZQMorePlayWayDialog.Builder builder = new JCZQMorePlayWayDialog.Builder(getContext());
-                        morePlayWayDialog = builder.create();
-                    }
-                    morePlayWayDialog.show();
-                }
-            }
-        });
+        presenter.changeLayoutView();
     }
 
     @Override
@@ -225,7 +209,7 @@ public class JCZQFragment extends BaseBackMvpFragment<IJCZQView, JCZQPresenter> 
                 @Override
                 public void OnJCZQPlayWayItemClick(int position) {
                     setToolbarTitle(position);
-                    //presenter.changeLayoutView(position);
+                    presenter.changeLayoutView();
                 }
             });
         }
@@ -271,5 +255,100 @@ public class JCZQFragment extends BaseBackMvpFragment<IJCZQView, JCZQPresenter> 
             });
         }
         matchPopWindow.show(toolbar);
+    }
+
+    @Override
+    public int getPlayWayPosition() {
+        return jczqPlayWayPosition;
+    }
+
+    @Override
+    public void showPlayWay1() {
+        try {
+            if (type1Adapter == null) {
+                for (int i = 0; i < 3; i++) {
+                    JCZQType1HeaderInfo headerInfo = new JCZQType1HeaderInfo();
+                    for (int j = 0; j < 8; j++) {
+                        JCZQType1ContentInfo contentInfo = new JCZQType1ContentInfo("");
+                        headerInfo.addSubItem(contentInfo);
+                    }
+                    list1.add(headerInfo);
+                }
+                type1Adapter = new JCZQType1Adapter(list1);
+                type1Adapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+                    @Override
+                    public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                        if (view.getId() == R.id.layout_more_play_way) {
+                            if (morePlayWayDialog == null) {
+                                JCZQMorePlayWayDialog.Builder builder = new JCZQMorePlayWayDialog.Builder(getContext());
+                                morePlayWayDialog = builder.create();
+                            }
+                            morePlayWayDialog.show();
+                        }
+                    }
+                });
+            }
+            recyclerView.setAdapter(type1Adapter);
+            type1Adapter.expandAll();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void showPlayWay2() {
+        try {
+            if (type2Adapter == null) {
+                for (int i = 0; i < 3; i++) {
+                    JCZQType1HeaderInfo headerInfo = new JCZQType1HeaderInfo();
+                    for (int j = 0; j < 8; j++) {
+                        JCZQType1ContentInfo contentInfo = new JCZQType1ContentInfo("");
+                        headerInfo.addSubItem(contentInfo);
+                    }
+                    list2.add(headerInfo);
+                }
+                type2Adapter = new JCZQType2Adapter(list2);
+            }
+            recyclerView.setAdapter(type2Adapter);
+            type2Adapter.expandAll();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void showPlayWay3() {
+
+    }
+
+    @Override
+    public void showPlayWay4() {
+
+    }
+
+    @Override
+    public void showPlayWay5() {
+
+    }
+
+    @Override
+    public void showPlayWay6() {
+
+    }
+
+    @Override
+    public void showPlayWay7() {
+
+    }
+
+    @Override
+    public void showPlayWay8() {
+
+    }
+
+    @Override
+    public void showPlayWay9() {
+
     }
 }

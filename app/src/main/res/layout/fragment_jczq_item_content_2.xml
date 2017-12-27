@@ -54,231 +54,96 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:layout_marginLeft="20dp"
-            android:orientation="vertical">
+            android:background="@drawable/bg_gray_stroke_5dp"
+            android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/dp_10"
+                android:paddingTop="@dimen/dp_10">
 
                 <TextView
-                    android:layout_width="10sp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:lines="2"
-                    android:text="让球"
-                    android:textColor="@color/text_color_des"
+                    android:text="切尔西"
+                    android:textColor="#272727"
+                    android:textSize="@dimen/text_size_14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="主胜1.10"
+                    android:textColor="#666666"
                     android:textSize="@dimen/text_size_10sp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="5dp"
-                        android:text="利物浦"
-                        android:textColor="#272727"
-                        android:textSize="@dimen/text_size_12sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="VS"
-                        android:textColor="@color/text_color_des"
-                        android:textSize="@dimen/text_size_10sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:text="利物浦"
-                        android:textColor="#272727"
-                        android:textSize="@dimen/text_size_12sp" />
-                </LinearLayout>
             </LinearLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#CCCCCC" />
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/bg_gray_solid_5dp"
-                android:orientation="horizontal">
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/dp_10"
+                android:paddingTop="@dimen/dp_10">
 
-                <LinearLayout
-                    android:layout_width="20dp"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp" />
-
-                    <TextView
-                        android:layout_width="20dp"
-                        android:layout_height="25dp"
-                        android:gravity="center"
-                        android:text="0"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/text_size_10sp" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp" />
-
-                    <TextView
-                        android:layout_width="20dp"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="1dp"
-                        android:background="@drawable/bg_yellow_round_color_solid_5dp"
-                        android:gravity="center"
-                        android:text="-2"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/text_size_10sp" />
-                </LinearLayout>
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:weightSum="3">
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="25dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="25dp"
-                            android:layout_weight="1"
-                            android:background="@color/white"
-                            android:gravity="center"
-                            android:text="主胜1.11"
-                            android:textColor="#272727"
-                            android:textSize="@dimen/text_size_10sp" />
-
-                        <View
-                            android:layout_width="1dp"
-                            android:layout_height="match_parent" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:background="@color/white"
-                            android:gravity="center"
-                            android:text="平1.11"
-                            android:textColor="#272727"
-                            android:textSize="@dimen/text_size_10sp" />
-
-                        <View
-                            android:layout_width="1dp"
-                            android:layout_height="match_parent" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:background="@color/white"
-                            android:gravity="center"
-                            android:text="客胜1.11"
-                            android:textColor="#272727"
-                            android:textSize="@dimen/text_size_10sp" />
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="25dp"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="25dp"
-                            android:layout_weight="1"
-                            android:background="@color/white"
-                            android:gravity="center"
-                            android:text="主胜1.11"
-                            android:textColor="#272727"
-                            android:textSize="@dimen/text_size_10sp" />
-
-                        <View
-                            android:layout_width="1dp"
-                            android:layout_height="match_parent" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:background="@color/white"
-                            android:gravity="center"
-                            android:text="平1.11"
-                            android:textColor="#272727"
-                            android:textSize="@dimen/text_size_10sp" />
-
-                        <View
-                            android:layout_width="1dp"
-                            android:layout_height="match_parent" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:background="@color/white"
-                            android:gravity="center"
-                            android:text="客胜1.11"
-                            android:textColor="#272727"
-                            android:textSize="@dimen/text_size_10sp" />
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/layout_more_play_way"
+                <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/bg_white_half_round_color_solid_5dp"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:paddingLeft="@dimen/dp_10"
-                    android:paddingRight="@dimen/dp_10">
+                    android:layout_height="wrap_content"
+                    android:text="vs"
+                    android:textColor="#272727"
+                    android:textSize="@dimen/text_size_14sp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="更多"
-                        android:textColor="@color/text_color_des"
-                        android:textSize="@dimen/text_size_10sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="玩法"
-                        android:textColor="@color/text_color_des"
-                        android:textSize="@dimen/text_size_10sp" />
-                </LinearLayout>
-
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="平1.10"
+                    android:textColor="#666666"
+                    android:textSize="@dimen/text_size_10sp" />
             </LinearLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#CCCCCC" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/dp_10"
+                android:paddingTop="@dimen/dp_10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="切尔西"
+                    android:textColor="#272727"
+                    android:textSize="@dimen/text_size_14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="客胜1.10"
+                    android:textColor="#666666"
+                    android:textSize="@dimen/text_size_10sp" />
+            </LinearLayout>
+
         </LinearLayout>
     </LinearLayout>
 
