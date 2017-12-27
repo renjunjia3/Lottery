@@ -25,12 +25,15 @@ import com.quduo.lottery.itemDecoration.SpacesItemDecoration;
 import com.quduo.lottery.mvp.BaseBackMvpFragment;
 import com.quduo.lottery.ui.index.adapter.jczq.JCZQType1Adapter;
 import com.quduo.lottery.ui.index.adapter.jczq.JCZQType2Adapter;
+import com.quduo.lottery.ui.index.adapter.jczq.JCZQType3Adapter;
+import com.quduo.lottery.ui.index.adapter.jczq.JCZQType4Adapter;
 import com.quduo.lottery.ui.index.entity.JCZQType1ContentInfo;
 import com.quduo.lottery.ui.index.entity.JCZQType1HeaderInfo;
 import com.quduo.lottery.ui.index.popwindow.JCZQMatchPopWindow;
 import com.quduo.lottery.ui.index.popwindow.JCZQMenuPopWindow;
 import com.quduo.lottery.ui.index.popwindow.JCZQMorePlayWayDialog;
 import com.quduo.lottery.ui.index.popwindow.JCZQPlayWayPopWindow;
+import com.quduo.lottery.ui.index.popwindow.JCZQScoreDialog;
 import com.quduo.lottery.ui.index.presenter.JCZQPresenter;
 import com.quduo.lottery.ui.index.view.IJCZQView;
 
@@ -78,6 +81,8 @@ public class JCZQFragment extends BaseBackMvpFragment<IJCZQView, JCZQPresenter> 
 
     private List<MultiItemEntity> list1 = new ArrayList<>();
     private List<MultiItemEntity> list2 = new ArrayList<>();
+    private List<MultiItemEntity> list3 = new ArrayList<>();
+    private List<MultiItemEntity> list4 = new ArrayList<>();
 
     private JCZQPlayWayPopWindow playWayPopWindow;
     private String[] jczqPlayWays;
@@ -88,9 +93,12 @@ public class JCZQFragment extends BaseBackMvpFragment<IJCZQView, JCZQPresenter> 
     private JCZQMatchPopWindow matchPopWindow;
 
     private JCZQMorePlayWayDialog morePlayWayDialog;
+    private JCZQScoreDialog scoreDialog;
 
     private JCZQType1Adapter type1Adapter;
     private JCZQType2Adapter type2Adapter;
+    private JCZQType3Adapter type3Adapter;
+    private JCZQType4Adapter type4Adapter;
 
     public static JCZQFragment newInstance() {
         Bundle args = new Bundle();
@@ -319,12 +327,52 @@ public class JCZQFragment extends BaseBackMvpFragment<IJCZQView, JCZQPresenter> 
 
     @Override
     public void showPlayWay3() {
-
+        try {
+            if (type3Adapter == null) {
+                for (int i = 0; i < 3; i++) {
+                    JCZQType1HeaderInfo headerInfo = new JCZQType1HeaderInfo();
+                    for (int j = 0; j < 8; j++) {
+                        JCZQType1ContentInfo contentInfo = new JCZQType1ContentInfo("");
+                        headerInfo.addSubItem(contentInfo);
+                    }
+                    list3.add(headerInfo);
+                }
+                type3Adapter = new JCZQType3Adapter(list3);
+            }
+            recyclerView.setAdapter(type3Adapter);
+            type3Adapter.expandAll();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void showPlayWay4() {
-
+        try {
+            if (type4Adapter == null) {
+                for (int i = 0; i < 3; i++) {
+                    JCZQType1HeaderInfo headerInfo = new JCZQType1HeaderInfo();
+                    for (int j = 0; j < 8; j++) {
+                        JCZQType1ContentInfo contentInfo = new JCZQType1ContentInfo("");
+                        headerInfo.addSubItem(contentInfo);
+                    }
+                    list4.add(headerInfo);
+                }
+                type4Adapter = new JCZQType4Adapter(list4);
+                type4Adapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+                    @Override
+                    public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                        if (view.getId() == R.id.see_all_score) {
+                           showScoreDialog();
+                        }
+                    }
+                });
+            }
+            recyclerView.setAdapter(type4Adapter);
+            type4Adapter.expandAll();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -350,5 +398,13 @@ public class JCZQFragment extends BaseBackMvpFragment<IJCZQView, JCZQPresenter> 
     @Override
     public void showPlayWay9() {
 
+    }
+
+    public void showScoreDialog() {
+        if (scoreDialog == null) {
+            JCZQScoreDialog.Builder builder = new JCZQScoreDialog.Builder(getContext());
+            scoreDialog = builder.create();
+        }
+        scoreDialog.show();
     }
 }
