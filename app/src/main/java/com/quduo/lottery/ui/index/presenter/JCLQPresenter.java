@@ -16,4 +16,31 @@ public class JCLQPresenter extends BasePresenter<IJCLQView> {
         this.mView = view;
         this.model = new JCLQModel();
     }
+
+    public void changeLayoutView() {
+        try {
+            switch (mView.getPlayWayPosition()) {
+                case 0:
+                    mView.showPlayWayType1();
+                    break;
+                case 1:
+                    mView.showPlayWayType2();
+                    break;
+                case 2:
+                    mView.showPlayWayType3();
+                    break;
+                case 3:
+                    mView.showPlayWayType4();
+                    break;
+                case 4:
+                    mView.showPlayWayType5();
+                    break;
+                case 5:
+                    mView.showPlayWayType6();
+                    break;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

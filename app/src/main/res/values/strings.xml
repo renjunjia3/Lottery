@@ -115,4 +115,18 @@
         <item>比甲</item>
         <item>意大利杯</item>
     </string-array>
+    <!--篮彩玩法-->
+    <string-array name="jclq_play_way">
+        <item>混投</item>
+        <item>胜负</item>
+        <item>让分胜负</item>
+        <item>大小分</item>
+        <item>胜分差</item>
+        <item>胜负/让分</item>
+    </string-array>
+    <!--篮球赛事-->
+    <string-array name="jclq_match">
+        <item>欧职联</item>
+        <item>美职联</item>
+    </string-array>
 </resources>

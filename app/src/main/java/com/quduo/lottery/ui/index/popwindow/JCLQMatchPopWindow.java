@@ -23,30 +23,30 @@ import java.util.List;
  * Created by scene on 2017/12/20.
  */
 
-public class JCZQMatchPopWindow extends PopupWindow {
+public class JCLQMatchPopWindow extends PopupWindow {
     private Context context;
 
     private CustomeGridView gridView;
     private JCZQMatchAdapter adapter;
-    private OnJCZQButtonClickListener onJCZQButtonClickListener;
+    private OnJCLQButtonClickListener onJCLQButtonClickListener;
 
     private List<Integer> positions = new ArrayList<>();
     private List<PlayWayInfo> list;
 
     private boolean isNeedRevent = true;
 
-    public JCZQMatchPopWindow(Context context) {
+    public JCLQMatchPopWindow(Context context) {
         super(context);
         this.context = context;
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View mView = inflater.inflate(R.layout.pop_jczq_match, null);
+        View mView = inflater.inflate(R.layout.pop_jclq_match, null);
         this.setContentView(mView);
         init();
         initView(mView);
     }
 
-    public void setOnJCZQButtonClickListener(OnJCZQButtonClickListener onJCZQButtonClickListener) {
-        this.onJCZQButtonClickListener = onJCZQButtonClickListener;
+    public void setOnJCZQButtonClickListener(OnJCLQButtonClickListener onJCLQButtonClickListener) {
+        this.onJCLQButtonClickListener = onJCLQButtonClickListener;
     }
 
     private void init() {
@@ -66,16 +66,11 @@ public class JCZQMatchPopWindow extends PopupWindow {
     }
 
     private void initView(View rootView) {
-        String[] sscPlayWays = context.getResources().getStringArray(R.array.jczq_match);
+        String[] sscPlayWays = context.getResources().getStringArray(R.array.jclq_match);
         gridView = rootView.findViewById(R.id.gridView);
         list = new ArrayList<>();
         list.add(new PlayWayInfo(sscPlayWays[0], false, true));
         list.add(new PlayWayInfo(sscPlayWays[1], false, true));
-        list.add(new PlayWayInfo(sscPlayWays[2], false, true));
-        list.add(new PlayWayInfo(sscPlayWays[3], false, true));
-        list.add(new PlayWayInfo(sscPlayWays[4], false, true));
-        list.add(new PlayWayInfo(sscPlayWays[5], false, true));
-        list.add(new PlayWayInfo(sscPlayWays[6], false, true));
 
         adapter = new JCZQMatchAdapter(context, list);
         gridView.setAdapter(adapter);
@@ -102,7 +97,7 @@ public class JCZQMatchPopWindow extends PopupWindow {
                         positions.add(i);
                     }
                 }
-                onJCZQButtonClickListener.OnConfirmClick(positions);
+                onJCLQButtonClickListener.OnConfirmClick(positions);
                 isNeedRevent = false;
                 dismiss();
             }
@@ -158,7 +153,7 @@ public class JCZQMatchPopWindow extends PopupWindow {
         ((Activity) context).getWindow().setAttributes(lp);
     }
 
-    public interface OnJCZQButtonClickListener {
+    public interface OnJCLQButtonClickListener {
         void OnConfirmClick(List<Integer> position);
     }
 
@@ -171,4 +166,5 @@ public class JCZQMatchPopWindow extends PopupWindow {
         }
         adapter.notifyDataSetChanged();
     }
+
 }
