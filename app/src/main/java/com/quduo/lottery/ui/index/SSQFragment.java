@@ -91,6 +91,8 @@ public class SSQFragment extends BaseBackMvpFragment<ISSQView, SSQPresenter> imp
     private SSQWinCodeAdapter winCodeAdapter;
     private List<String> winCodeList = new ArrayList<>();
 
+    private boolean isXSYL = false;
+
     public static SSQFragment newInstance() {
         Bundle args = new Bundle();
         SSQFragment fragment = new SSQFragment();
@@ -116,6 +118,8 @@ public class SSQFragment extends BaseBackMvpFragment<ISSQView, SSQPresenter> imp
         } else {
             guideLayout.setVisibility(View.GONE);
         }
+
+        isXSYL = SPUtils.getInstance().getBoolean(AppConfig.KEY_SSQ_XSYL, false);
     }
 
     @Override
@@ -150,14 +154,17 @@ public class SSQFragment extends BaseBackMvpFragment<ISSQView, SSQPresenter> imp
             SSQBallInfo ballInfo = new SSQBallInfo();
             if (i < 10) {
                 ballInfo.setNumber(String.valueOf("0" + i));
+                ballInfo.setXSYL(isXSYL);
                 redList.add(ballInfo);
                 winCodeList.add(String.valueOf("0" + i));
             } else {
                 ballInfo.setNumber(String.valueOf(i));
+                ballInfo.setXSYL(isXSYL);
                 redList.add(ballInfo);
             }
             if (i < 17) {
                 SSQBallInfo blueBallInfo = new SSQBallInfo();
+                ballInfo.setXSYL(isXSYL);
                 if (i < 10) {
                     blueBallInfo.setNumber(String.valueOf("0" + i));
                     blueList.add(blueBallInfo);
@@ -311,6 +318,20 @@ public class SSQFragment extends BaseBackMvpFragment<ISSQView, SSQPresenter> imp
     public void onClickToolbarMenu() {
         if (menuPopWindow == null) {
             menuPopWindow = new SSQMenuPopWindow(getContext());
+            menuPopWindow.setOnClickMenuListener(new SSQMenuPopWindow.OnClickMenuListener() {
+                @Override
+                public void onClickMenuXsyl(boolean isXSYL) {
+                    SSQFragment.this.isXSYL = isXSYL;
+                    for (int i = 0; i < redList.size(); i++) {
+                        redList.get(i).setXSYL(isXSYL);
+                    }
+                    for (int i = 0; i < blueList.size(); i++) {
+                        blueList.get(i).setXSYL(isXSYL);
+                    }
+                    redAdapter.notifyDataSetChanged();
+                    blueAdapter.notifyDataSetChanged();
+                }
+            });
         }
         menuPopWindow.show(toolbarMenu);
     }

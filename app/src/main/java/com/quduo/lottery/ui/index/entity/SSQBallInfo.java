@@ -11,6 +11,7 @@ public class SSQBallInfo implements Serializable {
     private String number;
     private int missTime;
     private boolean isCheck;
+    private boolean isXSYL;
 
     public String getNumber() {
         return number;
@@ -34,5 +35,13 @@ public class SSQBallInfo implements Serializable {
 
     public void setCheck(boolean check) {
         isCheck = check;
+    }
+
+    public boolean isXSYL() {
+        return isXSYL;
+    }
+
+    public void setXSYL(boolean XSYL) {
+        isXSYL = XSYL;
     }
 }

@@ -19,4 +19,6 @@ public class AppConfig {
     public static final String KEY_FIRST_USE_PLAY_JCLQ = "FIRST_USE_PLAY_JCLQ";
 
     public static final String KEY_JCZQ_DEFAULT_MATCH = "JCZQ_DEFAULT_MATCH";
+
+    public static final String KEY_SSQ_XSYL="SSQ_XSYL";
 }

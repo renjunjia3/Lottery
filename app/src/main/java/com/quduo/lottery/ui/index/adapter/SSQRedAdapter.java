@@ -66,6 +66,7 @@ public class SSQRedAdapter extends BaseAdapter {
             holder.number.setBackgroundResource(R.drawable.bg_ssq_red_d);
             holder.number.setTextColor(ContextCompat.getColor(context, R.color.theme_color));
         }
+        holder.missTime.setVisibility(info.isXSYL()?View.VISIBLE:View.GONE);
         return view;
     }
 

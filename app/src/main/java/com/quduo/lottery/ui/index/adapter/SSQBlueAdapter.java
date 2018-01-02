@@ -57,7 +57,7 @@ public class SSQBlueAdapter extends BaseAdapter {
         } else {
             holder = (SSQRedViewHolder) view.getTag();
         }
-        SSQBallInfo info=list.get(i);
+        SSQBallInfo info = list.get(i);
         holder.number.setText(info.getNumber());
         if (info.isCheck()) {
             holder.number.setBackgroundResource(R.drawable.bg_ssq_blue_s);
@@ -66,6 +66,7 @@ public class SSQBlueAdapter extends BaseAdapter {
             holder.number.setBackgroundResource(R.drawable.bg_ssq_red_d);
             holder.number.setTextColor(ContextCompat.getColor(context, R.color.blue_text_color));
         }
+        holder.missTime.setVisibility(info.isXSYL() ? View.VISIBLE : View.GONE);
         return view;
     }
 
