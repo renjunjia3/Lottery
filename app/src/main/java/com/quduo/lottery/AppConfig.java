@@ -21,4 +21,5 @@ public class AppConfig {
     public static final String KEY_JCZQ_DEFAULT_MATCH = "JCZQ_DEFAULT_MATCH";
 
     public static final String KEY_SSQ_XSYL="SSQ_XSYL";
+    public static final String KEY_DLT_XSYL="DLT_XSYL";
 }

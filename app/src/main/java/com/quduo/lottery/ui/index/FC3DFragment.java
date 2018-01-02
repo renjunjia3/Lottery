@@ -18,6 +18,7 @@ import com.blankj.utilcode.util.SPUtils;
 import com.quduo.lottery.AppConfig;
 import com.quduo.lottery.R;
 import com.quduo.lottery.mvp.BaseBackMvpFragment;
+import com.quduo.lottery.ui.index.adapter.FC3DBallAdapter;
 import com.quduo.lottery.ui.index.adapter.FC3DWinCodeAdapter;
 import com.quduo.lottery.ui.index.adapter.SSCBallAdapter;
 import com.quduo.lottery.ui.index.entity.SSQBallInfo;
@@ -110,9 +111,9 @@ public class FC3DFragment extends BaseBackMvpFragment<IFC3DView, FC3DPresenter> 
     private List<SSQBallInfo> list2 = new ArrayList<>();
     private List<SSQBallInfo> list3 = new ArrayList<>();
 
-    private SSCBallAdapter ballAdapter1;
-    private SSCBallAdapter ballAdapter2;
-    private SSCBallAdapter ballAdapter3;
+    private FC3DBallAdapter ballAdapter1;
+    private FC3DBallAdapter ballAdapter2;
+    private FC3DBallAdapter ballAdapter3;
 
     private List<String> winCodeList = new ArrayList<>();
     private FC3DWinCodeAdapter winCodeAdapter;
@@ -193,9 +194,9 @@ public class FC3DFragment extends BaseBackMvpFragment<IFC3DView, FC3DPresenter> 
             list3.add(info3);
         }
 
-        ballAdapter1 = new SSCBallAdapter(getContext(), list1);
-        ballAdapter2 = new SSCBallAdapter(getContext(), list2);
-        ballAdapter3 = new SSCBallAdapter(getContext(), list3);
+        ballAdapter1 = new FC3DBallAdapter(getContext(), list1);
+        ballAdapter2 = new FC3DBallAdapter(getContext(), list2);
+        ballAdapter3 = new FC3DBallAdapter(getContext(), list3);
 
         gridView1.setAdapter(ballAdapter1);
         gridView2.setAdapter(ballAdapter2);

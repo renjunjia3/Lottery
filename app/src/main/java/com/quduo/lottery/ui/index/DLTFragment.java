@@ -21,6 +21,7 @@ import com.quduo.lottery.ui.index.adapter.DLTWinCodeAdapter;
 import com.quduo.lottery.ui.index.adapter.SSQBlueAdapter;
 import com.quduo.lottery.ui.index.adapter.SSQRedAdapter;
 import com.quduo.lottery.ui.index.entity.SSQBallInfo;
+import com.quduo.lottery.ui.index.popwindow.DLTMenuPopWindow;
 import com.quduo.lottery.ui.index.popwindow.SSQMenuPopWindow;
 import com.quduo.lottery.ui.index.presenter.DLTPresenter;
 import com.quduo.lottery.ui.index.view.IDLTView;
@@ -92,6 +93,9 @@ public class DLTFragment extends BaseBackMvpFragment<IDLTView, DLTPresenter> imp
     private DLTWinCodeAdapter winCodeAdapter;
     private List<String> winCodeList = new ArrayList<>();
 
+    private boolean isXSYL = false;
+    private DLTMenuPopWindow menuPopWindow;
+
     public static DLTFragment newInstance() {
         Bundle args = new Bundle();
         DLTFragment fragment = new DLTFragment();
@@ -113,6 +117,7 @@ public class DLTFragment extends BaseBackMvpFragment<IDLTView, DLTPresenter> imp
         toolbarTitle.setText("大乐透");
         initToolbarNav(toolbar);
         showGuide();
+        isXSYL = SPUtils.getInstance().getBoolean(AppConfig.KEY_DLT_XSYL, false);
     }
 
     private void showGuide() {
@@ -154,14 +159,17 @@ public class DLTFragment extends BaseBackMvpFragment<IDLTView, DLTPresenter> imp
             SSQBallInfo ballInfo = new SSQBallInfo();
             if (i < 10) {
                 ballInfo.setNumber(String.valueOf("0" + i));
+                ballInfo.setXSYL(isXSYL);
                 redList.add(ballInfo);
                 winCodeList.add(String.valueOf("0" + i));
             } else {
                 ballInfo.setNumber(String.valueOf(i));
+                ballInfo.setXSYL(isXSYL);
                 redList.add(ballInfo);
             }
             if (i < 13) {
                 SSQBallInfo blueBallInfo = new SSQBallInfo();
+                ballInfo.setXSYL(isXSYL);
                 if (i < 10) {
                     blueBallInfo.setNumber(String.valueOf("0" + i));
                     blueList.add(blueBallInfo);
@@ -309,12 +317,24 @@ public class DLTFragment extends BaseBackMvpFragment<IDLTView, DLTPresenter> imp
         presenter.deleteAllCode();
     }
 
-    private SSQMenuPopWindow menuPopWindow;
-
     @OnClick(R.id.toolbar_menu)
     public void onClickToolbarMenu() {
         if (menuPopWindow == null) {
-            menuPopWindow = new SSQMenuPopWindow(getContext());
+            menuPopWindow = new DLTMenuPopWindow(getContext());
+            menuPopWindow.setOnClickMenuListener(new DLTMenuPopWindow.OnClickMenuListener() {
+                @Override
+                public void onClickMenuXsyl(boolean isXSYL) {
+                    DLTFragment.this.isXSYL = isXSYL;
+                    for (int i = 0; i < redList.size(); i++) {
+                        redList.get(i).setXSYL(isXSYL);
+                    }
+                    for (int i = 0; i < blueList.size(); i++) {
+                        blueList.get(i).setXSYL(isXSYL);
+                    }
+                    redAdapter.notifyDataSetChanged();
+                    blueAdapter.notifyDataSetChanged();
+                }
+            });
         }
         menuPopWindow.show(toolbarMenu);
     }
