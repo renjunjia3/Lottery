@@ -51,7 +51,7 @@ public class SSCBallAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         SSCBallViewHolder holder;
         if (view == null) {
-            view = inflater.inflate(R.layout.fragment_ssq_red_item, viewGroup, false);
+            view = inflater.inflate(R.layout.fragment_ssc_item, viewGroup, false);
             holder = new SSCBallViewHolder(view);
             view.setTag(holder);
         } else {
@@ -72,8 +72,6 @@ public class SSCBallAdapter extends BaseAdapter {
     static class SSCBallViewHolder {
         @BindView(R.id.number)
         TextView number;
-        @BindView(R.id.miss_time)
-        TextView missTime;
 
         SSCBallViewHolder(View view) {
             ButterKnife.bind(this, view);
