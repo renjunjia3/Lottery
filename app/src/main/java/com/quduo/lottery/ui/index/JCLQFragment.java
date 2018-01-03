@@ -32,7 +32,9 @@ import com.quduo.lottery.ui.index.adapter.jclq.JCLQType6Adapter;
 import com.quduo.lottery.ui.index.entity.JCZQType1ContentInfo;
 import com.quduo.lottery.ui.index.entity.JCZQType1HeaderInfo;
 import com.quduo.lottery.ui.index.popwindow.JCLQMatchPopWindow;
+import com.quduo.lottery.ui.index.popwindow.JCLQMorePlayWayDialog;
 import com.quduo.lottery.ui.index.popwindow.JCLQPlayWayPopWindow;
+import com.quduo.lottery.ui.index.popwindow.JCLQScoreDialog;
 import com.quduo.lottery.ui.index.presenter.JCLQPresenter;
 import com.quduo.lottery.ui.index.view.IJCLQView;
 
@@ -101,6 +103,9 @@ public class JCLQFragment extends BaseBackMvpFragment<IJCLQView, JCLQPresenter> 
     private JCLQType4Adapter type4Adapter;
     private JCLQType5Adapter type5Adapter;
     private JCLQType6Adapter type6Adapter;
+
+    private JCLQMorePlayWayDialog morePlayWayDialog;
+    private JCLQScoreDialog scoreDialog;
 
     public static JCLQFragment newInstance() {
         Bundle args = new Bundle();
@@ -275,13 +280,9 @@ public class JCLQFragment extends BaseBackMvpFragment<IJCLQView, JCLQPresenter> 
                 type1Adapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
                     @Override
                     public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-//                        if (view.getId() == R.id.layout_more_play_way) {
-//                            if (morePlayWayDialog == null) {
-//                                JCZQMorePlayWayDialog.Builder builder = new JCZQMorePlayWayDialog.Builder(getContext());
-//                                morePlayWayDialog = builder.create();
-//                            }
-//                            morePlayWayDialog.show();
-//                        }
+                        if (view.getId() == R.id.layout_more_play_way) {
+                            showMorePlayWayDialog();
+                        }
                     }
                 });
             }
@@ -379,6 +380,14 @@ public class JCLQFragment extends BaseBackMvpFragment<IJCLQView, JCLQPresenter> 
             }
             recyclerView.setAdapter(type5Adapter);
             type5Adapter.expandAll();
+            type5Adapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+                @Override
+                public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                    if (view.getId() == R.id.see_all_score) {
+                        showScoreDialog();
+                    }
+                }
+            });
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -408,6 +417,30 @@ public class JCLQFragment extends BaseBackMvpFragment<IJCLQView, JCLQPresenter> 
             }
             recyclerView.setAdapter(type6Adapter);
             type6Adapter.expandAll();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showMorePlayWayDialog() {
+        try {
+            if (morePlayWayDialog == null) {
+                JCLQMorePlayWayDialog.Builder builder = new JCLQMorePlayWayDialog.Builder(getContext());
+                morePlayWayDialog = builder.create();
+            }
+            morePlayWayDialog.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showScoreDialog() {
+        try {
+            if (scoreDialog == null) {
+                JCLQScoreDialog.Builder builder = new JCLQScoreDialog.Builder(getContext());
+                scoreDialog = builder.create();
+            }
+            scoreDialog.show();
         } catch (Exception e) {
             e.printStackTrace();
         }

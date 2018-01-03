@@ -53,7 +53,7 @@ public class JCLQType5Adapter extends BaseMultiItemQuickAdapter<MultiItemEntity,
                 });
                 break;
             case TYPE_LEVEL_1:
-                holder.addOnClickListener(R.id.layout_more_play_way);
+                holder.addOnClickListener(R.id.see_all_score);
                 break;
         }
     }
