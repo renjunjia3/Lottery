@@ -22,6 +22,7 @@ import com.quduo.lottery.ui.index.adapter.FC3DBallAdapter;
 import com.quduo.lottery.ui.index.adapter.FC3DWinCodeAdapter;
 import com.quduo.lottery.ui.index.adapter.SSCBallAdapter;
 import com.quduo.lottery.ui.index.entity.SSQBallInfo;
+import com.quduo.lottery.ui.index.popwindow.FC3DMenuPopWindow;
 import com.quduo.lottery.ui.index.popwindow.FC3DPlayWayPopWindow;
 import com.quduo.lottery.ui.index.popwindow.SSCMenuPopWindow;
 import com.quduo.lottery.ui.index.presenter.FC3DPresenter;
@@ -119,7 +120,7 @@ public class FC3DFragment extends BaseBackMvpFragment<IFC3DView, FC3DPresenter> 
     private FC3DWinCodeAdapter winCodeAdapter;
 
     private FC3DPlayWayPopWindow playWayPopWindow;
-    private SSCMenuPopWindow menuPopWindow;
+    private FC3DMenuPopWindow menuPopWindow;
 
     private String[] fc3dPlayWays;
 
@@ -329,7 +330,7 @@ public class FC3DFragment extends BaseBackMvpFragment<IFC3DView, FC3DPresenter> 
     @OnClick(R.id.toolbar_menu)
     public void onClickToolbarMenu() {
         if (menuPopWindow == null) {
-            menuPopWindow = new SSCMenuPopWindow(getContext());
+            menuPopWindow = new FC3DMenuPopWindow(getContext());
         }
         menuPopWindow.show(toolbarMenu);
     }
