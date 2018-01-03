@@ -445,4 +445,9 @@ public class JCLQFragment extends BaseBackMvpFragment<IJCLQView, JCLQPresenter> 
             e.printStackTrace();
         }
     }
+
+    @OnClick(R.id.toolbar_win_result)
+    public void onClickToolbarWinResult() {
+        start(JCLQMatchResultFragment.newInstance());
+    }
 }
