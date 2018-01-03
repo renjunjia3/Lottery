@@ -3,6 +3,8 @@ package com.quduo.lottery.ui.index;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,21 +16,37 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.blankj.utilcode.util.SPUtils;
+import com.blankj.utilcode.util.SizeUtils;
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.quduo.lottery.AppConfig;
 import com.quduo.lottery.R;
+import com.quduo.lottery.itemDecoration.SpacesItemDecoration;
 import com.quduo.lottery.mvp.BaseBackMvpFragment;
+import com.quduo.lottery.ui.index.adapter.jclq.JCLQType1Adapter;
+import com.quduo.lottery.ui.index.adapter.jclq.JCLQType2Adapter;
+import com.quduo.lottery.ui.index.adapter.jclq.JCLQType3Adapter;
+import com.quduo.lottery.ui.index.adapter.jclq.JCLQType4Adapter;
+import com.quduo.lottery.ui.index.adapter.jclq.JCLQType5Adapter;
+import com.quduo.lottery.ui.index.adapter.jclq.JCLQType6Adapter;
+import com.quduo.lottery.ui.index.entity.JCZQType1ContentInfo;
+import com.quduo.lottery.ui.index.entity.JCZQType1HeaderInfo;
 import com.quduo.lottery.ui.index.popwindow.JCLQMatchPopWindow;
 import com.quduo.lottery.ui.index.popwindow.JCLQPlayWayPopWindow;
-import com.quduo.lottery.ui.index.popwindow.JCZQMatchPopWindow;
 import com.quduo.lottery.ui.index.presenter.JCLQPresenter;
 import com.quduo.lottery.ui.index.view.IJCLQView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import wiki.scene.loadmore.PtrClassicFrameLayout;
+import wiki.scene.loadmore.PtrDefaultHandler;
+import wiki.scene.loadmore.PtrFrameLayout;
+import wiki.scene.loadmore.StatusViewLayout;
 
 /**
  * 竞彩足球
@@ -53,12 +71,36 @@ public class JCLQFragment extends BaseBackMvpFragment<IJCLQView, JCLQPresenter> 
     @BindView(R.id.toolbar_layout)
     RelativeLayout toolbarLayout;
     Unbinder unbinder;
+    @BindView(R.id.recyclerView)
+    RecyclerView recyclerView;
+    @BindView(R.id.ptr_layout)
+    PtrClassicFrameLayout ptrLayout;
+    @BindView(R.id.statusView)
+    StatusViewLayout statusView;
+    @BindView(R.id.delete_all)
+    ImageView deleteAll;
+    @BindView(R.id.confirm)
+    TextView confirm;
 
     private JCLQMatchPopWindow matchPopWindow;
 
     private JCLQPlayWayPopWindow playWayPopWindow;
     private String[] jclqPlayWays;
     private int jclqPlayWayPosition;
+
+    private List<MultiItemEntity> list1 = new ArrayList<>();
+    private List<MultiItemEntity> list2 = new ArrayList<>();
+    private List<MultiItemEntity> list3 = new ArrayList<>();
+    private List<MultiItemEntity> list4 = new ArrayList<>();
+    private List<MultiItemEntity> list5 = new ArrayList<>();
+    private List<MultiItemEntity> list6 = new ArrayList<>();
+
+    private JCLQType1Adapter type1Adapter;
+    private JCLQType2Adapter type2Adapter;
+    private JCLQType3Adapter type3Adapter;
+    private JCLQType4Adapter type4Adapter;
+    private JCLQType5Adapter type5Adapter;
+    private JCLQType6Adapter type6Adapter;
 
     public static JCLQFragment newInstance() {
         Bundle args = new Bundle();
@@ -92,22 +134,65 @@ public class JCLQFragment extends BaseBackMvpFragment<IJCLQView, JCLQPresenter> 
     @Override
     public void initView() {
         super.initView();
+        ptrLayout.setLastUpdateTimeRelateObject(this);
+        ptrLayout.setPtrHandler(new PtrDefaultHandler() {
+            @Override
+            public void onRefreshBegin(PtrFrameLayout frame) {
+                ptrLayout.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        _mActivity.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                ptrLayout.refreshComplete();
+                            }
+                        });
+
+                    }
+                }, 2000);
+            }
+        });
+        showContentPage();
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.addItemDecoration(new SpacesItemDecoration(SizeUtils.dp2px(10)));
+
+        presenter.changeLayoutView();
     }
 
     @Override
     public void showLoadingPage() {
-
+        try {
+            statusView.showLoading();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void showContentPage() {
-
+        try {
+            statusView.showContent();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void showErrorPage() {
-
+        try {
+            statusView.showFailed(retryListener);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
+    private View.OnClickListener retryListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+
+        }
+    };
 
     @Override
     public JCLQPresenter initPresenter() {
@@ -176,31 +261,155 @@ public class JCLQFragment extends BaseBackMvpFragment<IJCLQView, JCLQPresenter> 
 
     @Override
     public void showPlayWayType1() {
-
+        try {
+            if (type1Adapter == null) {
+                for (int i = 0; i < 3; i++) {
+                    JCZQType1HeaderInfo headerInfo = new JCZQType1HeaderInfo();
+                    for (int j = 0; j < 8; j++) {
+                        JCZQType1ContentInfo contentInfo = new JCZQType1ContentInfo("");
+                        headerInfo.addSubItem(contentInfo);
+                    }
+                    list1.add(headerInfo);
+                }
+                type1Adapter = new JCLQType1Adapter(list1);
+                type1Adapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+                    @Override
+                    public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+//                        if (view.getId() == R.id.layout_more_play_way) {
+//                            if (morePlayWayDialog == null) {
+//                                JCZQMorePlayWayDialog.Builder builder = new JCZQMorePlayWayDialog.Builder(getContext());
+//                                morePlayWayDialog = builder.create();
+//                            }
+//                            morePlayWayDialog.show();
+//                        }
+                    }
+                });
+            }
+            recyclerView.setAdapter(type1Adapter);
+            type1Adapter.expandAll();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void showPlayWayType2() {
-
+        try {
+            if (type2Adapter == null) {
+                for (int i = 0; i < 3; i++) {
+                    JCZQType1HeaderInfo headerInfo = new JCZQType1HeaderInfo();
+                    for (int j = 0; j < 8; j++) {
+                        JCZQType1ContentInfo contentInfo = new JCZQType1ContentInfo("");
+                        headerInfo.addSubItem(contentInfo);
+                    }
+                    list2.add(headerInfo);
+                }
+                type2Adapter = new JCLQType2Adapter(list2);
+            }
+            recyclerView.setAdapter(type2Adapter);
+            type2Adapter.expandAll();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void showPlayWayType3() {
-
+        try {
+            if (type3Adapter == null) {
+                for (int i = 0; i < 3; i++) {
+                    JCZQType1HeaderInfo headerInfo = new JCZQType1HeaderInfo();
+                    for (int j = 0; j < 8; j++) {
+                        JCZQType1ContentInfo contentInfo = new JCZQType1ContentInfo("");
+                        headerInfo.addSubItem(contentInfo);
+                    }
+                    list3.add(headerInfo);
+                }
+                type3Adapter = new JCLQType3Adapter(list3);
+            }
+            recyclerView.setAdapter(type3Adapter);
+            type3Adapter.expandAll();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void showPlayWayType4() {
-
+        try {
+            if (type4Adapter == null) {
+                for (int i = 0; i < 3; i++) {
+                    JCZQType1HeaderInfo headerInfo = new JCZQType1HeaderInfo();
+                    for (int j = 0; j < 8; j++) {
+                        JCZQType1ContentInfo contentInfo = new JCZQType1ContentInfo("");
+                        headerInfo.addSubItem(contentInfo);
+                    }
+                    list4.add(headerInfo);
+                }
+                type4Adapter = new JCLQType4Adapter(list4);
+                type4Adapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+                    @Override
+                    public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                        if (view.getId() == R.id.see_all_score) {
+                            //showScoreDialog();
+                        }
+                    }
+                });
+            }
+            recyclerView.setAdapter(type4Adapter);
+            type4Adapter.expandAll();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void showPlayWayType5() {
-
+        try {
+            if (type5Adapter == null) {
+                for (int i = 0; i < 3; i++) {
+                    JCZQType1HeaderInfo headerInfo = new JCZQType1HeaderInfo();
+                    for (int j = 0; j < 8; j++) {
+                        JCZQType1ContentInfo contentInfo = new JCZQType1ContentInfo("");
+                        headerInfo.addSubItem(contentInfo);
+                    }
+                    list5.add(headerInfo);
+                }
+                type5Adapter = new JCLQType5Adapter(list5);
+            }
+            recyclerView.setAdapter(type5Adapter);
+            type5Adapter.expandAll();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void showPlayWayType6() {
-
+        try {
+            if (type6Adapter == null) {
+                for (int i = 0; i < 3; i++) {
+                    JCZQType1HeaderInfo headerInfo = new JCZQType1HeaderInfo();
+                    for (int j = 0; j < 8; j++) {
+                        JCZQType1ContentInfo contentInfo = new JCZQType1ContentInfo("");
+                        headerInfo.addSubItem(contentInfo);
+                    }
+                    list6.add(headerInfo);
+                }
+                type6Adapter = new JCLQType6Adapter(list6);
+                type6Adapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+                    @Override
+                    public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                        if (view.getId() == R.id.see_all_score) {
+                            // showHalfFullResultDialog();
+                        }
+                    }
+                });
+            }
+            recyclerView.setAdapter(type6Adapter);
+            type6Adapter.expandAll();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
