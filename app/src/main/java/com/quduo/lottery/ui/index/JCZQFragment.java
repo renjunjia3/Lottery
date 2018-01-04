@@ -521,4 +521,9 @@ public class JCZQFragment extends BaseBackMvpFragment<IJCZQView, JCZQPresenter> 
         halfFullResultDialog.show();
     }
 
+    @OnClick(R.id.confirm)
+    public void onClickConfirm() {
+        start(JCZQConfirmBetFragment.newInstance(1, 1));
+    }
+
 }
