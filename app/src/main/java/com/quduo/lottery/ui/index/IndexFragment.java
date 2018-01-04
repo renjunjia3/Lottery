@@ -1,18 +1,24 @@
 package com.quduo.lottery.ui.index;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.quduo.lottery.R;
 import com.quduo.lottery.event.StartBrotherEvent;
 import com.quduo.lottery.mvp.BaseMainMvpFragment;
 import com.quduo.lottery.ui.index.presenter.IndexPresenter;
 import com.quduo.lottery.ui.index.view.IIndexView;
+import com.quduo.lottery.widgets.RatioImageView;
 import com.sunsky.marqueeview.MarqueeView;
 import com.youth.banner.Banner;
 
@@ -45,6 +51,24 @@ public class IndexFragment extends BaseMainMvpFragment<IIndexView, IndexPresente
     Unbinder unbinder;
     @BindView(R.id.win_notice)
     MarqueeView winNotice;
+    @BindView(R.id.image1)
+    RatioImageView image1;
+    @BindView(R.id.layout_zucai_qiudui)
+    LinearLayout layoutZucaiQiudui;
+    @BindView(R.id.layout_item_ssc)
+    LinearLayout layoutItemSsc;
+    @BindView(R.id.layout_item_ssq)
+    LinearLayout layoutItemSsq;
+    @BindView(R.id.layout_item_jczq)
+    LinearLayout layoutItemJczq;
+    @BindView(R.id.layout_item_jclq)
+    LinearLayout layoutItemJclq;
+    @BindView(R.id.layout_item_dlt)
+    LinearLayout layoutItemDlt;
+    @BindView(R.id.layout_item_fc3d)
+    LinearLayout layoutItemFc3d;
+    @BindView(R.id.gzh)
+    TextView gzh;
 
     private List<View> noticeViewList = new ArrayList<>();
 
@@ -222,5 +246,13 @@ public class IndexFragment extends BaseMainMvpFragment<IIndexView, IndexPresente
     @OnClick(R.id.layout_item_jczq)
     public void onClickLayoutItemJCZQ() {
         EventBus.getDefault().post(new StartBrotherEvent(JCZQFragment.newInstance()));
+    }
+
+    @OnClick(R.id.gzh)
+    public void onClickGzh() {
+        String gzhStr = gzh.getText().toString();
+        ClipboardManager clipboardManager = (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
+        clipboardManager.setPrimaryClip(ClipData.newPlainText(null, gzhStr));
+        ToastUtils.showShort("已复制到剪切板：" + gzhStr);
     }
 }

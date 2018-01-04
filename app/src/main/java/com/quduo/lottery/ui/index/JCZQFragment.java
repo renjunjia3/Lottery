@@ -255,6 +255,17 @@ public class JCZQFragment extends BaseBackMvpFragment<IJCZQView, JCZQPresenter> 
     public void showMenuPopUpWindow() {
         if (menuPopWindow == null) {
             menuPopWindow = new JCZQMenuPopWindow(getContext());
+            menuPopWindow.setOnClickMenuListener(new JCZQMenuPopWindow.OnClickMenuListener() {
+                @Override
+                public void onClickMenuKJXX() {
+                    start(JCZQMatchResultFragment.newInstance());
+                }
+
+                @Override
+                public void onClickMenuBFZB() {
+
+                }
+            });
         }
         menuPopWindow.show(toolbarMenu);
     }

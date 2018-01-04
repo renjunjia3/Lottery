@@ -19,6 +19,7 @@ import com.quduo.lottery.R;
 
 public class JCZQMenuPopWindow extends PopupWindow implements View.OnClickListener {
     private Context context;
+    private OnClickMenuListener onClickMenuListener;
 
     public JCZQMenuPopWindow(Context context) {
         super(context);
@@ -27,7 +28,11 @@ public class JCZQMenuPopWindow extends PopupWindow implements View.OnClickListen
         View mView = inflater.inflate(R.layout.pop_jczq_toolbar_menu, null);
         this.setContentView(mView);
         init();
-        initView();
+        initView(mView);
+    }
+
+    public void setOnClickMenuListener(OnClickMenuListener onClickMenuListener) {
+        this.onClickMenuListener = onClickMenuListener;
     }
 
     private void init() {
@@ -46,8 +51,8 @@ public class JCZQMenuPopWindow extends PopupWindow implements View.OnClickListen
         this.setBackgroundDrawable(dw);
     }
 
-    private void initView() {
-
+    private void initView(View view) {
+        view.findViewById(R.id.kjxx).setOnClickListener(this);
     }
 
     @Override
@@ -60,7 +65,7 @@ public class JCZQMenuPopWindow extends PopupWindow implements View.OnClickListen
 
     public void show(View view) {
         setBackgroundAlpha(0.5f);
-        showAsDropDown(view,SizeUtils.dp2px(-25), 0);
+        showAsDropDown(view, SizeUtils.dp2px(-25), 0);
     }
 
     private void setBackgroundAlpha(float bgAlpha) {
@@ -71,6 +76,23 @@ public class JCZQMenuPopWindow extends PopupWindow implements View.OnClickListen
 
     @Override
     public void onClick(View view) {
+        if (onClickMenuListener == null) {
+            return;
+        }
+        switch (view.getId()) {
+            case R.id.kjxx:
+                onClickMenuListener.onClickMenuKJXX();
+                break;
+            case R.id.bfzb:
+                onClickMenuListener.onClickMenuBFZB();
+                break;
+        }
+        dismiss();
+    }
 
+    public interface OnClickMenuListener {
+        void onClickMenuKJXX();
+
+        void onClickMenuBFZB();
     }
 }

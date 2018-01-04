@@ -863,6 +863,7 @@
                             android:textSize="@dimen/text_size_10sp" />
 
                         <TextView
+                            android:id="@+id/gzh"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="博乐名游lottery"

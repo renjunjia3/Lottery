@@ -23,12 +23,12 @@ import butterknife.ButterKnife;
  * Created by scene on 2017/12/20.
  */
 
-public class JCZQMatchAdapter extends BaseAdapter {
+public class JCZQPlayWayAdapter extends BaseAdapter {
     private Context context;
     private List<PlayWayInfo> list;
     private LayoutInflater inflater;
 
-    public JCZQMatchAdapter(Context context, List<PlayWayInfo> list) {
+    public JCZQPlayWayAdapter(Context context, List<PlayWayInfo> list) {
         this.context = context;
         this.list = list;
         inflater = LayoutInflater.from(context);

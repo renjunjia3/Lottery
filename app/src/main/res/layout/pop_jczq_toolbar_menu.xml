@@ -15,7 +15,7 @@
         android:paddingRight="5dp">
 
         <TextView
-            android:id="@+id/kjhm"
+            android:id="@+id/bfzb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="10dp"
@@ -32,7 +32,7 @@
             android:background="@color/theme_color" />
 
         <TextView
-            android:id="@+id/wfgz"
+            android:id="@+id/kjxx"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingBottom="10dp"

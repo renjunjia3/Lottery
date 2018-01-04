@@ -11,7 +11,7 @@ import android.widget.AdapterView;
 import android.widget.PopupWindow;
 
 import com.quduo.lottery.R;
-import com.quduo.lottery.ui.index.adapter.JCZQMatchAdapter;
+import com.quduo.lottery.ui.index.adapter.JCZQPlayWayAdapter;
 import com.quduo.lottery.ui.index.entity.PlayWayInfo;
 import com.quduo.lottery.widgets.CustomeGridView;
 
@@ -27,7 +27,7 @@ public class JCLQMatchPopWindow extends PopupWindow {
     private Context context;
 
     private CustomeGridView gridView;
-    private JCZQMatchAdapter adapter;
+    private JCZQPlayWayAdapter adapter;
     private OnJCLQButtonClickListener onJCLQButtonClickListener;
 
     private List<Integer> positions = new ArrayList<>();
@@ -72,7 +72,7 @@ public class JCLQMatchPopWindow extends PopupWindow {
         list.add(new PlayWayInfo(sscPlayWays[0], false, true));
         list.add(new PlayWayInfo(sscPlayWays[1], false, true));
 
-        adapter = new JCZQMatchAdapter(context, list);
+        adapter = new JCZQPlayWayAdapter(context, list);
         gridView.setAdapter(adapter);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
