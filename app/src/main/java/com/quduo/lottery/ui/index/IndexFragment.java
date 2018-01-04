@@ -250,9 +250,13 @@ public class IndexFragment extends BaseMainMvpFragment<IIndexView, IndexPresente
 
     @OnClick(R.id.gzh)
     public void onClickGzh() {
-        String gzhStr = gzh.getText().toString();
-        ClipboardManager clipboardManager = (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
-        clipboardManager.setPrimaryClip(ClipData.newPlainText(null, gzhStr));
-        ToastUtils.showShort("已复制到剪切板：" + gzhStr);
+        try{
+            String gzhStr = gzh.getText().toString();
+            ClipboardManager clipboardManager = (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
+            clipboardManager.setPrimaryClip(ClipData.newPlainText(null, gzhStr));
+            ToastUtils.showShort("已复制到剪切板：" + gzhStr);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
