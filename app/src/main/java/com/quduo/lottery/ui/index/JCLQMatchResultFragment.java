@@ -3,7 +3,6 @@ package com.quduo.lottery.ui.index;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -12,10 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.blankj.utilcode.util.SizeUtils;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.quduo.lottery.R;
-import com.quduo.lottery.itemDecoration.RedDividerItemDecoration;
 import com.quduo.lottery.mvp.BaseBackMvpFragment;
 import com.quduo.lottery.ui.index.adapter.JCLQMatchResultAdapter;
 import com.quduo.lottery.ui.index.entity.JCLQMatchResultContentInfo;
@@ -91,7 +88,11 @@ public class JCLQMatchResultFragment extends BaseBackMvpFragment<IJCLQMatchResul
                         _mActivity.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                ptrLayout.refreshComplete();
+                                try {
+                                    refreshComplete();
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
                             }
                         });
                     }
@@ -159,5 +160,14 @@ public class JCLQMatchResultFragment extends BaseBackMvpFragment<IJCLQMatchResul
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    @Override
+    public void refreshComplete() {
+        try {
+            ptrLayout.refreshComplete();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

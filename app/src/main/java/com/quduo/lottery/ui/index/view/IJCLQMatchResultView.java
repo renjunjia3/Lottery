@@ -8,4 +8,5 @@ import com.quduo.lottery.mvp.BaseView;
  */
 
 public interface IJCLQMatchResultView extends BaseView {
+    void refreshComplete();
 }
