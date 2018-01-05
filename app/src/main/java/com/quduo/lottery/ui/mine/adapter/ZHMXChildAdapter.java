@@ -38,8 +38,10 @@ public class ZHMXChildAdapter extends RecyclerView.Adapter {
         if (info.getType() == 1) {
             holder.type.setText("购彩金");
             holder.money.setTextColor(Color.parseColor("#EE322B"));
+            holder.money.setText("+3元");
         } else {
             holder.type.setText("投注");
+            holder.money.setText("-2元");
             holder.money.setTextColor(Color.parseColor("#272727"));
         }
     }
