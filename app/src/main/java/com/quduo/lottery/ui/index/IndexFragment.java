@@ -18,9 +18,11 @@ import com.quduo.lottery.event.StartBrotherEvent;
 import com.quduo.lottery.mvp.BaseMainMvpFragment;
 import com.quduo.lottery.ui.index.presenter.IndexPresenter;
 import com.quduo.lottery.ui.index.view.IIndexView;
+import com.quduo.lottery.util.BannerImageLoader;
 import com.quduo.lottery.widgets.RatioImageView;
 import com.sunsky.marqueeview.MarqueeView;
 import com.youth.banner.Banner;
+import com.youth.banner.BannerConfig;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -91,6 +93,8 @@ public class IndexFragment extends BaseMainMvpFragment<IIndexView, IndexPresente
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {
         super.onLazyInitView(savedInstanceState);
         initView();
+        initBanner();
+        bindBanner(null);
     }
 
     @Override
@@ -144,6 +148,17 @@ public class IndexFragment extends BaseMainMvpFragment<IIndexView, IndexPresente
         });
         showContentPage();
         bindNoticeInfo();
+    }
+
+    private List<String> bannerImageUrls = new ArrayList<>();
+
+    private void initBanner() {
+        //设置banner高度
+        banner.setImageLoader(new BannerImageLoader());
+        banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
+        banner.setDelayTime(2000);
+        banner.setImages(bannerImageUrls);
+        banner.start();
     }
 
     @Override
@@ -250,12 +265,29 @@ public class IndexFragment extends BaseMainMvpFragment<IIndexView, IndexPresente
 
     @OnClick(R.id.gzh)
     public void onClickGzh() {
-        try{
+        try {
             String gzhStr = gzh.getText().toString();
             ClipboardManager clipboardManager = (ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
             clipboardManager.setPrimaryClip(ClipData.newPlainText(null, gzhStr));
             ToastUtils.showShort("已复制到剪切板：" + gzhStr);
-        }catch (Exception e){
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void bindBanner(List<String> bannerImages) {
+        try {
+            bannerImageUrls.clear();
+            bannerImageUrls.add("http://mycp.iplay78.com/res/activity/4c057081-8639-4642-b788-84b9009b645c.png");
+            bannerImageUrls.add("http://mycp.iplay78.com/res/activity/85673495-8a96-4975-b35b-3ed8cb8592d1.png");
+            bannerImageUrls.add("http://mycp.iplay78.com/res/activity/968838b8-d27d-4383-b6ec-4e91898d6ee1.jpg");
+            bannerImageUrls.add("http://mycp.iplay78.com/res/activity/9ba0454e-e828-4f86-b25f-b09845700d4f.png");
+            bannerImageUrls.add("http://mycp.iplay78.com/res/activity/fcad7936-a6a3-45d9-98f3-6635a4f66ff8.jpg");
+            banner.setImages(bannerImageUrls);
+            banner.start();
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

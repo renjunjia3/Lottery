@@ -23,6 +23,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import wiki.scene.loadmore.PtrClassicFrameLayout;
+import wiki.scene.loadmore.PtrDefaultHandler;
+import wiki.scene.loadmore.PtrFrameLayout;
 
 /**
  * 我的
@@ -61,6 +63,38 @@ public class MineFragment extends BaseMainMvpFragment<IMineView, MinePresenter> 
         View view = inflater.inflate(R.layout.fragment_mine, container, false);
         unbinder = ButterKnife.bind(this, view);
         return view;
+    }
+
+    @Override
+    public void onLazyInitView(@Nullable Bundle savedInstanceState) {
+        super.onLazyInitView(savedInstanceState);
+        initView();
+    }
+
+    @Override
+    public void initView() {
+        super.initView();
+        ptrLayout.setLastUpdateTimeRelateObject(this);
+        ptrLayout.setPtrHandler(new PtrDefaultHandler() {
+            @Override
+            public void onRefreshBegin(PtrFrameLayout frame) {
+                ptrLayout.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        _mActivity.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                try {
+                                    ptrLayout.refreshComplete();
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
+                    }
+                }, 1000);
+            }
+        });
     }
 
     @Override

@@ -40,9 +40,10 @@
                             android:id="@+id/banner"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            app:indicator_drawable_selected="@drawable/banner_indicator_s"
+                            app:indicator_drawable_unselected="@drawable/banner_indicator_d"
                             android:layout_alignBottom="@+id/image1"
-                            android:layout_alignTop="@+id/image1"
-                            android:background="@drawable/ic_banner" />
+                            android:layout_alignTop="@+id/image1" />
                     </RelativeLayout>
                     <!--########中奖公告######-->
                     <LinearLayout
