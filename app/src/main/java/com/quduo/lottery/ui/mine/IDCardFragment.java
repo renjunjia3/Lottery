@@ -11,29 +11,29 @@ import android.widget.TextView;
 
 import com.quduo.lottery.R;
 import com.quduo.lottery.mvp.BaseBackMvpFragment;
-import com.quduo.lottery.ui.mine.presenter.UserInfomationPresenter;
-import com.quduo.lottery.ui.mine.view.IUserInfomationView;
+import com.quduo.lottery.ui.mine.presenter.IDCardPresenter;
+import com.quduo.lottery.ui.mine.view.IIDCardView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import butterknife.Unbinder;
 
 /**
- * 个人信息
+ * 身份证
  * Created by scene on 2018/1/8.
  */
 
-public class UserInfomationFragment extends BaseBackMvpFragment<IUserInfomationView, UserInfomationPresenter> implements IUserInfomationView {
+public class IDCardFragment extends BaseBackMvpFragment<IIDCardView, IDCardPresenter> implements IIDCardView {
+
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.toolbar_title)
     TextView toolbarTitle;
     Unbinder unbinder;
 
-    public static UserInfomationFragment newInstance() {
+    public static IDCardFragment newInstance() {
         Bundle args = new Bundle();
-        UserInfomationFragment fragment = new UserInfomationFragment();
+        IDCardFragment fragment = new IDCardFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -41,7 +41,7 @@ public class UserInfomationFragment extends BaseBackMvpFragment<IUserInfomationV
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_user_infomation, container, false);
+        View view = inflater.inflate(R.layout.fragment_id_card, container, false);
         unbinder = ButterKnife.bind(this, view);
         return attachToSwipeBack(view);
     }
@@ -49,13 +49,8 @@ public class UserInfomationFragment extends BaseBackMvpFragment<IUserInfomationV
     @Override
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {
         super.onLazyInitView(savedInstanceState);
-        toolbarTitle.setText("个人信息");
+        toolbarTitle.setText("身份信息");
         initToolbarNav(toolbar);
-    }
-
-    @Override
-    public void initView() {
-        super.initView();
     }
 
     @Override
@@ -74,38 +69,13 @@ public class UserInfomationFragment extends BaseBackMvpFragment<IUserInfomationV
     }
 
     @Override
-    public UserInfomationPresenter initPresenter() {
-        return new UserInfomationPresenter(this);
+    public IDCardPresenter initPresenter() {
+        return new IDCardPresenter(this);
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
-    }
-
-    @OnClick(R.id.nickname)
-    public void onClickNickName() {
-        start(UpdateNickNameFragment.newInstance());
-    }
-
-    @OnClick(R.id.idCard)
-    public void onClickIDCard() {
-        start(IDCardFragment.newInstance());
-    }
-
-    @OnClick(R.id.phone)
-    public void onClickPhone() {
-        start(PhoneFragment.newInstance());
-    }
-
-    @OnClick(R.id.password)
-    public void onClickPassword() {
-        start(PasswordFragment.newInstance());
-    }
-
-    @OnClick(R.id.bank_card)
-    public void onClickBankCard() {
-        start(BankCardFragment.newInstance());
     }
 }

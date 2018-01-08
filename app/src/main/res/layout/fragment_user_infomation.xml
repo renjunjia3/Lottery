@@ -24,6 +24,7 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/nickname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -60,6 +61,7 @@
                 android:background="#CDCDCD" />
 
             <LinearLayout
+                android:id="@+id/idCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -96,6 +98,7 @@
                 android:background="#CDCDCD" />
 
             <LinearLayout
+                android:id="@+id/phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -132,6 +135,7 @@
                 android:background="#CDCDCD" />
 
             <LinearLayout
+                android:id="@+id/password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -168,6 +172,7 @@
                 android:background="#CDCDCD" />
 
             <LinearLayout
+                android:id="@+id/bank_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
