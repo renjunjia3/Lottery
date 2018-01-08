@@ -20,6 +20,10 @@ public class AppConfig {
 
     public static final String KEY_JCZQ_DEFAULT_MATCH = "JCZQ_DEFAULT_MATCH";
 
-    public static final String KEY_SSQ_XSYL="SSQ_XSYL";
-    public static final String KEY_DLT_XSYL="DLT_XSYL";
+    public static final String KEY_SSQ_XSYL = "SSQ_XSYL";
+    public static final String KEY_DLT_XSYL = "DLT_XSYL";
+
+    public static final int DEFAULT_PAY_WAY = 1;
+    public static final int PAY_TYPE_WECHAT = 1;
+    public static final int PAY_TYPE_ALIPAY = 2;
 }

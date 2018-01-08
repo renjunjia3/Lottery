@@ -142,6 +142,16 @@ public class MineFragment extends BaseMainMvpFragment<IMineView, MinePresenter> 
         EventBus.getDefault().post(new StartBrotherEvent(UserInfomationFragment.newInstance()));
     }
 
+    @OnClick(R.id.recharge)
+    public void onClickRecharge() {
+        EventBus.getDefault().post(new StartBrotherEvent(RechargeFragment.newInstance()));
+    }
+
+    @OnClick(R.id.cash)
+    public void onClickCash() {
+
+    }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();

@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="20dp">
+
+                <RadioButton
+                    android:id="@+id/money_0"
+                    android:layout_width="60dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_choose_type_radio_button_selector"
+                    android:button="@null"
+                    android:checked="true"
+                    android:gravity="center"
+                    android:text="50"
+                    android:textColor="@drawable/bg_choose_money_radio_button_textcolor_selector"
+                    android:textSize="@dimen/text_size_16sp" />
+
+                <View
+                    android:layout_width="20dp"
+                    android:layout_height="1dp" />
+
+                <RadioButton
+                    android:id="@+id/money_1"
+                    android:layout_width="60dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_choose_type_radio_button_selector"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="100"
+                    android:textColor="@drawable/bg_choose_money_radio_button_textcolor_selector"
+                    android:textSize="@dimen/text_size_16sp" />
+
+                <View
+                    android:layout_width="20dp"
+                    android:layout_height="1dp" />
+
+                <RadioButton
+                    android:id="@+id/money_2"
+                    android:layout_width="60dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_choose_type_radio_button_selector"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="200"
+                    android:textColor="@drawable/bg_choose_money_radio_button_textcolor_selector"
+                    android:textSize="@dimen/text_size_16sp" />
+
+                <View
+                    android:layout_width="20dp"
+                    android:layout_height="1dp" />
+
+                <RadioButton
+                    android:id="@+id/money_3"
+                    android:layout_width="60dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_choose_type_radio_button_selector"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="500"
+                    android:textColor="@drawable/bg_choose_money_radio_button_textcolor_selector"
+                    android:textSize="@dimen/text_size_16sp" />
+
+
+            </RadioGroup>
+
+            <RadioGroup
+                android:id="@+id/radioGroup2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+                <RadioButton
+                    android:id="@+id/money_4"
+                    android:layout_width="65dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/bg_choose_type_radio_button_selector"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="1000"
+                    android:textColor="@drawable/bg_choose_money_radio_button_textcolor_selector"
+                    android:textSize="@dimen/text_size_16sp" />
+
+                <View
+                    android:layout_width="20dp"
+                    android:layout_height="1dp" />
+
+                <RadioButton
+                    android:id="@+id/money_5"
+                    android:layout_width="65dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/bg_choose_type_radio_button_selector"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="2000"
+                    android:textColor="@drawable/bg_choose_money_radio_button_textcolor_selector"
+                    android:textSize="@dimen/text_size_16sp" />
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="16dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="16dp"
+                android:text="手动输入金额充值"
+                android:textColor="@color/red_text_color"
+                android:textSize="@dimen/text_size_16sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="￥"
+                    android:textColor="#999999"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/priceCustom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:background="@null"
+                    android:inputType="number"
+                    android:lines="1"
+                    android:maxLength="7"
+                    android:paddingLeft="@dimen/text_size_10sp"
+                    android:text="50"
+                    android:textColor="@color/red_text_color"
+                    android:textSize="@dimen/text_size_16sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="2dp"
+                android:background="#F0F0F0" />
+
+            <RadioGroup
+                android:id="@+id/rg_pay_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/radio_wechat_pay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/white"
+                    android:button="@null"
+                    android:checked="true"
+                    android:drawableLeft="@drawable/ic_wechat"
+                    android:drawablePadding="14dp"
+                    android:drawableRight="@drawable/ic_radio_button_selector"
+                    android:padding="14dp"
+                    android:text="微信支付"
+                    android:textColor="@color/text_color_title"
+                    android:textSize="@dimen/text_size_14sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginRight="14dp"
+                    android:background="#CDCDCD" />
+
+                <RadioButton
+                    android:id="@+id/radio_alipay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:button="@null"
+                    android:drawableLeft="@drawable/ic_alipay"
+                    android:drawablePadding="14dp"
+                    android:drawableRight="@drawable/ic_radio_button_selector"
+                    android:padding="14dp"
+                    android:text="支付宝支付"
+                    android:textColor="@color/text_color_title"
+                    android:textSize="@dimen/text_size_14sp" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/recharge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/bg_btn_login"
+                android:gravity="center"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:text="立即充值"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_16sp" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

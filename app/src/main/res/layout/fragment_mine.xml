@@ -32,10 +32,10 @@
                     android:gravity="center"
                     android:paddingBottom="3dp"
                     android:paddingTop="3dp"
-                    android:visibility="gone"
                     android:text="当前账户还未完善个人信息，请立即完善>"
                     android:textColor="@color/red_text_color"
-                    android:textSize="@dimen/text_size_10sp" />
+                    android:textSize="@dimen/text_size_10sp"
+                    android:visibility="gone" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -190,6 +190,7 @@
                     android:orientation="horizontal">
 
                     <LinearLayout
+                        android:id="@+id/recharge"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -216,6 +217,7 @@
                         android:background="#99130F" />
 
                     <LinearLayout
+                        android:id="@+id/cash"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
