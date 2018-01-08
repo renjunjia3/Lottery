@@ -9,12 +9,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.blankj.utilcode.util.SizeUtils;
 import com.quduo.lottery.R;
+import com.quduo.lottery.itemDecoration.SpacesItemDecoration;
 import com.quduo.lottery.mvp.BaseMvpFragment;
-import com.quduo.lottery.ui.mine.adapter.ZHMXChildAdapter;
-import com.quduo.lottery.ui.mine.entity.ZHMXInfo;
-import com.quduo.lottery.ui.mine.presenter.ZHMXChildPresenter;
-import com.quduo.lottery.ui.mine.view.IZHMXChildView;
+import com.quduo.lottery.ui.mine.adapter.BettingRecordChildAdapter;
+import com.quduo.lottery.ui.mine.entity.BettingRecordInfo;
+import com.quduo.lottery.ui.mine.presenter.BettingRecordChildPresenter;
+import com.quduo.lottery.ui.mine.view.IBettingRecordChildView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,10 +35,11 @@ import wiki.scene.loadmore.recyclerview.RecyclerAdapterWithHF;
  * Created by scene on 2018/1/5.
  */
 
-public class ZHMXChildFragment extends BaseMvpFragment<IZHMXChildView, ZHMXChildPresenter> implements IZHMXChildView {
+public class BettingRecordChildFragment extends BaseMvpFragment<IBettingRecordChildView, BettingRecordChildPresenter> implements IBettingRecordChildView {
     public static final int TYPE_ALL = 0;
-    public static final int TYPE_GET = 1;
-    public static final int TYPE_PUT = 2;
+    public static final int TYPE_WIN = 1;
+    public static final int TYPE_WAIT = 2;
+    public static final int TYPE_FAIL = 3;
     private static final String ARG_TYPE = "type";
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
@@ -48,12 +51,12 @@ public class ZHMXChildFragment extends BaseMvpFragment<IZHMXChildView, ZHMXChild
     private int type = TYPE_ALL;
 
     private RecyclerAdapterWithHF mAdapter;
-    private List<ZHMXInfo> list = new ArrayList<>();
+    private List<BettingRecordInfo> list = new ArrayList<>();
 
-    public static ZHMXChildFragment newInstance(int type) {
+    public static BettingRecordChildFragment newInstance(int type) {
         Bundle args = new Bundle();
         args.putInt(ARG_TYPE, type);
-        ZHMXChildFragment fragment = new ZHMXChildFragment();
+        BettingRecordChildFragment fragment = new BettingRecordChildFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -109,19 +112,14 @@ public class ZHMXChildFragment extends BaseMvpFragment<IZHMXChildView, ZHMXChild
 
     private void initView() {
         for (int i = 0; i < 5; i++) {
-            ZHMXInfo info = new ZHMXInfo();
-            if (type == TYPE_ALL) {
-                info.setType(i % 2 == 0 ? 1 : 2);
-            } else if (type == TYPE_GET) {
-                info.setType(1);
-            } else {
-                info.setType(2);
-            }
+            BettingRecordInfo info = new BettingRecordInfo();
+            info.setType(i);
             list.add(info);
         }
-        ZHMXChildAdapter adapter = new ZHMXChildAdapter(getContext(), list);
+        BettingRecordChildAdapter adapter = new BettingRecordChildAdapter(getContext(), list);
         mAdapter = new RecyclerAdapterWithHF(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.addItemDecoration(new SpacesItemDecoration(SizeUtils.dp2px(1)));
         recyclerView.setAdapter(mAdapter);
     }
 
@@ -160,8 +158,8 @@ public class ZHMXChildFragment extends BaseMvpFragment<IZHMXChildView, ZHMXChild
     };
 
     @Override
-    public ZHMXChildPresenter initPresenter() {
-        return new ZHMXChildPresenter(this);
+    public BettingRecordChildPresenter initPresenter() {
+        return new BettingRecordChildPresenter(this);
     }
 
     @Override

@@ -127,6 +127,11 @@ public class MineFragment extends BaseMainMvpFragment<IMineView, MinePresenter> 
         EventBus.getDefault().post(new StartBrotherEvent(ZHMXFragment.newInstance()));
     }
 
+    @OnClick(R.id.betting_record)
+    public void onClickBettingRecord() {
+        EventBus.getDefault().post(new StartBrotherEvent(BettingRecordFragment.newInstance()));
+    }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
