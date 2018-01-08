@@ -13,10 +13,10 @@ import com.blankj.utilcode.util.SizeUtils;
 import com.quduo.lottery.R;
 import com.quduo.lottery.itemDecoration.SpacesItemDecoration;
 import com.quduo.lottery.mvp.BaseMvpFragment;
-import com.quduo.lottery.ui.mine.adapter.BettingRecordChildAdapter;
-import com.quduo.lottery.ui.mine.entity.BettingRecordInfo;
-import com.quduo.lottery.ui.mine.presenter.BettingRecordChildPresenter;
-import com.quduo.lottery.ui.mine.view.IBettingRecordChildView;
+import com.quduo.lottery.ui.mine.adapter.MyGiftChildAdapter;
+import com.quduo.lottery.ui.mine.entity.MyGiftInfo;
+import com.quduo.lottery.ui.mine.presenter.MyGiftChildPresenter;
+import com.quduo.lottery.ui.mine.view.IMyGiftChildView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,11 +35,10 @@ import wiki.scene.loadmore.recyclerview.RecyclerAdapterWithHF;
  * Created by scene on 2018/1/5.
  */
 
-public class BettingRecordChildFragment extends BaseMvpFragment<IBettingRecordChildView, BettingRecordChildPresenter> implements IBettingRecordChildView {
-    public static final int TYPE_ALL = 0;
-    public static final int TYPE_WIN = 1;
-    public static final int TYPE_WAIT = 2;
-    public static final int TYPE_FAIL = 3;
+public class MyGiftChildFragment extends BaseMvpFragment<IMyGiftChildView, MyGiftChildPresenter> implements IMyGiftChildView {
+    public static final int TYPE_UNUSE = 0;
+    public static final int TYPE_USED = 1;
+    public static final int TYPE_OVERDUE = 2;
     private static final String ARG_TYPE = "type";
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
@@ -48,15 +47,15 @@ public class BettingRecordChildFragment extends BaseMvpFragment<IBettingRecordCh
     @BindView(R.id.statusView)
     StatusViewLayout statusView;
     Unbinder unbinder;
-    private int type = TYPE_ALL;
+    private int type = TYPE_UNUSE;
 
     private RecyclerAdapterWithHF mAdapter;
-    private List<BettingRecordInfo> list = new ArrayList<>();
+    private List<MyGiftInfo> list = new ArrayList<>();
 
-    public static BettingRecordChildFragment newInstance(int type) {
+    public static MyGiftChildFragment newInstance(int type) {
         Bundle args = new Bundle();
         args.putInt(ARG_TYPE, type);
-        BettingRecordChildFragment fragment = new BettingRecordChildFragment();
+        MyGiftChildFragment fragment = new MyGiftChildFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -65,7 +64,7 @@ public class BettingRecordChildFragment extends BaseMvpFragment<IBettingRecordCh
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            type = getArguments().getInt(ARG_TYPE, TYPE_ALL);
+            type = getArguments().getInt(ARG_TYPE, TYPE_UNUSE);
         }
     }
 
@@ -73,7 +72,7 @@ public class BettingRecordChildFragment extends BaseMvpFragment<IBettingRecordCh
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_betting_record_child, container, false);
+        View view = inflater.inflate(R.layout.fragment_my_gift_child, container, false);
         unbinder = ButterKnife.bind(this, view);
         return view;
     }
@@ -112,14 +111,14 @@ public class BettingRecordChildFragment extends BaseMvpFragment<IBettingRecordCh
 
     private void initView() {
         for (int i = 0; i < 5; i++) {
-            BettingRecordInfo info = new BettingRecordInfo();
+            MyGiftInfo info = new MyGiftInfo();
             info.setType(i);
             list.add(info);
         }
-        BettingRecordChildAdapter adapter = new BettingRecordChildAdapter(getContext(), list);
+        MyGiftChildAdapter adapter = new MyGiftChildAdapter(getContext(), list);
         mAdapter = new RecyclerAdapterWithHF(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.addItemDecoration(new SpacesItemDecoration(SizeUtils.dp2px(1)));
+        recyclerView.addItemDecoration(new SpacesItemDecoration(SizeUtils.dp2px(10), true, true));
         recyclerView.setAdapter(mAdapter);
     }
 
@@ -158,8 +157,8 @@ public class BettingRecordChildFragment extends BaseMvpFragment<IBettingRecordCh
     };
 
     @Override
-    public BettingRecordChildPresenter initPresenter() {
-        return new BettingRecordChildPresenter(this);
+    public MyGiftChildPresenter initPresenter() {
+        return new MyGiftChildPresenter(this);
     }
 
     @Override
