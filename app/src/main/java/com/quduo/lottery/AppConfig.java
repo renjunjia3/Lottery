@@ -26,4 +26,8 @@ public class AppConfig {
     public static final int DEFAULT_PAY_WAY = 1;
     public static final int PAY_TYPE_WECHAT = 1;
     public static final int PAY_TYPE_ALIPAY = 2;
+
+    //银行卡分类
+    public static final int BANK_TYPE_BANK_CARD = 1;
+    public static final int BANK_TYPE_ALIPAY = 2;
 }

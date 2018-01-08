@@ -149,7 +149,7 @@ public class MineFragment extends BaseMainMvpFragment<IMineView, MinePresenter> 
 
     @OnClick(R.id.cash)
     public void onClickCash() {
-
+        EventBus.getDefault().post(new StartBrotherEvent(CashFragment.newInstance()));
     }
 
     @Override
