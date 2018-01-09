@@ -10,12 +10,17 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.quduo.lottery.R;
+import com.quduo.lottery.event.StartBrotherEvent;
 import com.quduo.lottery.mvp.BaseMainMvpFragment;
+import com.quduo.lottery.ui.index.DLTAwardResultFragment;
 import com.quduo.lottery.ui.wincode.presenter.WincodePresenter;
 import com.quduo.lottery.ui.wincode.view.IWincodeView;
 
+import org.greenrobot.eventbus.EventBus;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 import wiki.scene.loadmore.PtrClassicFrameLayout;
 import wiki.scene.loadmore.StatusViewLayout;
@@ -109,4 +114,9 @@ public class WinCodeFragment extends BaseMainMvpFragment<IWincodeView, WincodePr
 
         }
     };
+
+    @OnClick(R.id.dlt)
+    public void onClickDLT() {
+        EventBus.getDefault().post(new StartBrotherEvent(DLTAwardResultFragment.newInstance()));
+    }
 }
