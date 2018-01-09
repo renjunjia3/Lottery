@@ -14,11 +14,11 @@ import android.widget.TextView;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.quduo.lottery.R;
 import com.quduo.lottery.mvp.BaseBackMvpFragment;
-import com.quduo.lottery.ui.index.adapter.JCZQMatchResultAdapter;
+import com.quduo.lottery.ui.index.adapter.JCLQMatchResultAdapter;
 import com.quduo.lottery.ui.index.entity.JCLQMatchResultContentInfo;
 import com.quduo.lottery.ui.index.entity.JCLQMatchResultHeaderInfo;
-import com.quduo.lottery.ui.index.presenter.JCZQMatchResultPresenter;
-import com.quduo.lottery.ui.index.view.IJCZQMatchResultView;
+import com.quduo.lottery.ui.index.presenter.JCLQMatchResultPresenter;
+import com.quduo.lottery.ui.index.view.IJCLQMatchResultView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,11 +32,11 @@ import wiki.scene.loadmore.PtrFrameLayout;
 import wiki.scene.loadmore.StatusViewLayout;
 
 /**
- * 足球比赛结果
+ * 篮球比赛结果
  * Created by scene on 2018/1/3.
  */
 
-public class JCZQMatchResultFragment extends BaseBackMvpFragment<IJCZQMatchResultView, JCZQMatchResultPresenter> implements IJCZQMatchResultView {
+public class JCLQAwardResultFragment extends BaseBackMvpFragment<IJCLQMatchResultView, JCLQMatchResultPresenter> implements IJCLQMatchResultView {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.toolbar_title)
@@ -49,12 +49,12 @@ public class JCZQMatchResultFragment extends BaseBackMvpFragment<IJCZQMatchResul
     StatusViewLayout statusView;
     Unbinder unbinder;
 
-    private JCZQMatchResultAdapter adapter;
+    private JCLQMatchResultAdapter adapter;
     private List<MultiItemEntity> list = new ArrayList<>();
 
-    public static JCZQMatchResultFragment newInstance() {
+    public static JCLQAwardResultFragment newInstance() {
         Bundle args = new Bundle();
-        JCZQMatchResultFragment fragment = new JCZQMatchResultFragment();
+        JCLQAwardResultFragment fragment = new JCLQAwardResultFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -62,7 +62,7 @@ public class JCZQMatchResultFragment extends BaseBackMvpFragment<IJCZQMatchResul
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_jczq_match_result, container, false);
+        View view = inflater.inflate(R.layout.fragment_jclq_match_result, container, false);
         unbinder = ButterKnife.bind(this, view);
         return attachToSwipeBack(view);
     }
@@ -70,7 +70,7 @@ public class JCZQMatchResultFragment extends BaseBackMvpFragment<IJCZQMatchResul
     @Override
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {
         super.onLazyInitView(savedInstanceState);
-        toolbarTitle.setText("竞彩足球 开奖");
+        toolbarTitle.setText("竞彩篮球 开奖");
         initToolbarNav(toolbar);
     }
 
@@ -110,7 +110,7 @@ public class JCZQMatchResultFragment extends BaseBackMvpFragment<IJCZQMatchResul
             }
             list.add(headerInfo);
         }
-        adapter = new JCZQMatchResultAdapter(list);
+        adapter = new JCLQMatchResultAdapter(list);
         recyclerView.setAdapter(adapter);
         if (list.size() > 0) {
             adapter.expand(0);
@@ -152,8 +152,8 @@ public class JCZQMatchResultFragment extends BaseBackMvpFragment<IJCZQMatchResul
     };
 
     @Override
-    public JCZQMatchResultPresenter initPresenter() {
-        return new JCZQMatchResultPresenter(this);
+    public JCLQMatchResultPresenter initPresenter() {
+        return new JCLQMatchResultPresenter(this);
     }
 
     @Override

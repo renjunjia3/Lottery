@@ -3,6 +3,7 @@ package com.quduo.lottery.ui.index;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -12,13 +13,20 @@ import android.widget.TextView;
 
 import com.quduo.lottery.R;
 import com.quduo.lottery.mvp.BaseBackMvpFragment;
+import com.quduo.lottery.ui.index.adapter.SSCAwardResultAdapter;
+import com.quduo.lottery.ui.index.entity.SSCAwardResultInfo;
 import com.quduo.lottery.ui.index.presenter.SSCAwardResultPresenter;
 import com.quduo.lottery.ui.index.view.ISSCAwardResultView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import wiki.scene.loadmore.PtrClassicFrameLayout;
+import wiki.scene.loadmore.PtrDefaultHandler;
+import wiki.scene.loadmore.PtrFrameLayout;
 import wiki.scene.loadmore.StatusViewLayout;
 
 /**
@@ -38,6 +46,8 @@ public class SSCAwardResultFragment extends BaseBackMvpFragment<ISSCAwardResultV
     @BindView(R.id.statusView)
     StatusViewLayout statusView;
     Unbinder unbinder;
+
+    private List<SSCAwardResultInfo> list = new ArrayList<>();
 
     public static SSCAwardResultFragment newInstance() {
         Bundle args = new Bundle();
@@ -64,22 +74,61 @@ public class SSCAwardResultFragment extends BaseBackMvpFragment<ISSCAwardResultV
     @Override
     public void initView() {
         super.initView();
+        showContentPage();
+        ptrLayout.setLastUpdateTimeRelateObject(this);
+        ptrLayout.setPtrHandler(new PtrDefaultHandler() {
+            @Override
+            public void onRefreshBegin(PtrFrameLayout frame) {
+                try {
+                    ptrLayout.refreshComplete();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        for (int i = 0; i < 10; i++) {
+            SSCAwardResultInfo info = new SSCAwardResultInfo();
+            info.setShow(true);
+            list.add(info);
+        }
+        SSCAwardResultAdapter adapter = new SSCAwardResultAdapter(getContext(), list);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(adapter);
     }
 
     @Override
     public void showLoadingPage() {
-
+        try {
+            statusView.showLoading();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void showContentPage() {
-
+        try {
+            statusView.showContent();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void showErrorPage() {
-
+        try {
+            statusView.showFailed(retryListener);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
+    private View.OnClickListener retryListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+
+        }
+    };
 
     @Override
     public SSCAwardResultPresenter initPresenter() {

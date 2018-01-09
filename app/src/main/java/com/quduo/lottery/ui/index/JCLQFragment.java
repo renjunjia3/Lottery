@@ -448,7 +448,7 @@ public class JCLQFragment extends BaseBackMvpFragment<IJCLQView, JCLQPresenter> 
 
     @OnClick(R.id.toolbar_win_result)
     public void onClickToolbarWinResult() {
-        start(JCLQMatchResultFragment.newInstance());
+        start(JCLQAwardResultFragment.newInstance());
     }
 
     @OnClick(R.id.confirm)

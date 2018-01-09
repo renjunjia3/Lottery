@@ -258,7 +258,7 @@ public class JCZQFragment extends BaseBackMvpFragment<IJCZQView, JCZQPresenter> 
             menuPopWindow.setOnClickMenuListener(new JCZQMenuPopWindow.OnClickMenuListener() {
                 @Override
                 public void onClickMenuKJXX() {
-                    start(JCZQMatchResultFragment.newInstance());
+                    start(JCZQAwardResultFragment.newInstance());
                 }
 
                 @Override

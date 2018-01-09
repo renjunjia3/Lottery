@@ -3,6 +3,7 @@ package com.quduo.lottery.ui.index;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -12,13 +13,20 @@ import android.widget.TextView;
 
 import com.quduo.lottery.R;
 import com.quduo.lottery.mvp.BaseBackMvpFragment;
+import com.quduo.lottery.ui.index.adapter.FC3DAwardResultAdapter;
+import com.quduo.lottery.ui.index.entity.FC3DAwardResultInfo;
 import com.quduo.lottery.ui.index.presenter.FC3DAwardResultPresenter;
 import com.quduo.lottery.ui.index.view.IFC3DAwardResultView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import wiki.scene.loadmore.PtrClassicFrameLayout;
+import wiki.scene.loadmore.PtrDefaultHandler;
+import wiki.scene.loadmore.PtrFrameLayout;
 import wiki.scene.loadmore.StatusViewLayout;
 
 /**
@@ -39,6 +47,8 @@ public class FC3DAwardResultFragment extends BaseBackMvpFragment<IFC3DAwardResul
     StatusViewLayout statusView;
     Unbinder unbinder;
 
+    private List<FC3DAwardResultInfo> list = new ArrayList<>();
+
     public static FC3DAwardResultFragment newInstance() {
         Bundle args = new Bundle();
         FC3DAwardResultFragment fragment = new FC3DAwardResultFragment();
@@ -57,29 +67,77 @@ public class FC3DAwardResultFragment extends BaseBackMvpFragment<IFC3DAwardResul
     @Override
     public void onLazyInitView(@Nullable Bundle savedInstanceState) {
         super.onLazyInitView(savedInstanceState);
-        toolbarTitle.setText("时时彩 开奖号码");
+        toolbarTitle.setText("福彩3D 开奖号码");
         initToolbarNav(toolbar);
     }
 
     @Override
     public void initView() {
         super.initView();
+        showContentPage();
+
+        ptrLayout.setLastUpdateTimeRelateObject(this);
+        ptrLayout.setPtrHandler(new PtrDefaultHandler() {
+            @Override
+            public void onRefreshBegin(PtrFrameLayout frame) {
+                try {
+                    ptrLayout.refreshComplete();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        for (int i = 0; i < 10; i++) {
+            FC3DAwardResultInfo info = new FC3DAwardResultInfo();
+            info.setShow(i == 0);
+            list.add(info);
+        }
+        final FC3DAwardResultAdapter adapter = new FC3DAwardResultAdapter(getContext(), list);
+        adapter.setOnFC3DAwardResultClickListener(new FC3DAwardResultAdapter.OnFC3DAwardResultClickListener() {
+            @Override
+            public void onFC3DAwardResultClickArrow(int position) {
+                list.get(position).setShow(!list.get(position).isShow());
+                adapter.notifyDataSetChanged();
+            }
+        });
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(adapter);
     }
 
     @Override
     public void showLoadingPage() {
-
+        try {
+            statusView.showLoading();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void showContentPage() {
-
+        try {
+            statusView.showContent();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void showErrorPage() {
-
+        try {
+            statusView.showFailed(retryListener);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
+    private View.OnClickListener retryListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+
+        }
+    };
 
     @Override
     public FC3DAwardResultPresenter initPresenter() {
