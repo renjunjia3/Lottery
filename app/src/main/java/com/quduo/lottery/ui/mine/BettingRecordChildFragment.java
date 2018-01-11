@@ -31,7 +31,7 @@ import wiki.scene.loadmore.StatusViewLayout;
 import wiki.scene.loadmore.recyclerview.RecyclerAdapterWithHF;
 
 /**
- * 账户明细子界面
+ * 投注记录子界面
  * Created by scene on 2018/1/5.
  */
 
@@ -121,6 +121,14 @@ public class BettingRecordChildFragment extends BaseMvpFragment<IBettingRecordCh
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.addItemDecoration(new SpacesItemDecoration(SizeUtils.dp2px(1)));
         recyclerView.setAdapter(mAdapter);
+        mAdapter.setOnItemClickListener(new RecyclerAdapterWithHF.OnItemClickListener() {
+            @Override
+            public void onItemClick(RecyclerAdapterWithHF adapter, RecyclerView.ViewHolder vh, int position) {
+                if (getParentFragment() instanceof BettingRecordFragment) {
+                    ((BettingRecordFragment) getParentFragment()).start(BettingDetailFragment.newInstance());
+                }
+            }
+        });
     }
 
     @Override
