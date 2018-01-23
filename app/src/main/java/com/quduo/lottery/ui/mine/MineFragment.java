@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.quduo.lottery.R;
 import com.quduo.lottery.event.StartBrotherEvent;
 import com.quduo.lottery.mvp.BaseMainMvpFragment;
+import com.quduo.lottery.ui.login.LoginFragment;
 import com.quduo.lottery.ui.mine.presenter.MinePresenter;
 import com.quduo.lottery.ui.mine.view.IMineView;
 
@@ -150,6 +151,11 @@ public class MineFragment extends BaseMainMvpFragment<IMineView, MinePresenter> 
     @OnClick(R.id.cash)
     public void onClickCash() {
         EventBus.getDefault().post(new StartBrotherEvent(CashFragment.newInstance()));
+    }
+
+    @OnClick({R.id.avatar, R.id.username})
+    public void onClickToLogin() {
+        EventBus.getDefault().post(new StartBrotherEvent(LoginFragment.newInstance()));
     }
 
     @Override

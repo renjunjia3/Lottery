@@ -6,4 +6,5 @@ package com.quduo.lottery.ui.mine.model;
  */
 
 public class MyGiftModel {
+
 }
