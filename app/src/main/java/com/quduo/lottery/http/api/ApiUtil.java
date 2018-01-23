@@ -18,6 +18,9 @@ public class ApiUtil {
     private static final String SIGN_KEY = "045448f765b0c0592563123a2652fb63";
     public static final String API_PRE = "http://192.168.0.88:8082/";
 
+    public static final String GET_CODE = "common/code";
+    public static final String GET_CODE_TAG = "common/code";
+
     /**
      * Case By:创建参数基础信息
      * Author: scene on 2017/5/19 13:19

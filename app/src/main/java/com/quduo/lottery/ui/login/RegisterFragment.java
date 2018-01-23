@@ -9,6 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.RegexUtils;
+import com.blankj.utilcode.util.ToastUtils;
+import com.hss01248.dialog.StyledDialog;
 import com.quduo.lottery.R;
 import com.quduo.lottery.mvp.BaseBackMvpFragment;
 import com.quduo.lottery.ui.login.presenter.RegisterPresenter;
@@ -17,9 +20,11 @@ import com.quduo.lottery.widgets.ClearEditText;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 
 /**
+ * 注册
  * Created by scene on 2018/1/23.
  */
 
@@ -76,6 +81,16 @@ public class RegisterFragment extends BaseBackMvpFragment<IRegisterView, Registe
         return new RegisterPresenter(this);
     }
 
+    @OnClick(R.id.next)
+    public void onClickNext() {
+        String phoneNumberStr = getPhoneNumber();
+        if (RegexUtils.isMobileSimple(phoneNumberStr)) {
+            presenter.getCodeData();
+        } else {
+            ToastUtils.showShort("请输入正确的手机号");
+        }
+    }
+
     @Override
     public void onPause() {
         super.onPause();
@@ -85,5 +100,47 @@ public class RegisterFragment extends BaseBackMvpFragment<IRegisterView, Registe
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    @Override
+    public String getPhoneNumber() {
+        return phoneNumber.getText().toString().trim();
+    }
+
+    @Override
+    public void getCodeSuccess() {
+        try {
+            start(CodeFragment.newInstance(getPhoneNumber()));
+            hideSoftInput();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void getCodeFail(String msg) {
+        try {
+            ToastUtils.showShort(msg);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void showDialog() {
+        try {
+            StyledDialog.buildLoading("加载中...").show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void hideDialog() {
+        try {
+            StyledDialog.dismissLoading();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

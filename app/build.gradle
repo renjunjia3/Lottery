@@ -150,4 +150,8 @@ dependencies {
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34'
     //图片加载
     compile 'com.sunfusheng:glideimageview:1.2.0'
+    //验证码输入框
+    implementation 'com.jacktuotuo.customview:verificationcodeview:1.0.2'
+    //对话框
+    compile 'com.github.hss01248:DialogUtil:1.2.6'
 }

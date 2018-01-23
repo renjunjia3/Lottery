@@ -9,11 +9,11 @@ import com.quduo.lottery.http.callback.JsonCallback;
 import com.quduo.lottery.http.listener.HttpResultListener;
 
 /**
- * 注册
+ * 验证码
  * Created by scene on 2018/1/23.
  */
 
-public class RegisterModel {
+public class CodeModel {
     public void getRegisterCode(HttpParams params, final HttpResultListener<String> listener) {
         OkGo.<LzyResponse<String>>post(ApiUtil.API_PRE + ApiUtil.GET_CODE)
                 .tag(ApiUtil.GET_CODE_TAG)

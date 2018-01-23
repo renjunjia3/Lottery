@@ -1,13 +1,15 @@
 package com.quduo.lottery.ui.login.view;
 
+import android.support.annotation.ColorInt;
+
 import com.quduo.lottery.mvp.BaseView;
 
 /**
- * 注册
+ * 验证码
  * Created by scene on 2018/1/23.
  */
 
-public interface IRegisterView extends BaseView {
+public interface ICodeView extends BaseView {
     String getPhoneNumber();
 
     void getCodeSuccess();
@@ -18,4 +20,9 @@ public interface IRegisterView extends BaseView {
 
     void hideDialog();
 
+    void updateResendText(String text);
+
+    void updateResendTextColor(@ColorInt int color);
+
+    void updateResendClickable(boolean clickable);
 }

@@ -2,10 +2,13 @@ package com.quduo.lottery;
 
 import android.app.Activity;
 import android.app.Application;
+import android.os.Bundle;
 
 
 import com.blankj.utilcode.util.Utils;
 import com.bumptech.glide.MemoryCategory;
+import com.hss01248.dialog.ActivityStackManager;
+import com.hss01248.dialog.StyledDialog;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.cache.CacheEntity;
 import com.lzy.okgo.cache.CacheMode;
@@ -53,6 +56,49 @@ public class MyApplication extends Application {
         PtrLocalDisplay.init(this);
         //初始化OKhttp
         initOKhttp();
+        //初始化dialog
+        initDialog();
+    }
+
+    //初始化dialog
+    private void initDialog() {
+        //初始化dialog
+        StyledDialog.init(getApplicationContext());
+        registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
+            @Override
+            public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
+                ActivityStackManager.getInstance().addActivity(activity);
+            }
+
+            @Override
+            public void onActivityStarted(Activity activity) {
+
+            }
+
+            @Override
+            public void onActivityResumed(Activity activity) {
+            }
+
+            @Override
+            public void onActivityPaused(Activity activity) {
+
+            }
+
+            @Override
+            public void onActivityStopped(Activity activity) {
+
+            }
+
+            @Override
+            public void onActivitySaveInstanceState(Activity activity, Bundle outState) {
+
+            }
+
+            @Override
+            public void onActivityDestroyed(Activity activity) {
+                ActivityStackManager.getInstance().removeActivity(activity);
+            }
+        });
     }
 
     /**

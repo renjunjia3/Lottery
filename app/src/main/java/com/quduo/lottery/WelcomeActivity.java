@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 
+import com.quduo.lottery.base.BaseActivity;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +23,7 @@ import me.yokeyword.fragmentation.SupportActivity;
  * Created by scene on 2017/12/18.
  */
 
-public class WelcomeActivity extends SupportActivity {
+public class WelcomeActivity extends BaseActivity {
     private long beginTime = 0;
     private static final long MIN_SHOW_TIME = 3 * 1000;
 

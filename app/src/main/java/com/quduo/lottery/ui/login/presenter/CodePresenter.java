@@ -1,24 +1,27 @@
 package com.quduo.lottery.ui.login.presenter;
 
+import android.content.Context;
 import android.os.CountDownTimer;
+import android.support.v4.content.ContextCompat;
 
 import com.lzy.okgo.model.HttpParams;
+import com.quduo.lottery.R;
 import com.quduo.lottery.http.listener.HttpResultListener;
 import com.quduo.lottery.mvp.BasePresenter;
-import com.quduo.lottery.ui.login.model.RegisterModel;
-import com.quduo.lottery.ui.login.view.IRegisterView;
+import com.quduo.lottery.ui.login.model.CodeModel;
+import com.quduo.lottery.ui.login.view.ICodeView;
 
 /**
- * 注册
+ * 验证码
  * Created by scene on 2018/1/23.
  */
 
-public class RegisterPresenter extends BasePresenter<IRegisterView> {
-    private RegisterModel model;
+public class CodePresenter extends BasePresenter<ICodeView> {
+    private CodeModel model;
 
-    public RegisterPresenter(IRegisterView view) {
+    public CodePresenter(ICodeView view) {
         this.mView = view;
-        this.model = new RegisterModel();
+        this.model = new CodeModel();
     }
 
     public void getCodeData() {
@@ -60,4 +63,26 @@ public class RegisterPresenter extends BasePresenter<IRegisterView> {
         }
     }
 
+    public void showCountDownTimer(final Context context) {
+        try {
+            mView.updateResendText("60秒后重发");
+            mView.updateResendClickable(false);
+            mView.updateResendTextColor(ContextCompat.getColor(context, R.color.text_color_des));
+            new CountDownTimer(60000, 1000) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    mView.updateResendText((millisUntilFinished / 1000) + "秒后重发");
+                }
+
+                @Override
+                public void onFinish() {
+                    mView.updateResendText("重新发送验证码");
+                    mView.updateResendClickable(true);
+                    mView.updateResendTextColor(ContextCompat.getColor(context, R.color.blue_text_color));
+                }
+            }.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

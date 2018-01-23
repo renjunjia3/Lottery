@@ -57,7 +57,7 @@
         android:layout_marginTop="30dp"
         android:background="@drawable/bg_btn_login"
         android:gravity="center"
-        android:padding="5dp"
+        android:padding="8dp"
         android:text="下一步"
         android:textColor="@color/white"
         android:textSize="@dimen/text_size_16sp" />
